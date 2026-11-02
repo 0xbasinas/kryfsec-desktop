@@ -157,7 +157,6 @@ export function Sidebar(): React.JSX.Element {
   return (
     <aside className="flex w-[232px] shrink-0 flex-col px-3 pb-2">
       <div className="drag -mx-3 h-11 shrink-0" onDoubleClick={onStripDoubleClick} />
-      <div className="px-3 pb-2 text-[10.5px] font-semibold tracking-[0.12em] text-faint uppercase">Menu</div>
       <nav className="flex flex-col gap-0.5">{NAV.map((n) => item(n.page, n.label, n.icon, (counts as Record<string, number>)[n.page]))}</nav>
       <div className="flex-1" />
       <div className="mb-3 rounded-[16px] border border-line bg-card p-3.5">
