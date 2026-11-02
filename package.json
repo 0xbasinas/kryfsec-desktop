@@ -16,7 +16,7 @@
     "lint": "eslint .",
     "build": "npm run typecheck && electron-vite build",
     "start": "electron-vite preview",
-    "package:win": "npm run build && ELECTRON_BUILDER_WINE_TOOLSET_DIR=scripts/nsis-no-wine electron-builder --win --x64",
+    "package:win": "npm run build && ELECTRON_BUILDER_WINE_TOOLSET_DIR=$PWD/scripts/nsis-no-wine electron-builder --win --x64",
     "package:linux": "npm run build && electron-builder --linux AppImage",
     "screenshots": "bash scripts/screenshots.sh",
     "screenshots:components": "node scripts/component-shots.cjs && python3 scripts/component-sheet.py"
