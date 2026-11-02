@@ -45,6 +45,21 @@
     "theme": "dark"
   },
   {
+    "file": "nav-07-window-controls.png",
+    "label": "Window controls at rest",
+    "theme": "dark"
+  },
+  {
+    "file": "nav-07-window-controls-hover-close.png",
+    "label": "Hover on close (muted danger) with tooltip",
+    "theme": "dark"
+  },
+  {
+    "file": "nav-07-window-controls-maximized.png",
+    "label": "Maximized: middle button shows restore",
+    "theme": "dark"
+  },
+  {
     "file": "nav-03-command-palette.png",
     "label": "Command palette with results",
     "theme": "dark"
@@ -257,6 +272,21 @@
   {
     "file": "nav-06-theme-switch-light.png",
     "label": "Theme switch (light)",
+    "theme": "light"
+  },
+  {
+    "file": "nav-07-window-controls-light.png",
+    "label": "Window controls at rest (light)",
+    "theme": "light"
+  },
+  {
+    "file": "nav-07-window-controls-hover-close-light.png",
+    "label": "Hover on close (light)",
+    "theme": "light"
+  },
+  {
+    "file": "nav-07-window-controls-maximized-light.png",
+    "label": "Maximized: middle button shows restore (light)",
     "theme": "light"
   },
   {

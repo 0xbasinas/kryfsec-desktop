@@ -151,9 +151,12 @@ textarea,
   background: color-mix(in srgb, var(--accent) 30%, transparent);
 }
 
+/* No visible scrollbars anywhere; wheel, touchpad and keyboard scrolling still work. */
 * {
-  scrollbar-width: thin;
-  scrollbar-color: var(--border-strong) transparent;
+  scrollbar-width: none;
+}
+*::-webkit-scrollbar {
+  display: none;
 }
 
 .drag {

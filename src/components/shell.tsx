@@ -3,15 +3,20 @@ import {
   IconCertificate,
   IconFlag3,
   IconLayoutDashboard,
+  IconMinus,
   IconMoon,
   IconNotebook,
   IconRoute,
   IconSearch,
   IconSettings,
+  IconSquare,
+  IconSquares,
   IconSun,
   IconTarget,
+  IconX,
   type Icon
 } from '@tabler/icons-react'
+import { useEffect, useState } from 'react'
 import { useShallow } from 'zustand/react/shallow'
 import { useStore } from '@/lib/store'
 import type { Page } from '@/lib/types'
@@ -29,26 +34,62 @@ export const NAV: { page: Page; label: string; icon: Icon; hint: string }[] = [
   { page: 'goals', label: 'Goals', icon: IconTarget, hint: 'Things to finish, with deadlines' }
 ]
 
-/** Top gap above the main panel: a drag strip with the floating search pill.
- *  On Windows/Linux the native min/max/close overlay sits in the right part of this strip. */
+/** Custom minimize / maximize-restore / close buttons for the frameless window (Windows & Linux). */
+export function WindowControls(): React.JSX.Element | null {
+  const [max, setMax] = useState(false)
+  useEffect(() => {
+    void window.api.win.isMaximized().then(setMax)
+    return window.api.win.onMaximizedChange(setMax)
+  }, [])
+  if (window.api.platform === 'darwin') return null
+  const btn = (label: string, I: Icon, onClick: () => void, danger = false): React.JSX.Element => (
+    <Tip label={label} side="bottom">
+      <button
+        onClick={onClick}
+        aria-label={label}
+        className={cn(
+          'no-drag grid size-7 cursor-pointer place-items-center rounded-full text-faint transition-colors outline-none focus-visible:ring-2 focus-visible:ring-accent/50',
+          danger ? 'hover:bg-danger/15 hover:text-danger active:bg-danger/25' : 'hover:bg-card-2 hover:text-fg active:bg-line-strong/60'
+        )}
+      >
+        <I size={14} stroke={1.9} />
+      </button>
+    </Tip>
+  )
+  return (
+    <div id="window-controls" className="no-drag flex items-center gap-0.5" onDoubleClick={(e) => e.stopPropagation()}>
+      {btn('Minimize', IconMinus, () => window.api.win.minimize())}
+      {btn(max ? 'Restore' : 'Maximize', max ? IconSquares : IconSquare, () => window.api.win.toggleMaximize('button'))}
+      {btn('Close', IconX, () => window.api.win.close(), true)}
+    </div>
+  )
+}
+
+/** Double-click on an empty drag area toggles maximize, like a normal title bar. */
+const onStripDoubleClick = (e: React.MouseEvent): void => {
+  if (window.api.platform === 'darwin' || e.target !== e.currentTarget) return
+  window.api.win.toggleMaximize('dblclick')
+}
+
+/** Top gap above the main panel: a drag strip with the floating search pill and the window controls. */
 export function TopGap(): React.JSX.Element {
   const setPalette = useStore((s) => s.setPalette)
-  const isMac = window.api.platform === 'darwin'
   return (
-    <div
-      className="drag flex h-12 shrink-0 items-center justify-center"
-      style={{ paddingRight: isMac ? 8 : 'calc(100vw - env(titlebar-area-x, 0px) - env(titlebar-area-width, 100vw) + 8px)' }}
-    >
+    <div className="drag grid h-11 shrink-0 grid-cols-[1fr_auto_1fr] items-center pr-2" onDoubleClick={onStripDoubleClick}>
+      <div />
       <button
         id="search-pill"
         onClick={() => setPalette(true)}
-        className="no-drag flex h-8 w-[300px] max-w-full cursor-pointer items-center gap-2 rounded-full border border-line bg-card px-3 text-xs text-faint shadow-(--shadow) transition-colors hover:border-line-strong hover:text-muted"
+        className="no-drag flex h-8 w-[300px] max-w-full cursor-pointer items-center gap-2 rounded-full border border-line bg-card px-3 text-xs text-faint shadow-(--shadow) transition-colors outline-none hover:border-line-strong hover:text-muted focus-visible:ring-2 focus-visible:ring-accent/50"
       >
         <IconSearch size={14} />
         <span className="flex-1 text-left">Search or run a command…</span>
         <Kbd>Ctrl</Kbd>
         <Kbd>K</Kbd>
       </button>
+      <div className="flex justify-end" onDoubleClick={onStripDoubleClick}>
+        <WindowControls />
+      </div>
     </div>
   )
 }
@@ -115,7 +156,7 @@ export function Sidebar(): React.JSX.Element {
 
   return (
     <aside className="flex w-[232px] shrink-0 flex-col px-3 pb-2">
-      <div className="drag -mx-3 h-12 shrink-0" />
+      <div className="drag -mx-3 h-11 shrink-0" onDoubleClick={onStripDoubleClick} />
       <div className="px-3 pb-2 text-[10.5px] font-semibold tracking-[0.12em] text-faint uppercase">Menu</div>
       <nav className="flex flex-col gap-0.5">{NAV.map((n) => item(n.page, n.label, n.icon, (counts as Record<string, number>)[n.page]))}</nav>
       <div className="flex-1" />

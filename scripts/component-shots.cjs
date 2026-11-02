@@ -111,6 +111,38 @@ async function main() {
     await cj('kit:off')
   }
 
+  // Window controls: rest, hover on close, and the maximized ("restore") state.
+  async function winctl(light) {
+    const sfx = light ? ' (light)' : ''
+    const ctl = page.locator('#window-controls')
+    await page.mouse.move(700, 500)
+    await shot('nav-07-window-controls', 'Window controls at rest' + sfx, ctl, 14)
+    const close = ctl.locator('button[aria-label="Close"]')
+    await close.hover()
+    // Headless Chromium reports (hover: none), so Tailwind's hover: styles don't apply;
+    // mirror the close button's hover colours inline for this shot.
+    await close.evaluate((el) => {
+      el.style.background = 'color-mix(in srgb, var(--danger) 15%, transparent)'
+      el.style.color = 'var(--danger)'
+    })
+    await page.waitForTimeout(700)
+    const tip = page.locator('[data-radix-popper-content-wrapper]', { hasText: 'Close' })
+    if (!light && (await tip.count())) await union('nav-07-window-controls-hover-close', 'Hover on close (muted danger) with tooltip', [ctl, tip], 14)
+    else await shot('nav-07-window-controls-hover-close', 'Hover on close' + sfx, ctl, 14)
+    await close.evaluate((el) => el.removeAttribute('style'))
+    await page.mouse.move(700, 500)
+    await page.keyboard.press('Escape')
+    await tip.first().waitFor({ state: 'detached', timeout: 1500 }).catch(() => {})
+    const hideTips = await page.addStyleTag({ content: '[data-radix-popper-content-wrapper]{display:none!important}' })
+    // Headless windows may not really maximize, so send the same event main sends.
+    await app.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows()[0].webContents.send('win:maximized', true))
+    await page.waitForTimeout(300)
+    await shot('nav-07-window-controls-maximized', 'Maximized: middle button shows restore' + sfx, ctl, 14)
+    await app.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows()[0].webContents.send('win:maximized', false))
+    await page.waitForTimeout(200)
+    await hideTips.evaluate((el) => el.remove())
+  }
+
   async function darkOnly() {
     // Navigation
     await cj('page:dashboard')
@@ -120,8 +152,9 @@ async function main() {
     const tb = page.locator('#theme-switch button').first()
     await tb.hover()
     await page.waitForTimeout(700)
-    await union('nav-04-tooltip', 'Tooltip on an icon button', [tb, page.locator('[data-radix-popper-content-wrapper]')], 10)
+    await union('nav-04-tooltip', 'Tooltip on an icon button', [tb, page.locator('[data-radix-popper-content-wrapper]', { hasText: 'Light theme' })], 10)
     await page.mouse.move(700, 500)
+    await winctl(false)
     // hide tooltips for the rest of the run (focus can reopen them behind other shots)
     await page.addStyleTag({ content: '[data-radix-popper-content-wrapper]{display:none!important}' })
     await page.keyboard.press('Escape')
@@ -255,6 +288,7 @@ async function main() {
     await shot('nav-01-sidebar', 'Sidebar (light)', 'aside')
     await shot('nav-02-search', 'Floating search pill (light)', '#search-pill', 12)
     await shot('nav-06-theme-switch', 'Theme switch (light)', '#theme-switch', 12)
+    await winctl(true)
     const stats = page.locator('main .grid-cols-4 > .card')
     await union('card-01-stat-cards', 'Stat cards (light)', [stats.nth(0), stats.nth(3)], 2)
     await openPalette()
