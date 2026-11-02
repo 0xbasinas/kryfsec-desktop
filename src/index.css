@@ -26,87 +26,88 @@
 }
 
 :root {
-  /* Palette: Radix Colors (MIT) - Slate neutrals + Jade accent.
-     Text-safe steps (11 in light, 10/11 in dark), nudged so every one
-     reaches WCAG AA 4.5:1 on all card surfaces. See THIRD_PARTY_NOTICES.md. */
-  --c-jade: #1d7960;
-  --c-cyan: #0f758f;
-  --c-blue: #0c6dc2;
-  --c-iris: #5753c6;
-  --c-violet: #6550b9;
-  --c-pink: #c2298a;
-  --c-red: #cc2c31;
-  --c-orange: #ba4700;
-  --c-amber: #9c5b00;
-  --c-grass: #297a39;
-  --c-teal: #007868;
-  --c-sky: #00749e;
-  --c-plum: #953ea3;
-  --bg: #f9f9fb;
-  --panel: #fcfcfd;
+  /* Calm, mostly monochrome palette. Warm neutral grays (in the spirit of
+     Notion / Linear / Geist dark) with one muted accent. All text colors
+     reach WCAG AA 4.5:1 on every card surface. */
+  --c-periwinkle: #55609f;
+  --c-sage: #4c6f58;
+  --c-rose: #9a5650;
+  --c-sand: #7d6439;
+  --c-slate: #4b6680;
+  --c-mauve: #765d86;
+  --c-clay: #8a5a3b;
+  --c-teal: #446e6b;
+  --c-olive: #646b3f;
+  /* old names kept so saved data keeps working */
+  --c-jade: var(--c-sage);
+  --c-cyan: var(--c-teal);
+  --c-blue: var(--c-slate);
+  --c-iris: var(--c-periwinkle);
+  --c-violet: var(--c-mauve);
+  --c-pink: var(--c-rose);
+  --c-red: var(--c-rose);
+  --c-orange: var(--c-clay);
+  --c-amber: var(--c-sand);
+  --c-grass: var(--c-olive);
+  --c-sky: var(--c-slate);
+  --c-plum: var(--c-mauve);
+  --bg: #f7f7f5;
+  --panel: #fafaf9;
   --card: #ffffff;
-  --card-2: #f0f0f3;
-  --border: #e8e8ec;
-  --border-strong: #d9d9e0;
-  --fg: #1c2024;
-  --muted: #60646c;
-  --faint: #696c74;
-  --accent: var(--c-jade);
-  --accent-2: var(--c-blue);
+  --card-2: #f0f0ee;
+  --border: #e9e9e6;
+  --border-strong: #dcdcd8;
+  --fg: #1f1f1e;
+  --muted: #5f5e59;
+  --faint: #6d6c67;
+  --accent: var(--c-periwinkle);
+  --accent-2: color-mix(in srgb, var(--accent) 70%, var(--fg));
   --accent-fg: #ffffff;
-  --accent-soft: color-mix(in srgb, var(--accent) 10%, transparent);
-  --success: var(--c-grass);
-  --danger: var(--c-red);
-  --warn: var(--c-amber);
-  --info: var(--c-blue);
-  --glow: color-mix(in srgb, var(--accent) 7%, transparent);
-  --ring: color-mix(in srgb, var(--accent) 55%, transparent);
-  --shadow: 0 1px 2px rgba(28, 32, 36, 0.04), 0 4px 16px rgba(28, 32, 36, 0.05);
+  --accent-soft: color-mix(in srgb, var(--accent) 9%, transparent);
+  --success: #3f7350;
+  --danger: #a5524a;
+  --warn: #83652e;
+  --info: #4f6690;
+  --glow: color-mix(in srgb, var(--accent) 4%, transparent);
+  --shadow: 0 1px 2px rgba(31, 31, 30, 0.04), 0 2px 8px rgba(31, 31, 30, 0.03);
   color-scheme: light;
 }
 
 .dark {
-  --c-jade: #27b08b;
-  --c-cyan: #23afd0;
-  --c-blue: #3b9eff;
-  --c-iris: #8f89f0;
-  --c-violet: #9e8cfc;
-  --c-pink: #df57ab;
-  --c-red: #ec5d5e;
-  --c-orange: #ff801f;
-  --c-amber: #ffc53d;
-  --c-grass: #53b365;
-  --c-teal: #0eb39e;
-  --c-sky: #75c7f0;
-  --c-plum: #e796f3;
-  --bg: #111113;
-  --panel: #131416;
-  --card: #18191b;
-  --card-2: #212225;
-  --border: #272a2d;
-  --border-strong: #363a3f;
-  --fg: #edeef0;
-  --muted: #b0b4ba;
-  --faint: #878b94;
-  --accent-fg: #0d1512;
-  --glow: color-mix(in srgb, var(--accent) 6%, transparent);
-  --shadow: 0 1px 0 rgba(255, 255, 255, 0.025) inset, 0 8px 24px rgba(0, 0, 0, 0.3);
+  --c-periwinkle: #9aa3d9;
+  --c-sage: #93b09c;
+  --c-rose: #cf9e9a;
+  --c-sand: #c8b28c;
+  --c-slate: #8fa8bf;
+  --c-mauve: #b59cc4;
+  --c-clay: #c9a084;
+  --c-teal: #8db3b0;
+  --c-olive: #a9b08a;
+  --bg: #161615;
+  --panel: #181817;
+  --card: #1c1c1b;
+  --card-2: #242423;
+  --border: #2a2a28;
+  --border-strong: #363634;
+  --fg: #ececea;
+  --muted: #a8a7a1;
+  --faint: #8d8c87;
+  --accent-2: color-mix(in srgb, var(--accent) 72%, var(--fg));
+  --accent-fg: #161615;
+  --success: #8fb59a;
+  --danger: #d49a94;
+  --warn: #c9ad7d;
+  --info: #94a8c8;
+  --glow: color-mix(in srgb, var(--accent) 4%, transparent);
+  --shadow: 0 1px 0 rgba(255, 255, 255, 0.02) inset, 0 4px 16px rgba(0, 0, 0, 0.18);
   color-scheme: dark;
 }
 
-[data-accent='cyan'] {
-  --accent: var(--c-cyan);
-  --accent-2: var(--c-iris);
+[data-accent='sage'] {
+  --accent: var(--c-sage);
 }
-.dark[data-accent='cyan'] {
-  --accent-fg: #0b161a;
-}
-[data-accent='iris'] {
-  --accent: var(--c-iris);
-  --accent-2: var(--c-pink);
-}
-.dark[data-accent='iris'] {
-  --accent-fg: #13131e;
+[data-accent='rose'] {
+  --accent: var(--c-rose);
 }
 
 html,
@@ -156,7 +157,7 @@ textarea,
     linear-gradient(to right, var(--border) 1px, transparent 1px),
     linear-gradient(to bottom, var(--border) 1px, transparent 1px);
   background-size: 28px 28px;
-  mask-image: radial-gradient(ellipse at top left, black 10%, transparent 70%);
+  mask-image: radial-gradient(ellipse at top left, rgba(0,0,0,.55) 5%, transparent 60%);
 }
 
 .glow {
@@ -299,7 +300,7 @@ input[type='range']::-webkit-slider-thumb {
   border-radius: 999px;
   background: var(--accent);
   border: 3px solid var(--card);
-  box-shadow: 0 0 0 1px var(--accent), 0 0 12px color-mix(in srgb, var(--accent) 50%, transparent);
+  box-shadow: 0 0 0 1px var(--accent);
   transition: transform 0.15s;
 }
 input[type='range']:hover::-webkit-slider-thumb {

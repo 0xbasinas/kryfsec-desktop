@@ -20,7 +20,7 @@ function PlatformChip({ name }: { name: string }): React.JSX.Element {
   const c = platformColor(name)
   return (
     <span className="inline-flex items-center gap-1.5 text-[11.5px] font-medium text-muted">
-      <span className="size-2 rounded-[3px]" style={{ background: c, boxShadow: `0 0 0 2px color-mix(in srgb, ${c} 20%, transparent)` }} />
+      <span className="size-2 rounded-[3px]" style={{ background: c, boxShadow: 'none' }} />
       {name || 'No platform'}
     </span>
   )

@@ -19,13 +19,13 @@ export function platformColor(p: string): string {
   if (c) return c
   let h = 0
   for (const ch of p) h = (h * 31 + ch.charCodeAt(0)) % 360
-  const pool = ['jade', 'cyan', 'blue', 'iris', 'violet', 'pink', 'orange', 'amber', 'teal', 'plum']
+  const pool = ['periwinkle', 'sage', 'rose', 'sand', 'slate', 'mauve', 'clay', 'teal', 'olive']
   return `var(--c-${pool[h % pool.length]})`
 }
 
 export const DIFF_META = {
-  easy: { label: 'Easy', color: 'var(--c-grass)' },
-  medium: { label: 'Medium', color: 'var(--c-amber)' },
-  hard: { label: 'Hard', color: 'var(--c-orange)' },
-  insane: { label: 'Insane', color: 'var(--c-red)' }
+  easy: { label: 'Easy', color: 'var(--muted)' },
+  medium: { label: 'Medium', color: 'color-mix(in srgb, var(--accent) 55%, var(--muted))' },
+  hard: { label: 'Hard', color: 'var(--accent)' },
+  insane: { label: 'Insane', color: 'var(--danger)' }
 } as const

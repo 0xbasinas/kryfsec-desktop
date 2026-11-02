@@ -39,7 +39,7 @@ export const KIND_META: Record<ResourceKind, { label: string; icon: Icon; color:
   tool: { label: 'Tool', icon: IconTool, color: 'var(--c-orange)' }
 }
 
-export const AREA_COLORS = ['var(--c-teal)', 'var(--c-plum)', 'var(--c-cyan)', 'var(--c-jade)', 'var(--c-amber)', 'var(--c-orange)', 'var(--c-red)', 'var(--c-pink)', 'var(--c-violet)', 'var(--c-blue)', 'var(--c-grass)', 'var(--c-iris)']
+export const AREA_COLORS = ['var(--c-periwinkle)', 'var(--c-sage)', 'var(--c-sand)', 'var(--c-rose)', 'var(--c-slate)', 'var(--c-mauve)', 'var(--c-clay)', 'var(--c-teal)', 'var(--c-olive)']
 
 export function AreaGlyph({ icon, color, size = 'md' }: { icon: AreaIcon; color: string; size?: 'sm' | 'md' | 'lg' }): React.JSX.Element {
   const I = AREA_ICONS[icon] ?? IconShield

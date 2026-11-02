@@ -31,12 +31,12 @@ installed on your computer (Inter / Segoe UI, JetBrains Mono / Cascadia Mono / C
 
 ## Color palette
 
-The UI colors are taken from [Radix Colors](https://github.com/radix-ui/colors) v3
-(MIT, Copyright (c) 2021-2022 Modulz, Copyright (c) 2022-Present WorkOS): the Slate
-gray scale for surfaces and text, and Jade, Cyan, Iris, Blue, Grass, Amber, Red,
-Orange, Pink, Violet, Teal, Sky and Plum for accents, status and charts. A few
-light-theme text steps were darkened slightly to reach WCAG AA (4.5:1). The
-values are copied into \`src/index.css\`; the package itself is not bundled.
+The UI palette is original to CyberJourney (no color files are copied). It is
+inspired by the calm, mostly monochrome dark themes of Linear
+(https://linear.app/now/how-we-redesigned-the-linear-ui) and Vercel Geist
+(https://vercel.com/geist/colors): warm neutral grays, one muted accent
+(Periwinkle, Sage or Rose) and soft, low-saturation tones for status and charts.
+All text colors reach WCAG AA (4.5:1).
 
 ## Runtime
 

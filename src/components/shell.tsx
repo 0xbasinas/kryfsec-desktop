@@ -97,7 +97,7 @@ export function Sidebar(): React.JSX.Element {
           active ? 'bg-card-2 text-fg shadow-[inset_0_0_0_1px_var(--border)]' : 'text-muted hover:bg-card-2/60 hover:text-fg'
         )}
       >
-        {active && <span className="absolute top-2 bottom-2 left-0 w-[3px] rounded-r-full bg-accent shadow-[0_0_12px_var(--accent)]" />}
+        {active && <span className="absolute top-2 bottom-2 left-0 w-[3px] rounded-r-full bg-accent" />}
         <I size={17} stroke={1.8} className={cn('transition-colors', active ? 'text-accent' : 'text-faint group-hover:text-muted')} />
         <span className="flex-1 text-left">{label}</span>
         {!!count && <span className="font-mono text-[11px] text-faint tabular-nums">{count}</span>}

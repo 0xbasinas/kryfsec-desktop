@@ -30,9 +30,8 @@ function ChartTip({ active, payload, label }: { active?: boolean; payload?: { va
 function Stat({ icon, label, value, sub, accent, children }: { icon: React.ReactNode; label: string; value: React.ReactNode; sub?: React.ReactNode; accent?: string; children?: React.ReactNode }): React.JSX.Element {
   return (
     <Card className="group relative overflow-hidden p-4.5">
-      <div className="pointer-events-none absolute -top-10 -right-10 size-28 rounded-full opacity-[0.12] blur-2xl transition-opacity group-hover:opacity-25" style={{ background: accent ?? 'var(--accent)' }} />
       <div className="flex items-center gap-2 text-xs font-medium text-muted">
-        <span className="grid size-6 place-items-center rounded-md [&_svg]:size-3.5" style={{ color: accent ?? 'var(--accent)', background: `color-mix(in srgb, ${accent ?? 'var(--accent)'} 14%, transparent)` }}>
+        <span className="grid size-6 place-items-center rounded-md [&_svg]:size-3.5" style={{ color: accent ?? 'var(--muted)', background: accent ? `color-mix(in srgb, ${accent} 10%, transparent)` : 'var(--card-2)' }}>
           {icon}
         </span>
         {label}
@@ -118,15 +117,15 @@ export default function Dashboard(): React.JSX.Element {
 
       {/* Stats */}
       <div className="stagger mb-5 grid grid-cols-4 gap-4">
-        <Stat icon={<IconFlame />} label="Streak" value={<>{st.current}<span className="ml-1 text-sm font-medium text-muted">days</span></>} sub={`Best: ${st.best} days`} accent="var(--c-orange)">
+        <Stat icon={<IconFlame />} label="Streak" value={<>{st.current}<span className="ml-1 text-sm font-medium text-muted">days</span></>} sub={`Best: ${st.best} days`}>
           <div className="flex gap-1 pb-1">
             {last7.map((on, i) => (
-              <span key={i} title={on ? 'Studied' : 'No study'} className={cn('h-6 w-1.5 rounded-full', on ? 'bg-[var(--c-orange)]' : 'bg-card-2')} />
+              <span key={i} title={on ? 'Studied' : 'No study'} className={cn('h-6 w-1.5 rounded-full', on ? 'bg-accent' : 'bg-card-2')} />
             ))}
           </div>
         </Stat>
-        <Stat icon={<IconClock />} label="This week" value={fmtHours(week)} sub={`Goal: ${goalH}h per week`} accent="var(--accent-2)">
-          <Ring value={(week / 60 / Math.max(goalH, 1)) * 100} size={48} color="var(--accent-2)">
+        <Stat icon={<IconClock />} label="This week" value={fmtHours(week)} sub={`Goal: ${goalH}h per week`}>
+          <Ring value={(week / 60 / Math.max(goalH, 1)) * 100} size={48}>
             {Math.min(999, Math.round((week / 60 / Math.max(goalH, 1)) * 100))}%
           </Ring>
         </Stat>
@@ -135,11 +134,11 @@ export default function Dashboard(): React.JSX.Element {
             {data.topics.length ? Math.round((topicsDone / data.topics.length) * 100) : 0}%
           </Ring>
         </Stat>
-        <Stat icon={<IconTrophy />} label="Labs solved" value={labsDone} sub={`${labsMonth} this month · ${data.labs.filter((l) => l.status === 'doing').length} in progress`} accent="var(--c-violet)">
+        <Stat icon={<IconTrophy />} label="Labs solved" value={labsDone} sub={`${labsMonth} this month · ${data.labs.filter((l) => l.status === 'doing').length} in progress`}>
           <div className="flex items-end gap-[3px] pb-1">
             {['easy', 'medium', 'hard', 'insane'].map((d, i) => {
               const n = data.labs.filter((l) => l.status === 'done' && l.difficulty === d).length
-              return <span key={d} title={`${d}: ${n}`} className="w-2 rounded-sm" style={{ height: 6 + Math.min(n, 6) * 4, background: ['var(--c-grass)', 'var(--c-amber)', 'var(--c-orange)', 'var(--c-red)'][i], opacity: n ? 1 : 0.2 }} />
+              return <span key={d} title={`${d}: ${n}`} className="w-2 rounded-sm" style={{ height: 6 + Math.min(n, 6) * 4, background: `color-mix(in srgb, var(--accent) ${[40, 60, 80, 100][i]}%, var(--card-2))`, opacity: n ? 1 : 0.35 }} />
             })}
           </div>
         </Stat>
@@ -154,7 +153,7 @@ export default function Dashboard(): React.JSX.Element {
               <AreaChart data={chart} margin={{ top: 8, right: 16, left: -14, bottom: 0 }}>
                 <defs>
                   <linearGradient id="fillStudy" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="var(--accent)" stopOpacity={0.35} />
+                    <stop offset="0%" stopColor="var(--accent)" stopOpacity={0.18} />
                     <stop offset="100%" stopColor="var(--accent)" stopOpacity={0} />
                   </linearGradient>
                 </defs>
@@ -174,7 +173,7 @@ export default function Dashboard(): React.JSX.Element {
               <RadarChart data={progress.map((p) => ({ name: p.area.name.split(' ')[0], pct: p.pct }))} outerRadius="70%">
                 <PolarGrid stroke="var(--border-strong)" />
                 <PolarAngleAxis dataKey="name" tick={{ fill: 'var(--muted)', fontSize: 10.5 }} />
-                <Radar dataKey="pct" stroke="var(--accent-2)" fill="var(--accent-2)" fillOpacity={0.22} strokeWidth={1.8} animationDuration={900} />
+                <Radar dataKey="pct" stroke="var(--accent)" fill="var(--accent)" fillOpacity={0.16} strokeWidth={1.8} animationDuration={900} />
               </RadarChart>
             </ResponsiveContainer>
           </div>
@@ -200,7 +199,7 @@ export default function Dashboard(): React.JSX.Element {
                         key={c.date}
                         title={`${fmtDate(c.date)} · ${c.minutes} min`}
                         className={cn('aspect-square w-full rounded-[4px] transition-transform hover:scale-125', c.future && 'opacity-0')}
-                        style={{ background: lvl === 0 ? 'var(--card-2)' : `color-mix(in srgb, var(--accent) ${[0, 30, 55, 78, 100][lvl]}%, var(--card-2))`, boxShadow: lvl === 4 ? 'inset 0 0 0 1px color-mix(in srgb, var(--fg) 12%, transparent)' : undefined }}
+                        style={{ background: lvl === 0 ? 'var(--card-2)' : `color-mix(in srgb, var(--accent) ${[0, 30, 55, 78, 100][lvl]}%, var(--card-2))`, boxShadow: undefined }}
                       />
                     )
                   })}
@@ -224,7 +223,7 @@ export default function Dashboard(): React.JSX.Element {
               const due = dueLabel(u.date)
               return (
                 <button key={u.id} onClick={() => go(u.kind === 'goal' ? 'goals' : 'certs', u.id)} className="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2.5 text-left transition-colors hover:bg-card-2">
-                  <span className={cn('grid size-8 shrink-0 place-items-center rounded-lg [&_svg]:size-4', u.kind === 'goal' ? 'bg-accent-soft text-accent' : 'bg-[color-mix(in_srgb,var(--c-violet)_12%,transparent)] text-[var(--c-violet)]')}>
+                  <span className={cn('grid size-8 shrink-0 place-items-center rounded-lg [&_svg]:size-4', u.kind === 'goal' ? 'bg-accent-soft text-accent' : 'bg-card-2 text-muted')}>
                     {u.kind === 'goal' ? <IconTarget /> : <IconCertificate />}
                   </span>
                   <div className="min-w-0 flex-1">
@@ -272,7 +271,7 @@ export default function Dashboard(): React.JSX.Element {
             <div className="absolute top-2 bottom-6 left-[29px] w-px bg-line" />
             {recent.map((r) => (
               <button key={r.id + r.kind} onClick={() => go(r.kind === 'log' ? 'journal' : r.kind === 'lab' ? 'labs' : 'goals', r.id)} className="relative flex w-full cursor-pointer items-start gap-3 rounded-lg py-2 text-left hover:opacity-80">
-                <span className={cn('relative z-10 mt-0.5 grid size-[18px] shrink-0 place-items-center rounded-full border-2 border-card [&_svg]:size-2.5', r.kind === 'log' ? 'bg-accent text-accent-fg' : r.kind === 'lab' ? 'bg-[var(--c-violet)] text-card' : 'bg-[var(--c-amber)] text-card')}>
+                <span className={cn('relative z-10 mt-0.5 grid size-[18px] shrink-0 place-items-center rounded-full border-2 border-card [&_svg]:size-2.5', r.kind === 'log' ? 'bg-accent text-accent-fg' : r.kind === 'lab' ? 'bg-[color-mix(in_srgb,var(--accent)_55%,var(--card-2))] text-card' : 'bg-line-strong text-fg')}>
                   {r.kind === 'log' ? <IconNotebook /> : r.kind === 'lab' ? <IconFlag3 /> : <IconCircleCheck />}
                 </span>
                 <div className="min-w-0 flex-1">

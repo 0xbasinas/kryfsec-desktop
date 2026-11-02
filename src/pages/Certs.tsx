@@ -109,12 +109,12 @@ function Timeline({ certs }: { certs: Cert[] }): React.JSX.Element | null {
           const up = i % 2 === 0
           return (
             <div key={c.id} className="absolute flex -translate-x-1/2 flex-col items-center" style={{ left: `${left}%`, top: up ? 4 : 52 }}>
-              {!up && <span className="size-3.5 rounded-full border-[3px] border-card bg-accent shadow-[0_0_0_1px_var(--accent),0_0_12px_var(--accent)]" />}
+              {!up && <span className="size-3.5 rounded-full border-[3px] border-card bg-accent shadow-[0_0_0_1px_var(--accent)]" />}
               <div className={cn('rounded-lg border border-line bg-card-2 px-2.5 py-1 text-center whitespace-nowrap', up ? 'mb-1' : 'mt-1')}>
                 <div className="text-[11.5px] font-semibold">{c.name}</div>
                 <div className="text-[10px] text-faint">{fmtDate(c.targetDate, 'd MMM yyyy')}</div>
               </div>
-              {up && <span className="size-3.5 rounded-full border-[3px] border-card bg-accent shadow-[0_0_0_1px_var(--accent),0_0_12px_var(--accent)]" />}
+              {up && <span className="size-3.5 rounded-full border-[3px] border-card bg-accent shadow-[0_0_0_1px_var(--accent)]" />}
             </div>
           )
         })}
@@ -155,10 +155,9 @@ export default function Certs(): React.JSX.Element {
             const passed = c.status === 'passed'
             const stepIdx = STEPS.findIndex((s) => s.value === c.status)
             const days = c.targetDate ? daysUntil(c.targetDate) : null
-            const color = passed ? 'var(--c-amber)' : 'var(--accent)'
+            const color = passed ? 'var(--success)' : 'var(--accent)'
             return (
               <Card key={c.id} className="group relative flex flex-col overflow-hidden">
-                <div className="pointer-events-none absolute -top-16 -right-16 size-44 rounded-full opacity-15 blur-3xl" style={{ background: color }} />
                 <div className="relative flex items-start gap-4 p-5">
                   <div className="min-w-0 flex-1">
                     <div className="mb-1 font-mono text-[11px] tracking-wide text-faint uppercase">{c.provider || 'Certification'}</div>
@@ -176,7 +175,7 @@ export default function Certs(): React.JSX.Element {
                     </div>
                   </div>
                   <Ring value={passed ? 100 : c.progress} size={64} stroke={5} color={color}>
-                    {passed ? <IconTrophy size={22} className="text-[var(--c-amber)]" /> : <span className="text-sm">{c.progress}%</span>}
+                    {passed ? <IconTrophy size={22} className="text-success" /> : <span className="text-sm">{c.progress}%</span>}
                   </Ring>
                 </div>
                 <div className="relative px-5">

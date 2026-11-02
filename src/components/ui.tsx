@@ -11,7 +11,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<HTMLBut
         ref={ref}
         className={cn(
           'inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 rounded-lg text-[13px] font-medium whitespace-nowrap transition-all duration-150 select-none outline-none focus-visible:ring-2 focus-visible:ring-accent/50 disabled:pointer-events-none disabled:opacity-40 active:scale-[0.98] [&_svg]:size-4 [&_svg]:shrink-0',
-          variant === 'primary' && 'bg-accent text-accent-fg shadow-[0_0_0_1px_color-mix(in_srgb,var(--accent)_60%,transparent),0_4px_14px_-6px_color-mix(in_srgb,var(--accent)_55%,transparent)] hover:brightness-110',
+          variant === 'primary' && 'bg-accent text-accent-fg hover:brightness-105',
           variant === 'secondary' && 'border border-line bg-card-2 text-fg hover:border-line-strong hover:bg-[color-mix(in_srgb,var(--card-2)_80%,var(--fg)_6%)]',
           variant === 'outline' && 'border border-line-strong bg-transparent text-fg hover:bg-card-2',
           variant === 'ghost' && 'text-muted hover:bg-card-2 hover:text-fg',
@@ -88,11 +88,11 @@ type Tone = 'default' | 'accent' | 'success' | 'warn' | 'danger' | 'info' | 'mut
 const toneCls: Record<Tone, string> = {
   default: 'border-line-strong bg-card-2 text-fg',
   accent: 'border-accent/25 bg-accent-soft text-accent',
-  success: 'border-success/25 bg-success/10 text-success',
-  warn: 'border-warn/25 bg-warn/10 text-warn',
-  danger: 'border-danger/25 bg-danger/10 text-danger',
-  info: 'border-info/25 bg-info/10 text-info',
-  violet: 'border-[color-mix(in_srgb,var(--c-violet)_25%,transparent)] bg-[color-mix(in_srgb,var(--c-violet)_10%,transparent)] text-[var(--c-violet)]',
+  success: 'border-success/20 bg-success/8 text-success',
+  warn: 'border-warn/20 bg-warn/8 text-warn',
+  danger: 'border-danger/20 bg-danger/8 text-danger',
+  info: 'border-info/20 bg-info/8 text-info',
+  violet: 'border-accent/20 bg-accent-soft text-accent',
   muted: 'border-line bg-transparent text-muted'
 }
 
@@ -112,7 +112,7 @@ export function Progress({ value, className, color }: { value: number; className
         className="h-full rounded-full transition-[width] duration-700 ease-out"
         style={{
           width: `${Math.max(0, Math.min(100, value))}%`,
-          background: color ?? 'linear-gradient(90deg, var(--accent), var(--accent-2))'
+          background: color ?? 'var(--accent)'
         }}
       />
     </div>
@@ -169,7 +169,7 @@ export function EmptyState({ icon, title, text, action }: { icon: ReactNode; tit
   return (
     <div className="flex flex-col items-center justify-center px-6 py-16 text-center animate-fade-up">
       <div className="relative mb-4 grid size-14 place-items-center rounded-2xl border border-line bg-card-2 text-accent [&_svg]:size-6">
-        <div className="absolute inset-0 rounded-2xl bg-accent/10 blur-xl" />
+        <div className="absolute inset-0 rounded-2xl bg-accent/5" />
         <span className="relative">{icon}</span>
       </div>
       <h3 className="text-sm font-semibold">{title}</h3>

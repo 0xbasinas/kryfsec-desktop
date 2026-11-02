@@ -228,7 +228,7 @@ export default function Roadmap(): React.JSX.Element {
           {current && (
             <Card key={current.area.id} className="animate-fade-in self-start overflow-hidden">
               <div className="relative border-b border-line px-6 py-5">
-                <div className="pointer-events-none absolute inset-0 opacity-60" style={{ background: `radial-gradient(500px circle at 0% 0%, color-mix(in srgb, ${current.area.color} 10%, transparent), transparent 60%)` }} />
+                <div className="pointer-events-none absolute inset-0 opacity-60" style={{ background: `radial-gradient(500px circle at 0% 0%, color-mix(in srgb, ${current.area.color} 5%, transparent), transparent 60%)` }} />
                 <div className="relative flex items-center gap-4">
                   <AreaGlyph icon={current.area.icon} color={current.area.color} size="lg" />
                   <div className="min-w-0 flex-1">
