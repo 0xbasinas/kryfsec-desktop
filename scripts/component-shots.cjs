@@ -1,6 +1,6 @@
 /* global window, document */
 // Close-up screenshots of UI components (2x scale) on a virtual display.
-// Usage: npm run screenshots:components   (uses DISPLAY :5 and a temp data dir)
+// Usage: npm run screenshots:components   (headless by default; set DISPLAY_NUM=:5 to use an X display; temp data dir)
 const { _electron: electron } = require('playwright-core')
 const { mkdtempSync, mkdirSync, rmSync } = require('node:fs')
 const { tmpdir } = require('node:os')
@@ -23,8 +23,14 @@ async function main() {
   const ud = mkdtempSync(join(tmpdir(), 'cj-comp-'))
   const app = await electron.launch({
     executablePath: require('electron'),
-    args: ['--no-sandbox', '--force-device-scale-factor=2', `--user-data-dir=${ud}`, join(__dirname, '..', 'out', 'main', 'main.js')],
-    env: { ...cleanEnv(), DISPLAY: process.env.DISPLAY_NUM || ':5' }
+    args: [
+      '--no-sandbox',
+      '--force-device-scale-factor=2',
+      ...(process.env.DISPLAY_NUM ? [] : ['--ozone-platform=headless']),
+      `--user-data-dir=${ud}`,
+      join(__dirname, '..', 'out', 'main', 'main.js')
+    ],
+    env: process.env.DISPLAY_NUM ? { ...cleanEnv(), DISPLAY: process.env.DISPLAY_NUM } : cleanEnv()
   })
   const page = await app.firstWindow()
   await app.evaluate(({ BrowserWindow }) => {
@@ -109,8 +115,9 @@ async function main() {
     // Navigation
     await cj('page:dashboard')
     await shot('nav-01-sidebar', 'Sidebar with active item and weekly card', 'aside')
-    await shot('nav-02-titlebar', 'Title bar with search', 'header', 0)
-    const tb = page.locator('header button[aria-label]').last()
+    await shot('nav-02-search', 'Floating search pill (opens Ctrl+K)', '#search-pill', 12)
+    await shot('nav-06-theme-switch', 'Theme switch next to Settings', '#theme-switch', 12)
+    const tb = page.locator('#theme-switch button').first()
     await tb.hover()
     await page.waitForTimeout(700)
     await union('nav-04-tooltip', 'Tooltip on an icon button', [tb, page.locator('[data-radix-popper-content-wrapper]')], 10)
@@ -246,6 +253,8 @@ async function main() {
     await cj('theme:light;page:dashboard')
     await kit()
     await shot('nav-01-sidebar', 'Sidebar (light)', 'aside')
+    await shot('nav-02-search', 'Floating search pill (light)', '#search-pill', 12)
+    await shot('nav-06-theme-switch', 'Theme switch (light)', '#theme-switch', 12)
     const stats = page.locator('main .grid-cols-4 > .card')
     await union('card-01-stat-cards', 'Stat cards (light)', [stats.nth(0), stats.nth(3)], 2)
     await openPalette()

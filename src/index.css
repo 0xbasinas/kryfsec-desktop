@@ -16,6 +16,7 @@
   --font-sans: 'Inter', 'Segoe UI Variable Text', 'Segoe UI', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Cascadia Mono', 'Cascadia Code', Consolas, ui-monospace, monospace;
   --color-bg: var(--bg);
+  --color-chrome: var(--chrome);
   --color-panel: var(--panel);
   --color-card: var(--card);
   --color-card-2: var(--card-2);
@@ -61,6 +62,7 @@
   --c-sky: var(--c-slate);
   --c-plum: var(--c-mauve);
   --bg: #f7f7f5;
+  --chrome: #efefec;
   --panel: #fafaf9;
   --card: #ffffff;
   --card-2: #f0f0ee;
@@ -93,6 +95,7 @@
   --c-teal: #8db3b0;
   --c-olive: #a9b08a;
   --bg: #161615;
+  --chrome: #111110;
   --panel: #181817;
   --card: #1c1c1b;
   --card-2: #242423;
@@ -127,7 +130,7 @@ body,
 
 body {
   margin: 0;
-  background: var(--bg);
+  background: var(--chrome);
   color: var(--fg);
   font-family: var(--font-sans);
   font-feature-settings: 'cv11', 'ss01', 'ss03';

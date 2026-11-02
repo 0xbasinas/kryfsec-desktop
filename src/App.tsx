@@ -3,7 +3,7 @@ import { Toaster } from 'sonner'
 import { TooltipProvider } from '@radix-ui/react-tooltip'
 import { useStore } from './lib/store'
 import type { Page } from './lib/types'
-import { Sidebar, TitleBar } from './components/shell'
+import { Sidebar, TopGap } from './components/shell'
 import { CommandPalette } from './components/palette'
 import { ConfirmHost } from './components/dialog'
 import { Kit, useKit } from './components/kit'
@@ -95,13 +95,13 @@ export default function App(): React.JSX.Element {
   const PageView = PAGES[page]
   return (
     <TooltipProvider>
-      <div className="flex h-full flex-col">
-        <TitleBar />
-        <div className="flex min-h-0 flex-1">
-          <Sidebar />
-          <main className="relative min-w-0 flex-1 overflow-y-auto">
+      <div className="flex h-full bg-chrome">
+        <Sidebar />
+        <div className="flex min-w-0 flex-1 flex-col">
+          <TopGap />
+          <main className="relative mr-2 mb-2 min-h-0 flex-1 overflow-y-auto rounded-[18px] border border-line bg-bg shadow-(--shadow)">
             {loaded && (
-              <div key={page} className="animate-fade-up">
+              <div key={page} className="h-full animate-fade-up">
                 <PageView />
               </div>
             )}

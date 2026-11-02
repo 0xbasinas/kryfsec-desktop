@@ -30,8 +30,13 @@
     "theme": "dark"
   },
   {
-    "file": "nav-02-titlebar.png",
-    "label": "Title bar with search",
+    "file": "nav-02-search.png",
+    "label": "Floating search pill (opens Ctrl+K)",
+    "theme": "dark"
+  },
+  {
+    "file": "nav-06-theme-switch.png",
+    "label": "Theme switch next to Settings",
     "theme": "dark"
   },
   {
@@ -242,6 +247,16 @@
   {
     "file": "nav-01-sidebar-light.png",
     "label": "Sidebar (light)",
+    "theme": "light"
+  },
+  {
+    "file": "nav-02-search-light.png",
+    "label": "Floating search pill (light)",
+    "theme": "light"
+  },
+  {
+    "file": "nav-06-theme-switch-light.png",
+    "label": "Theme switch (light)",
     "theme": "light"
   },
   {

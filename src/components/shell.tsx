@@ -17,7 +17,6 @@ import { useStore } from '@/lib/store'
 import type { Page } from '@/lib/types'
 import { cn, fmtHours } from '@/lib/utils'
 import { weekMinutes } from '@/lib/stats'
-import { Logo } from './logo'
 import { Kbd, Progress, Tip } from './ui'
 
 export const NAV: { page: Page; label: string; icon: Icon; hint: string }[] = [
@@ -30,45 +29,53 @@ export const NAV: { page: Page; label: string; icon: Icon; hint: string }[] = [
   { page: 'goals', label: 'Goals', icon: IconTarget, hint: 'Things to finish, with deadlines' }
 ]
 
-export function TitleBar(): React.JSX.Element {
+/** Top gap above the main panel: a drag strip with the floating search pill.
+ *  On Windows/Linux the native min/max/close overlay sits in the right part of this strip. */
+export function TopGap(): React.JSX.Element {
   const setPalette = useStore((s) => s.setPalette)
-  const theme = useStore((s) => s.settings.theme)
-  const setSettings = useStore((s) => s.setSettings)
   const isMac = window.api.platform === 'darwin'
   return (
-    <header
-      className="drag relative z-30 flex h-10 shrink-0 items-center border-b border-line bg-panel"
-      style={{ paddingRight: isMac ? 12 : 'calc(100vw - env(titlebar-area-x, 0px) - env(titlebar-area-width, 100vw) + 8px)' }}
+    <div
+      className="drag flex h-12 shrink-0 items-center justify-center"
+      style={{ paddingRight: isMac ? 8 : 'calc(100vw - env(titlebar-area-x, 0px) - env(titlebar-area-width, 100vw) + 8px)' }}
     >
-      <div className={cn('flex w-[232px] shrink-0 items-center gap-2.5', isMac ? 'pl-20' : 'pl-4')}>
-        <Logo size={20} />
-        <span className="text-[13px] font-semibold tracking-tight">
-          Cyber<span className="text-accent">Journey</span>
-        </span>
-      </div>
-      <div className="flex flex-1 justify-center">
-        <button
-          onClick={() => setPalette(true)}
-          className="no-drag flex h-7 w-[380px] max-w-full cursor-pointer items-center gap-2 rounded-full border border-line bg-card-2/70 px-2.5 text-xs text-faint transition-colors hover:border-line-strong hover:text-muted"
-        >
-          <IconSearch size={14} />
-          <span className="flex-1 text-left">Search or run a command…</span>
-          <Kbd>Ctrl</Kbd>
-          <Kbd>K</Kbd>
-        </button>
-      </div>
-      <div className="flex w-[120px] justify-end">
-        <Tip label={theme === 'dark' ? 'Light theme' : 'Dark theme'} side="bottom">
-          <button
-            onClick={() => setSettings({ theme: theme === 'dark' ? 'light' : 'dark' })}
-            className="no-drag grid size-7 cursor-pointer place-items-center rounded-full text-muted transition-colors hover:bg-card-2 hover:text-fg"
-            aria-label={theme === 'dark' ? 'Light theme' : 'Dark theme'}
-          >
-            {theme === 'dark' ? <IconSun size={16} /> : <IconMoon size={16} />}
-          </button>
-        </Tip>
-      </div>
-    </header>
+      <button
+        id="search-pill"
+        onClick={() => setPalette(true)}
+        className="no-drag flex h-8 w-[300px] max-w-full cursor-pointer items-center gap-2 rounded-full border border-line bg-card px-3 text-xs text-faint shadow-(--shadow) transition-colors hover:border-line-strong hover:text-muted"
+      >
+        <IconSearch size={14} />
+        <span className="flex-1 text-left">Search or run a command…</span>
+        <Kbd>Ctrl</Kbd>
+        <Kbd>K</Kbd>
+      </button>
+    </div>
+  )
+}
+
+function ThemeSwitch(): React.JSX.Element {
+  const theme = useStore((s) => s.settings.theme)
+  const setSettings = useStore((s) => s.setSettings)
+  const opt = (t: 'light' | 'dark', I: Icon, label: string): React.JSX.Element => (
+    <Tip label={label} side="top">
+      <button
+        onClick={() => setSettings({ theme: t })}
+        aria-label={label}
+        aria-pressed={theme === t}
+        className={cn(
+          'grid size-7 cursor-pointer place-items-center rounded-full transition-colors',
+          theme === t ? 'bg-card-2 text-fg shadow-[inset_0_0_0_1px_var(--border)]' : 'text-faint hover:text-fg'
+        )}
+      >
+        <I size={15} stroke={1.8} />
+      </button>
+    </Tip>
+  )
+  return (
+    <div id="theme-switch" className="flex shrink-0 items-center gap-0.5 rounded-full border border-line bg-card p-0.5">
+      {opt('light', IconSun, 'Light theme')}
+      {opt('dark', IconMoon, 'Dark theme')}
+    </div>
   )
 }
 
@@ -96,7 +103,7 @@ export function Sidebar(): React.JSX.Element {
         onClick={() => go(p)}
         className={cn(
           'group relative flex h-9 w-full cursor-pointer items-center gap-3 rounded-full px-3.5 text-[13px] font-medium transition-all',
-          active ? 'bg-card-2 text-fg shadow-[inset_0_0_0_1px_var(--border)]' : 'text-muted hover:bg-card-2/60 hover:text-fg'
+          active ? 'bg-card text-fg shadow-[inset_0_0_0_1px_var(--border)]' : 'text-muted hover:bg-card/70 hover:text-fg'
         )}
       >
         <I size={17} stroke={1.8} className={cn('transition-colors', active ? 'text-accent' : 'text-faint group-hover:text-muted')} />
@@ -107,7 +114,8 @@ export function Sidebar(): React.JSX.Element {
   }
 
   return (
-    <aside className="flex w-[232px] shrink-0 flex-col border-r border-line bg-panel px-3 py-4">
+    <aside className="flex w-[232px] shrink-0 flex-col px-3 pb-2">
+      <div className="drag -mx-3 h-12 shrink-0" />
       <div className="px-3 pb-2 text-[10.5px] font-semibold tracking-[0.12em] text-faint uppercase">Menu</div>
       <nav className="flex flex-col gap-0.5">{NAV.map((n) => item(n.page, n.label, n.icon, (counts as Record<string, number>)[n.page]))}</nav>
       <div className="flex-1" />
@@ -123,7 +131,10 @@ export function Sidebar(): React.JSX.Element {
         <Progress value={pct} />
         <p className="mt-2 text-[11px] text-faint">{pct >= 100 ? 'Weekly goal reached. Great work!' : `${Math.max(0, goal - week / 60).toFixed(1)}h left to reach your goal`}</p>
       </div>
-      {item('settings', 'Settings', IconSettings)}
+      <div className="flex items-center gap-1.5">
+        <div className="min-w-0 flex-1">{item('settings', 'Settings', IconSettings)}</div>
+        <ThemeSwitch />
+      </div>
     </aside>
   )
 }

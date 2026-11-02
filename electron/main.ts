@@ -8,8 +8,8 @@ const DATA_FILE = (): string => join(app.getPath('userData'), 'cyberjourney.json
 let win: BrowserWindow | null = null
 
 const OVERLAY = {
-  dark: { color: '#00000000', symbolColor: '#9aa4b2', height: 40 },
-  light: { color: '#00000000', symbolColor: '#475467', height: 40 }
+  dark: { color: '#111110', symbolColor: '#a8a7a1', height: 36 },
+  light: { color: '#efefec', symbolColor: '#5f5e59', height: 36 }
 }
 
 function createWindow(): void {
@@ -19,7 +19,7 @@ function createWindow(): void {
     minWidth: 1040,
     minHeight: 680,
     show: false,
-    backgroundColor: '#0b0f14',
+    backgroundColor: '#111110',
     titleBarStyle: 'hidden',
     titleBarOverlay: process.platform === 'darwin' ? undefined : OVERLAY.dark,
     title: 'CyberJourney',
@@ -118,7 +118,7 @@ ipcMain.on('theme:set', (_e, theme: 'dark' | 'light') => {
     } catch {
       /* not supported on this platform */
     }
-    win.setBackgroundColor(theme === 'dark' ? '#0b0f14' : '#f6f7f9')
+    win.setBackgroundColor(theme === 'dark' ? '#111110' : '#efefec')
   }
 })
 

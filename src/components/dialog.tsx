@@ -37,11 +37,11 @@ export function Sheet({ open, onOpenChange, title, children, header, footer, wid
   return (
     <D.Root open={open} onOpenChange={onOpenChange}>
       <D.Portal>
-        <D.Overlay className="fixed inset-0 top-10 z-40 bg-black/40 animate-fade-in" />
+        <D.Overlay className="fixed inset-0 z-40 bg-black/40 animate-fade-in" />
         <D.Content
           aria-describedby={undefined}
           style={{ width }}
-          className="fixed top-10 right-0 bottom-0 z-50 flex max-w-[95vw] flex-col border-l border-line bg-card shadow-2xl outline-none animate-slide-in"
+          className="fixed top-12 right-2 bottom-2 z-50 flex max-w-[95vw] flex-col overflow-hidden rounded-[20px] border border-line bg-card shadow-2xl outline-none animate-slide-in"
         >
           <div className="flex items-center gap-3 border-b border-line px-5 py-3">
             <D.Title className="flex-1 truncate text-sm font-semibold">{title}</D.Title>

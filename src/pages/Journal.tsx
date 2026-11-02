@@ -65,7 +65,7 @@ export default function Journal(): React.JSX.Element {
   const totalMin = logs.reduce((a, l) => a + l.minutes, 0)
 
   return (
-    <div className="flex h-[calc(100vh-40px)]">
+    <div className="flex h-full">
       {/* List */}
       <div className="flex w-[330px] shrink-0 flex-col border-r border-line bg-panel/50">
         <div className="flex flex-col gap-3 border-b border-line p-4">

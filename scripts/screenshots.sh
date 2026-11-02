@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
-# Takes the README screenshots on a virtual X display (default :5) with sample data.
+# Takes the README screenshots with sample data. Headless by default (no X server);
+# set DISPLAY_NUM=:5 to render on a virtual X display instead.
 set -euo pipefail
 cd "$(dirname "$0")/.."
-DISP="${DISPLAY_NUM:-:5}"
+DISP="${DISPLAY_NUM:-}"
 UD="$(mktemp -d)"
 mkdir -p screenshots
 SHOTS="01-dashboard=page:dashboard"
@@ -20,6 +21,7 @@ SHOTS+=",12-dashboard-light=close;theme:light;page:dashboard"
 SHOTS+=",13-journal-light=page:journal"
 SHOTS+=",14-roadmap-light=page:roadmap"
 SHOTS+=",15-new-journal-entry=theme:dark;page:journal;open:journal:new"
-DISPLAY="$DISP" CJ_SCREENSHOT_DIR="$PWD/screenshots" CJ_SHOTS="$SHOTS" \
-  ./node_modules/electron/dist/electron --no-sandbox --user-data-dir="$UD" out/main/main.js
+if [ -n "$DISP" ]; then RUN=(env DISPLAY="$DISP"); EXTRA=(); else RUN=(env -u DISPLAY); EXTRA=(--ozone-platform=headless); fi
+"${RUN[@]}" CJ_SCREENSHOT_DIR="$PWD/screenshots" CJ_SHOTS="$SHOTS" \
+  ./node_modules/electron/dist/electron --no-sandbox "${EXTRA[@]}" --user-data-dir="$UD" out/main/main.js
 rm -rf "$UD"
