@@ -323,3 +323,416 @@ input[type='range']::-webkit-slider-thumb {
 input[type='range']:hover::-webkit-slider-thumb {
   transform: scale(1.15);
 }
+
+/* ---------- Note editor (TipTap) ----------
+   Every color comes from the theme variables above, so it follows
+   dark / light and the chosen accent. No default library styles are used. */
+.cj-editor {
+  --ed-code-bg: color-mix(in srgb, var(--chrome) 70%, var(--card));
+  --ed-inline-code-bg: color-mix(in srgb, var(--accent) 10%, var(--card-2));
+  --ed-inline-code-fg: color-mix(in srgb, var(--accent) 75%, var(--fg));
+}
+.cj-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 8px 7px 8px;
+  border-bottom: 1px solid var(--border);
+  border-radius: 18px 18px 0 0;
+  background: color-mix(in srgb, var(--card) 88%, transparent);
+  backdrop-filter: blur(10px);
+}
+.cj-tool {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.cj-tool:hover:not(:disabled) {
+  background: var(--card-2);
+  color: var(--fg);
+}
+.cj-tool.is-active {
+  background: var(--accent-soft);
+  color: var(--accent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.cj-tool:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.cj-prose {
+  outline: none;
+  color: var(--fg);
+  font-size: 14.5px;
+  line-height: 1.72;
+  caret-color: var(--accent);
+  user-select: text;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+.cj-prose > * + * {
+  margin-top: 0.7em;
+}
+.cj-prose p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+  color: var(--faint);
+  white-space: pre-line;
+}
+.cj-prose h1,
+.cj-prose h2,
+.cj-prose h3 {
+  color: var(--fg);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+.cj-prose h1 {
+  font-size: 1.6em;
+  font-weight: 650;
+  margin-top: 1.1em;
+}
+.cj-prose h2 {
+  font-size: 1.25em;
+  font-weight: 620;
+  margin-top: 1.25em;
+}
+.cj-prose h3 {
+  font-size: 1.07em;
+  font-weight: 600;
+  margin-top: 1.1em;
+}
+.cj-prose > :first-child {
+  margin-top: 0;
+}
+.cj-prose strong {
+  font-weight: 650;
+  color: var(--fg);
+}
+.cj-prose em {
+  color: color-mix(in srgb, var(--fg) 88%, var(--muted));
+}
+.cj-prose s {
+  color: var(--faint);
+}
+.cj-prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.cj-prose a:hover {
+  text-decoration-color: var(--accent);
+}
+.cj-prose code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+}
+.cj-prose :not(pre) > code {
+  padding: 0.14em 0.42em;
+  border-radius: 6px;
+  background: var(--ed-inline-code-bg);
+  color: var(--ed-inline-code-fg);
+}
+.cj-prose ul,
+.cj-prose ol {
+  padding-left: 1.45em;
+}
+.cj-prose ul {
+  list-style: disc;
+}
+.cj-prose ol {
+  list-style: decimal;
+}
+.cj-prose li {
+  margin-top: 0.25em;
+}
+.cj-prose li::marker {
+  color: var(--faint);
+}
+.cj-prose li > p {
+  margin: 0;
+}
+.cj-prose ul[data-type='taskList'] {
+  list-style: none;
+  padding-left: 0.1em;
+}
+.cj-prose ul[data-type='taskList'] li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6em;
+}
+.cj-prose ul[data-type='taskList'] li > label {
+  flex-shrink: 0;
+  margin-top: 0.28em;
+  user-select: none;
+}
+.cj-prose ul[data-type='taskList'] li > div {
+  flex: 1;
+  min-width: 0;
+}
+.cj-prose ul[data-type='taskList'] li[data-checked='true'] > div {
+  color: var(--faint);
+  text-decoration: line-through;
+  text-decoration-color: color-mix(in srgb, var(--faint) 60%, transparent);
+}
+.cj-prose input[type='checkbox'] {
+  appearance: none;
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  border-radius: 5px;
+  border: 1.5px solid var(--border-strong);
+  background: var(--card);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.cj-prose input[type='checkbox']:hover {
+  border-color: var(--accent);
+}
+.cj-prose input[type='checkbox']:checked {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.cj-prose input[type='checkbox']:checked::after {
+  content: '';
+  width: 8px;
+  height: 4.5px;
+  margin-top: -2px;
+  border-left: 1.8px solid var(--accent-fg);
+  border-bottom: 1.8px solid var(--accent-fg);
+  transform: rotate(-45deg);
+}
+.cj-prose blockquote {
+  padding: 0.55em 1em;
+  border-left: 3px solid color-mix(in srgb, var(--accent) 55%, transparent);
+  border-radius: 4px 12px 12px 4px;
+  background: color-mix(in srgb, var(--accent) 5%, transparent);
+  color: var(--muted);
+}
+.cj-prose blockquote > * + * {
+  margin-top: 0.5em;
+}
+.cj-prose hr {
+  border: none;
+  border-top: 1px solid var(--border-strong);
+  margin: 1.4em 0;
+}
+.cj-prose hr.ProseMirror-selectednode {
+  border-top-color: var(--accent);
+}
+.cj-prose table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 0.93em;
+}
+.cj-prose th,
+.cj-prose td {
+  padding: 0.45em 0.8em;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+.cj-prose th {
+  background: var(--card-2);
+  font-weight: 600;
+  color: var(--muted);
+}
+.cj-prose tr:last-child td {
+  border-bottom: none;
+}
+.cj-prose th p,
+.cj-prose td p {
+  margin: 0;
+}
+.cj-prose .selectedCell {
+  background: var(--accent-soft);
+}
+.cj-prose ::selection {
+  background: color-mix(in srgb, var(--accent) 28%, transparent);
+}
+.cj-prose .ProseMirror-gapcursor::after {
+  border-top-color: var(--accent);
+}
+
+/* Code blocks: built for commands and payloads */
+.cj-code {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--ed-code-bg);
+  overflow: hidden;
+}
+.cj-code-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 8px 0 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--faint);
+  font-size: 11.5px;
+  user-select: none;
+}
+.cj-code-head select {
+  appearance: none;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 6px;
+}
+.cj-code-head select:hover {
+  background: var(--card-2);
+  color: var(--fg);
+}
+.cj-code-head select option {
+  background: var(--card);
+  color: var(--fg);
+}
+.cj-code-head span {
+  color: var(--muted);
+  font-weight: 500;
+}
+.cj-code-head button {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 7px;
+  color: var(--faint);
+  cursor: pointer;
+}
+.cj-code-head button:hover {
+  background: var(--card-2);
+  color: var(--fg);
+}
+.cj-code pre {
+  margin: 0;
+  padding: 12px 14px 13px;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: var(--fg);
+  white-space: pre;
+  tab-size: 2;
+}
+.cj-code pre code {
+  font-size: inherit;
+  background: none;
+  padding: 0;
+}
+/* Calm syntax colors from the palette */
+.cj-code .token.comment,
+.cj-code .token.prolog,
+.cj-code .token.doctype,
+.cj-code .token.cdata {
+  color: var(--faint);
+  font-style: italic;
+}
+.cj-code .token.keyword,
+.cj-code .token.builtin,
+.cj-code .token.important,
+.cj-code .token.atrule {
+  color: var(--c-mauve);
+}
+.cj-code .token.string,
+.cj-code .token.char,
+.cj-code .token.attr-value,
+.cj-code .token.regex {
+  color: var(--c-sage);
+}
+.cj-code .token.number,
+.cj-code .token.boolean,
+.cj-code .token.constant,
+.cj-code .token.symbol {
+  color: var(--c-sand);
+}
+.cj-code .token.function,
+.cj-code .token.class-name {
+  color: var(--c-slate);
+}
+.cj-code .token.parameter,
+.cj-code .token.variable,
+.cj-code .token.property {
+  color: var(--accent);
+}
+.cj-code .token.tag,
+.cj-code .token.selector,
+.cj-code .token.deleted {
+  color: var(--c-rose);
+}
+.cj-code .token.attr-name,
+.cj-code .token.inserted {
+  color: var(--c-teal);
+}
+.cj-code .token.operator,
+.cj-code .token.punctuation {
+  color: var(--muted);
+}
+
+/* Slash menu */
+.cj-slash {
+  position: absolute;
+  z-index: 30;
+  width: 250px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 5px;
+  border: 1px solid var(--border-strong);
+  border-radius: 14px;
+  background: var(--card);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+}
+.cj-slash button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 6px 8px;
+  border-radius: 9px;
+  cursor: pointer;
+}
+.cj-slash button.is-active {
+  background: var(--card-2);
+}
+.cj-slash-icon {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--card-2);
+  color: var(--muted);
+}
+.cj-slash button.is-active .cj-slash-icon {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 25%, transparent);
+  background: var(--accent-soft);
+}

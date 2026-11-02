@@ -21,6 +21,18 @@ SHOTS+=",12-dashboard-light=close;theme:light;page:dashboard"
 SHOTS+=",13-journal-light=page:journal"
 SHOTS+=",14-roadmap-light=page:roadmap"
 SHOTS+=",15-new-journal-entry=theme:dark;page:journal;open:journal:new"
+SHOTS+=",16-note-viewer-dark=theme:dark;page:journal;open:journal:0"
+SHOTS+=",17-note-editor-dark=edmode:edit;sel:UNION"
+SHOTS+=",18-note-editor-slash-dark=slash"
+SHOTS+=",19-note-viewer-light=undo;edmode:read;theme:light"
+SHOTS+=",20-note-editor-light=edmode:edit;sel:UNION"
+SHOTS+=",21-note-editor-slash-light=slash"
+# ONLY="16,17" takes just those shots
+if [ -n "${ONLY:-}" ]; then
+  KEEP=""; IFS=',' read -ra ALL <<< "$SHOTS"
+  for s in "${ALL[@]}"; do for n in ${ONLY//,/ }; do [[ "$s" == "$n"-* ]] && KEEP+="${KEEP:+,}$s"; done; done
+  SHOTS="$KEEP"
+fi
 if [ -n "$DISP" ]; then RUN=(env DISPLAY="$DISP"); EXTRA=(); else RUN=(env -u DISPLAY); EXTRA=(--ozone-platform=headless); fi
 "${RUN[@]}" CJ_SCREENSHOT_DIR="$PWD/screenshots" CJ_SHOTS="$SHOTS" \
   ./node_modules/electron/dist/electron --no-sandbox "${EXTRA[@]}" --user-data-dir="$UD" out/main/main.js

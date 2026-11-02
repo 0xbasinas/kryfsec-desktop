@@ -23,9 +23,9 @@ All text colors reach WCAG AA (4.5:1).
 Electron includes Chromium and Node.js. Their licenses are shipped with the
 app as `LICENSE.electron.txt` and `LICENSES.chromium.html` in the install folder.
 
-## Packages bundled into the app (196)
+## Packages bundled into the app (163)
 
-Almost all are MIT. A few small helpers used inside recharts, react-markdown and
+Almost all are MIT. A few small helpers used inside recharts, TipTap / ProseMirror, refractor and
 Radix use other permissive licenses (ISC, BSD-3-Clause, 0BSD); their full texts are below.
 
 | Package | Version | License |
@@ -70,6 +70,35 @@ Radix use other permissive licenses (ISC, BSD-3-Clause, 0BSD); their full texts 
 | [@tabler/icons](https://github.com/tabler/tabler-icons) | 3.50.0 | MIT |
 | [@tabler/icons-react](https://github.com/tabler/tabler-icons) | 3.50.0 | MIT |
 | [@tailwindcss/typography](https://github.com/tailwindlabs/tailwindcss-typography) | 0.5.20 | MIT |
+| [@tiptap/core](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/extension-blockquote](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/extension-bold](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/extension-bullet-list](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/extension-code](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/extension-code-block](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/extension-document](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/extension-dropcursor](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/extension-gapcursor](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/extension-hard-break](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/extension-heading](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/extension-horizontal-rule](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/extension-italic](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/extension-link](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/extension-list](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/extension-list-item](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/extension-list-keymap](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/extension-ordered-list](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/extension-paragraph](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/extension-placeholder](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/extension-strike](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/extension-table](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/extension-text](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/extension-underline](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/extensions](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/markdown](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/pm](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/react](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
+| [@tiptap/starter-kit](https://github.com/ueberdosis/tiptap) | 3.32.2 | MIT |
 | [@types/d3-array](https://github.com/DefinitelyTyped/DefinitelyTyped) | 3.2.2 | MIT |
 | [@types/d3-color](https://github.com/DefinitelyTyped/DefinitelyTyped) | 3.1.3 | MIT |
 | [@types/d3-ease](https://github.com/DefinitelyTyped/DefinitelyTyped) | 3.0.2 | MIT |
@@ -79,25 +108,17 @@ Radix use other permissive licenses (ISC, BSD-3-Clause, 0BSD); their full texts 
 | [@types/d3-shape](https://github.com/DefinitelyTyped/DefinitelyTyped) | 3.2.0 | MIT |
 | [@types/d3-time](https://github.com/DefinitelyTyped/DefinitelyTyped) | 3.0.4 | MIT |
 | [@types/d3-timer](https://github.com/DefinitelyTyped/DefinitelyTyped) | 3.0.2 | MIT |
-| [@types/debug](https://github.com/DefinitelyTyped/DefinitelyTyped) | 4.1.13 | MIT |
-| [@types/estree](https://github.com/DefinitelyTyped/DefinitelyTyped) | 1.0.10 | MIT |
-| [@types/estree-jsx](https://github.com/DefinitelyTyped/DefinitelyTyped) | 1.0.5 | MIT |
 | [@types/hast](https://github.com/DefinitelyTyped/DefinitelyTyped) | 3.0.5 | MIT |
-| [@types/mdast](https://github.com/DefinitelyTyped/DefinitelyTyped) | 4.0.4 | MIT |
-| [@types/ms](https://github.com/DefinitelyTyped/DefinitelyTyped) | 2.1.0 | MIT |
+| [@types/prismjs](https://github.com/DefinitelyTyped/DefinitelyTyped) | 1.26.6 | MIT |
 | [@types/unist](https://github.com/DefinitelyTyped/DefinitelyTyped) | 3.0.3 | MIT |
 | [@types/use-sync-external-store](https://github.com/DefinitelyTyped/DefinitelyTyped) | 0.0.6 | MIT |
-| [@ungap/structured-clone](https://github.com/ungap/structured-clone) | 1.4.0 | ISC |
 | [aria-hidden](https://github.com/theKashey/aria-hidden) | 1.2.6 | MIT |
-| [bail](wooorm/bail) | 2.0.2 | MIT |
-| [ccount](wooorm/ccount) | 2.0.1 | MIT |
-| [character-entities](wooorm/character-entities) | 2.0.2 | MIT |
-| [character-entities-html4](wooorm/character-entities-html4) | 2.1.0 | MIT |
-| [character-entities-legacy](wooorm/character-entities-legacy) | 3.0.0 | MIT |
-| [character-reference-invalid](wooorm/character-reference-invalid) | 2.0.1 | MIT |
-| [clsx](lukeed/clsx) | 2.1.1 | MIT |
+| [character-entities](https://github.com/wooorm/character-entities) | 2.0.2 | MIT |
+| [character-entities-legacy](https://github.com/wooorm/character-entities-legacy) | 3.0.0 | MIT |
+| [character-reference-invalid](https://github.com/wooorm/character-reference-invalid) | 2.0.1 | MIT |
+| [clsx](https://github.com/lukeed/clsx) | 2.1.1 | MIT |
 | [cmdk](https://github.com/pacocoursey/cmdk) | 1.1.1 | MIT |
-| [comma-separated-tokens](wooorm/comma-separated-tokens) | 2.0.3 | MIT |
+| [comma-separated-tokens](https://github.com/wooorm/comma-separated-tokens) | 2.0.3 | MIT |
 | [cssesc](https://github.com/mathiasbynens/cssesc) | 3.0.0 | MIT |
 | [d3-array](https://github.com/d3/d3-array) | 3.2.4 | ISC |
 | [d3-color](https://github.com/d3/d3-color) | 3.1.0 | ISC |
@@ -111,83 +132,43 @@ Radix use other permissive licenses (ISC, BSD-3-Clause, 0BSD); their full texts 
 | [d3-time-format](https://github.com/d3/d3-time-format) | 4.1.0 | ISC |
 | [d3-timer](https://github.com/d3/d3-timer) | 3.0.1 | ISC |
 | [date-fns](https://github.com/date-fns/date-fns) | 4.4.0 | MIT |
-| [debug](git://github.com/debug-js/debug) | 4.4.3 | MIT |
 | [decimal.js-light](https://github.com/MikeMcl/decimal.js-light) | 2.5.1 | MIT |
-| [decode-named-character-reference](wooorm/decode-named-character-reference) | 1.3.0 | MIT |
-| [dequal](lukeed/dequal) | 2.0.3 | MIT |
+| [decode-named-character-reference](https://github.com/wooorm/decode-named-character-reference) | 1.3.0 | MIT |
 | [detect-node-es](https://github.com/thekashey/detect-node) | 1.1.0 | MIT |
-| [devlop](wooorm/devlop) | 1.1.0 | MIT |
 | [es-toolkit](https://github.com/toss/es-toolkit) | 1.53.1 | MIT |
-| [escape-string-regexp](sindresorhus/escape-string-regexp) | 5.0.0 | MIT |
-| [estree-util-is-identifier-name](syntax-tree/estree-util-is-identifier-name) | 3.0.0 | MIT |
 | [eventemitter3](git://github.com/primus/eventemitter3) | 5.0.4 | MIT |
-| [extend](https://github.com/justmoon/node-extend) | 3.0.2 | MIT |
+| [fast-equals](https://github.com/planttheidea/fast-equals) | 5.4.5 | MIT |
 | [get-nonce](git@github.com:theKashey/get-nonce) | 1.0.1 | MIT |
-| [hast-util-to-jsx-runtime](syntax-tree/hast-util-to-jsx-runtime) | 2.3.7 | MIT |
-| [hast-util-whitespace](syntax-tree/hast-util-whitespace) | 3.0.0 | MIT |
-| [html-url-attributes](https://github.com/rehypejs/rehype-minify/tree/main/packages/html-url-attributes) | 3.0.1 | MIT |
+| [hast-util-parse-selector](https://github.com/syntax-tree/hast-util-parse-selector) | 4.0.0 | MIT |
+| [hastscript](https://github.com/syntax-tree/hastscript) | 9.0.3 | MIT |
 | [immer](https://github.com/immerjs/immer) | 11.2.9 | MIT |
-| [inline-style-parser](https://github.com/remarkablemark/inline-style-parser) | 0.2.9 | MIT |
 | [internmap](https://github.com/mbostock/internmap) | 2.0.3 | ISC |
-| [is-alphabetical](wooorm/is-alphabetical) | 2.0.1 | MIT |
-| [is-alphanumerical](wooorm/is-alphanumerical) | 2.0.1 | MIT |
-| [is-decimal](wooorm/is-decimal) | 2.0.1 | MIT |
-| [is-hexadecimal](wooorm/is-hexadecimal) | 2.0.1 | MIT |
-| [is-plain-obj](sindresorhus/is-plain-obj) | 4.1.0 | MIT |
-| [longest-streak](wooorm/longest-streak) | 3.1.0 | MIT |
-| [markdown-table](wooorm/markdown-table) | 3.0.4 | MIT |
-| [mdast-util-find-and-replace](syntax-tree/mdast-util-find-and-replace) | 3.0.4 | MIT |
-| [mdast-util-from-markdown](syntax-tree/mdast-util-from-markdown) | 2.1.0 | MIT |
-| [mdast-util-gfm](syntax-tree/mdast-util-gfm) | 3.1.0 | MIT |
-| [mdast-util-gfm-autolink-literal](syntax-tree/mdast-util-gfm-autolink-literal) | 2.0.1 | MIT |
-| [mdast-util-gfm-footnote](syntax-tree/mdast-util-gfm-footnote) | 2.1.0 | MIT |
-| [mdast-util-gfm-strikethrough](syntax-tree/mdast-util-gfm-strikethrough) | 2.0.1 | MIT |
-| [mdast-util-gfm-table](syntax-tree/mdast-util-gfm-table) | 2.0.0 | MIT |
-| [mdast-util-gfm-task-list-item](syntax-tree/mdast-util-gfm-task-list-item) | 2.0.0 | MIT |
-| [mdast-util-mdx-expression](syntax-tree/mdast-util-mdx-expression) | 2.0.1 | MIT |
-| [mdast-util-mdx-jsx](syntax-tree/mdast-util-mdx-jsx) | 3.2.0 | MIT |
-| [mdast-util-mdxjs-esm](syntax-tree/mdast-util-mdxjs-esm) | 2.0.1 | MIT |
-| [mdast-util-phrasing](syntax-tree/mdast-util-phrasing) | 4.1.0 | MIT |
-| [mdast-util-to-hast](syntax-tree/mdast-util-to-hast) | 13.2.1 | MIT |
-| [mdast-util-to-markdown](syntax-tree/mdast-util-to-markdown) | 2.2.1 | MIT |
-| [mdast-util-to-string](syntax-tree/mdast-util-to-string) | 4.0.0 | MIT |
-| [micromark](https://github.com/micromark/micromark/tree/main/packages/micromark) | 4.0.3 | MIT |
-| [micromark-core-commonmark](https://github.com/micromark/micromark/tree/main/packages/micromark-core-commonmark) | 2.0.4 | MIT |
-| [micromark-extension-gfm](micromark/micromark-extension-gfm) | 3.0.0 | MIT |
-| [micromark-extension-gfm-autolink-literal](micromark/micromark-extension-gfm-autolink-literal) | 2.1.0 | MIT |
-| [micromark-extension-gfm-footnote](micromark/micromark-extension-gfm-footnote) | 2.1.0 | MIT |
-| [micromark-extension-gfm-strikethrough](micromark/micromark-extension-gfm-strikethrough) | 2.1.0 | MIT |
-| [micromark-extension-gfm-table](micromark/micromark-extension-gfm-table) | 2.1.2 | MIT |
-| [micromark-extension-gfm-tagfilter](micromark/micromark-extension-gfm-tagfilter) | 2.0.0 | MIT |
-| [micromark-extension-gfm-task-list-item](micromark/micromark-extension-gfm-task-list-item) | 2.1.0 | MIT |
-| [micromark-factory-destination](https://github.com/micromark/micromark/tree/main/packages/micromark-factory-destination) | 2.0.1 | MIT |
-| [micromark-factory-label](https://github.com/micromark/micromark/tree/main/packages/micromark-factory-label) | 2.0.1 | MIT |
-| [micromark-factory-space](https://github.com/micromark/micromark/tree/main/packages/micromark-factory-space) | 2.1.0 | MIT |
-| [micromark-factory-title](https://github.com/micromark/micromark/tree/main/packages/micromark-factory-title) | 2.0.1 | MIT |
-| [micromark-factory-whitespace](https://github.com/micromark/micromark/tree/main/packages/micromark-factory-whitespace) | 2.0.1 | MIT |
-| [micromark-util-character](https://github.com/micromark/micromark/tree/main/packages/micromark-util-character) | 2.1.1 | MIT |
-| [micromark-util-chunked](https://github.com/micromark/micromark/tree/main/packages/micromark-util-chunked) | 2.0.1 | MIT |
-| [micromark-util-classify-character](https://github.com/micromark/micromark/tree/main/packages/micromark-util-classify-character) | 2.0.1 | MIT |
-| [micromark-util-combine-extensions](https://github.com/micromark/micromark/tree/main/packages/micromark-util-combine-extensions) | 2.0.1 | MIT |
-| [micromark-util-decode-numeric-character-reference](https://github.com/micromark/micromark/tree/main/packages/micromark-util-decode-numeric-character-reference) | 2.0.2 | MIT |
-| [micromark-util-decode-string](https://github.com/micromark/micromark/tree/main/packages/micromark-util-decode-string) | 2.0.1 | MIT |
-| [micromark-util-edit-map](https://github.com/micromark/micromark/tree/main/packages/micromark-util-edit-map) | 1.0.0 | MIT |
-| [micromark-util-encode](https://github.com/micromark/micromark/tree/main/packages/micromark-util-encode) | 2.0.1 | MIT |
-| [micromark-util-html-tag-name](https://github.com/micromark/micromark/tree/main/packages/micromark-util-html-tag-name) | 2.0.1 | MIT |
-| [micromark-util-normalize-identifier](https://github.com/micromark/micromark/tree/main/packages/micromark-util-normalize-identifier) | 2.0.1 | MIT |
-| [micromark-util-resolve-all](https://github.com/micromark/micromark/tree/main/packages/micromark-util-resolve-all) | 2.0.1 | MIT |
-| [micromark-util-sanitize-uri](https://github.com/micromark/micromark/tree/main/packages/micromark-util-sanitize-uri) | 2.0.1 | MIT |
-| [micromark-util-subtokenize](https://github.com/micromark/micromark/tree/main/packages/micromark-util-subtokenize) | 2.1.0 | MIT |
-| [micromark-util-symbol](https://github.com/micromark/micromark/tree/main/packages/micromark-util-symbol) | 2.0.1 | MIT |
-| [micromark-util-types](https://github.com/micromark/micromark/tree/main/packages/micromark-util-types) | 2.0.3 | MIT |
-| [ms](vercel/ms) | 2.1.3 | MIT |
-| [nanoid](ai/nanoid) | 6.0.2 | MIT |
-| [parse-entities](wooorm/parse-entities) | 4.0.2 | MIT |
-| [postcss-selector-parser](postcss/postcss-selector-parser) | 6.0.10 | MIT |
-| [property-information](wooorm/property-information) | 7.2.0 | MIT |
+| [is-alphabetical](https://github.com/wooorm/is-alphabetical) | 2.0.1 | MIT |
+| [is-alphanumerical](https://github.com/wooorm/is-alphanumerical) | 2.0.1 | MIT |
+| [is-decimal](https://github.com/wooorm/is-decimal) | 2.0.1 | MIT |
+| [is-hexadecimal](https://github.com/wooorm/is-hexadecimal) | 2.0.1 | MIT |
+| [linkifyjs](https://github.com/nfrasser/linkifyjs) | 4.4.0 | MIT |
+| [marked](git://github.com/markedjs/marked) | 17.0.6 | MIT |
+| [nanoid](https://github.com/ai/nanoid) | 6.0.2 | MIT |
+| [orderedmap](https://github.com/marijnh/orderedmap) | 2.1.1 | MIT |
+| [parse-entities](https://github.com/wooorm/parse-entities) | 4.0.2 | MIT |
+| [postcss-selector-parser](https://github.com/postcss/postcss-selector-parser) | 6.0.10 | MIT |
+| [property-information](https://github.com/wooorm/property-information) | 7.2.0 | MIT |
+| [prosemirror-changeset](https://code.haverbeke.berlin/prosemirror/prosemirror-changeset) | 2.4.6 | MIT |
+| [prosemirror-commands](https://code.haverbeke.berlin/prosemirror/prosemirror-commands) | 1.7.2 | MIT |
+| [prosemirror-dropcursor](https://code.haverbeke.berlin/prosemirror/prosemirror-dropcursor) | 1.8.4 | MIT |
+| [prosemirror-gapcursor](git://github.com/prosemirror/prosemirror-gapcursor) | 1.4.1 | MIT |
+| [prosemirror-history](https://code.haverbeke.berlin/prosemirror/prosemirror-history) | 1.5.1 | MIT |
+| [prosemirror-inputrules](git://github.com/prosemirror/prosemirror-inputrules) | 1.5.1 | MIT |
+| [prosemirror-keymap](git://github.com/prosemirror/prosemirror-keymap) | 1.2.3 | MIT |
+| [prosemirror-model](https://code.haverbeke.berlin/prosemirror/prosemirror-model) | 1.25.12 | MIT |
+| [prosemirror-schema-list](https://code.haverbeke.berlin/prosemirror/prosemirror-schema-list) | 1.6.0 | MIT |
+| [prosemirror-state](git://github.com/prosemirror/prosemirror-state) | 1.4.4 | MIT |
+| [prosemirror-tables](https://github.com/ProseMirror/prosemirror-tables) | 1.8.5 | MIT |
+| [prosemirror-transform](https://code.haverbeke.berlin/prosemirror/prosemirror-transform) | 1.12.4 | MIT |
+| [prosemirror-view](https://code.haverbeke.berlin/prosemirror/prosemirror-view) | 1.42.9 | MIT |
 | [react](https://github.com/react/react) | 19.3.1 | MIT |
 | [react-dom](https://github.com/react/react) | 19.3.1 | MIT |
-| [react-markdown](remarkjs/react-markdown) | 10.1.0 | MIT |
 | [react-redux](https://github.com/reduxjs/react-redux) | 9.3.1 | MIT |
 | [react-remove-scroll](https://github.com/theKashey/react-remove-scroll) | 2.7.2 | MIT |
 | [react-remove-scroll-bar](https://github.com/theKashey/react-remove-scroll-bar) | 2.3.8 | MIT |
@@ -195,37 +176,23 @@ Radix use other permissive licenses (ISC, BSD-3-Clause, 0BSD); their full texts 
 | [recharts](https://github.com/recharts/recharts) | 3.10.1 | MIT |
 | [redux](https://github.com/reduxjs/redux) | 5.0.1 | MIT |
 | [redux-thunk](https://github.com/reduxjs/redux-thunk) | 3.1.0 | MIT |
-| [remark-gfm](remarkjs/remark-gfm) | 4.0.1 | MIT |
-| [remark-parse](https://github.com/remarkjs/remark/tree/main/packages/remark-parse) | 11.0.0 | MIT |
-| [remark-rehype](remarkjs/remark-rehype) | 11.1.2 | MIT |
-| [remark-stringify](https://github.com/remarkjs/remark/tree/main/packages/remark-stringify) | 11.0.0 | MIT |
+| [refractor](https://github.com/wooorm/refractor) | 5.0.0 | MIT |
 | [reselect](https://github.com/reduxjs/reselect) | 5.2.0 | MIT |
+| [rope-sequence](https://github.com/marijnh/rope-sequence) | 1.3.4 | MIT |
 | [scheduler](https://github.com/react/react) | 0.28.0 | MIT |
 | [sonner](https://github.com/emilkowalski/sonner) | 2.0.8 | MIT |
-| [space-separated-tokens](wooorm/space-separated-tokens) | 2.0.2 | MIT |
-| [stringify-entities](wooorm/stringify-entities) | 4.0.4 | MIT |
-| [style-to-object](https://github.com/remarkablemark/style-to-object) | 2.0.2 | MIT |
+| [space-separated-tokens](https://github.com/wooorm/space-separated-tokens) | 2.0.2 | MIT |
 | [tailwind-merge](https://github.com/dcastil/tailwind-merge) | 3.7.0 | MIT |
 | [tailwindcss](https://github.com/tailwindlabs/tailwindcss) | 4.3.3 | MIT |
 | [tiny-invariant](https://github.com/alexreardon/tiny-invariant) | 1.3.3 | MIT |
-| [trim-lines](wooorm/trim-lines) | 3.0.1 | MIT |
-| [trough](wooorm/trough) | 2.2.0 | MIT |
 | [tslib](https://github.com/Microsoft/tslib) | 2.9.1 | 0BSD |
-| [unified](unifiedjs/unified) | 11.0.5 | MIT |
-| [unist-util-is](syntax-tree/unist-util-is) | 6.0.1 | MIT |
-| [unist-util-position](syntax-tree/unist-util-position) | 5.0.0 | MIT |
-| [unist-util-stringify-position](syntax-tree/unist-util-stringify-position) | 4.0.0 | MIT |
-| [unist-util-visit](syntax-tree/unist-util-visit) | 5.2.0 | MIT |
-| [unist-util-visit-parents](syntax-tree/unist-util-visit-parents) | 6.1.0 | MIT |
 | [use-callback-ref](https://github.com/theKashey/use-callback-ref/) | 1.3.3 | MIT |
 | [use-sidecar](https://github.com/theKashey/use-sidecar) | 1.1.3 | MIT |
 | [use-sync-external-store](https://github.com/react/react) | 1.7.0 | MIT |
 | [util-deprecate](git://github.com/TooTallNate/util-deprecate) | 1.0.2 | MIT |
-| [vfile](vfile/vfile) | 6.0.3 | MIT |
-| [vfile-message](vfile/vfile-message) | 4.0.3 | MIT |
 | [victory-vendor](https://github.com/FormidableLabs/victory) | 37.4.1 | MIT AND ISC AND BSD-3-Clause |
+| [w3c-keyname](https://github.com/marijnh/w3c-keyname) | 2.2.8 | MIT |
 | [zustand](https://github.com/pmndrs/zustand) | 5.0.16 | MIT |
-| [zwitch](wooorm/zwitch) | 2.0.4 | MIT |
 
 ## Build tools (not shipped)
 
@@ -234,26 +201,6 @@ electron-vite, Vite, TypeScript, ESLint, typescript-eslint, @vitejs/plugin-react
 `scripts/nsis-no-wine` calls electron-builder's own `UninstallerReader` (MIT).
 
 ## License texts for non-MIT packages
-
-### @ungap/structured-clone@1.4.0 (ISC)
-
-```text
-ISC License
-
-Copyright (c) 2021, Andrea Giammarchi, @WebReflection
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted, provided that the above
-copyright notice and this permission notice appear in all copies.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE
-OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
-```
 
 ### d3-array@3.2.4 (ISC)
 
@@ -712,6 +659,35 @@ Copyright lines:
 - @tabler/icons: Copyright (c) 2020-2026 Paweł Kuna
 - @tabler/icons-react: Copyright (c) 2020-2026 Paweł Kuna
 - @tailwindcss/typography: Copyright (c) Tailwind Labs, Inc.
+- @tiptap/core: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/extension-blockquote: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/extension-bold: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/extension-bullet-list: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/extension-code: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/extension-code-block: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/extension-document: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/extension-dropcursor: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/extension-gapcursor: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/extension-hard-break: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/extension-heading: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/extension-horizontal-rule: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/extension-italic: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/extension-link: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/extension-list: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/extension-list-item: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/extension-list-keymap: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/extension-ordered-list: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/extension-paragraph: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/extension-placeholder: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/extension-strike: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/extension-table: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/extension-text: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/extension-underline: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/extensions: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/markdown: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/pm: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/react: Copyright (c) 2025, Tiptap GmbH
+- @tiptap/starter-kit: Copyright (c) 2025, Tiptap GmbH
 - @types/d3-array: Copyright (c) Microsoft Corporation.
 - @types/d3-color: Copyright (c) Microsoft Corporation.
 - @types/d3-ease: Copyright (c) Microsoft Corporation.
@@ -721,19 +697,12 @@ Copyright lines:
 - @types/d3-shape: Copyright (c) Microsoft Corporation.
 - @types/d3-time: Copyright (c) Microsoft Corporation.
 - @types/d3-timer: Copyright (c) Microsoft Corporation.
-- @types/debug: Copyright (c) Microsoft Corporation.
-- @types/estree: Copyright (c) Microsoft Corporation.
-- @types/estree-jsx: Copyright (c) Microsoft Corporation.
 - @types/hast: Copyright (c) Microsoft Corporation.
-- @types/mdast: Copyright (c) Microsoft Corporation.
-- @types/ms: Copyright (c) Microsoft Corporation.
+- @types/prismjs: Copyright (c) Microsoft Corporation.
 - @types/unist: Copyright (c) Microsoft Corporation.
 - @types/use-sync-external-store: Copyright (c) Microsoft Corporation.
 - aria-hidden: Copyright (c) 2017 Anton Korzunov
-- bail: Copyright (c) 2015 Titus Wormer <tituswormer@gmail.com>
-- ccount: Copyright (c) 2015 Titus Wormer <tituswormer@gmail.com>
 - character-entities: Copyright (c) 2015 Titus Wormer <tituswormer@gmail.com>
-- character-entities-html4: Copyright (c) 2015 Titus Wormer <tituswormer@gmail.com>
 - character-entities-legacy: Copyright (c) 2015 Titus Wormer <tituswormer@gmail.com>
 - character-reference-invalid: Copyright (c) 2015 Titus Wormer <tituswormer@gmail.com>
 - clsx: Copyright (c) Luke Edwards <luke.edwards05@gmail.com> (lukeed.com)
@@ -741,82 +710,42 @@ Copyright lines:
 - comma-separated-tokens: Copyright (c) 2016 Titus Wormer <tituswormer@gmail.com>
 - cssesc: Copyright Mathias Bynens <https://mathiasbynens.be/>
 - date-fns: Copyright (c) 2021 Sasha Koss and Lesha Koss https://kossnocorp.mit-license.org
-- debug: Copyright (c) 2014-2017 TJ Holowaychuk <tj@vision-media.ca>
 - decimal.js-light: Copyright (c) 2020 Michael Mclaughlin
 - decode-named-character-reference: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- dequal: Copyright (c) Luke Edwards <luke.edwards05@gmail.com> (lukeed.com)
 - detect-node-es: Copyright (c) 2017 Ilya Kantor
-- devlop: Copyright (c) 2023 Titus Wormer <tituswormer@gmail.com>
 - es-toolkit: Copyright (c) 2024 Viva Republica, Inc.
-- escape-string-regexp: Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)
-- estree-util-is-identifier-name: Copyright (c) 2020 Titus Wormer <tituswormer@gmail.com>
 - eventemitter3: Copyright (c) 2014 Arnout Kazemier
-- extend: Copyright (c) 2014 Stefan Thomas
+- fast-equals: Copyright (c) 2025 Tony Quetano
 - get-nonce: Copyright (c) 2020 Anton Korzunov
-- hast-util-to-jsx-runtime: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- hast-util-whitespace: Copyright (c) 2016 Titus Wormer <tituswormer@gmail.com>
-- html-url-attributes: Copyright (c) Titus Wormer
+- hast-util-parse-selector: Copyright (c) 2016 Titus Wormer <tituswormer@gmail.com>
+- hastscript: Copyright (c) Titus Wormer <tituswormer@gmail.com>
 - immer: Copyright (c) 2017 Michel Weststrate
-- inline-style-parser: Copyright (c) 2012 TJ Holowaychuk <tj@vision-media.ca>
 - is-alphabetical: Copyright (c) 2016 Titus Wormer <tituswormer@gmail.com>
 - is-alphanumerical: Copyright (c) 2016 Titus Wormer <tituswormer@gmail.com>
 - is-decimal: Copyright (c) 2016 Titus Wormer <tituswormer@gmail.com>
 - is-hexadecimal: Copyright (c) 2016 Titus Wormer <tituswormer@gmail.com>
-- is-plain-obj: Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)
-- longest-streak: Copyright (c) 2015 Titus Wormer <mailto:tituswormer@gmail.com>
-- markdown-table: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- mdast-util-find-and-replace: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- mdast-util-from-markdown: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- mdast-util-gfm: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- mdast-util-gfm-autolink-literal: Copyright (c) 2020 Titus Wormer <tituswormer@gmail.com>
-- mdast-util-gfm-footnote: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- mdast-util-gfm-strikethrough: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- mdast-util-gfm-table: Copyright (c) 2020 Titus Wormer <tituswormer@gmail.com>
-- mdast-util-gfm-task-list-item: Copyright (c) 2020 Titus Wormer <tituswormer@gmail.com>
-- mdast-util-mdx-expression: Copyright (c) 2020 Titus Wormer <tituswormer@gmail.com>
-- mdast-util-mdx-jsx: Copyright (c) 2020 Titus Wormer <tituswormer@gmail.com>
-- mdast-util-mdxjs-esm: Copyright (c) 2020 Titus Wormer <tituswormer@gmail.com>
-- mdast-util-phrasing: Copyright (c) 2017 Titus Wormer <tituswormer@gmail.com>
-- mdast-util-to-hast: Copyright (c) 2016 Titus Wormer <tituswormer@gmail.com>
-- mdast-util-to-markdown: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- mdast-util-to-string: Copyright (c) 2015 Titus Wormer <tituswormer@gmail.com>
-- micromark: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- micromark-core-commonmark: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- micromark-extension-gfm: Copyright (c) 2020 Titus Wormer <tituswormer@gmail.com>
-- micromark-extension-gfm-autolink-literal: Copyright (c) 2020 Titus Wormer <tituswormer@gmail.com>
-- micromark-extension-gfm-footnote: Copyright (c) 2021 Titus Wormer <tituswormer@gmail.com>
-- micromark-extension-gfm-strikethrough: Copyright (c) 2020 Titus Wormer <tituswormer@gmail.com>
-- micromark-extension-gfm-table: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- micromark-extension-gfm-tagfilter: Copyright (c) 2020 Titus Wormer <tituswormer@gmail.com>
-- micromark-extension-gfm-task-list-item: Copyright (c) 2020 Titus Wormer <tituswormer@gmail.com>
-- micromark-factory-destination: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- micromark-factory-label: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- micromark-factory-space: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- micromark-factory-title: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- micromark-factory-whitespace: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- micromark-util-character: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- micromark-util-chunked: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- micromark-util-classify-character: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- micromark-util-combine-extensions: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- micromark-util-decode-numeric-character-reference: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- micromark-util-decode-string: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- micromark-util-edit-map: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- micromark-util-encode: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- micromark-util-html-tag-name: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- micromark-util-normalize-identifier: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- micromark-util-resolve-all: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- micromark-util-sanitize-uri: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- micromark-util-subtokenize: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- micromark-util-symbol: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- micromark-util-types: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- ms: Copyright (c) 2020 Vercel, Inc.
+- linkifyjs: Copyright (c) 2024 Nick Frasser
+- marked: Copyright (c) 2018+, MarkedJS (https://github.com/markedjs/)
 - nanoid: Copyright 2017 Andrey Sitnik <andrey@sitnik.es>
+- orderedmap: Copyright (C) 2016 by Marijn Haverbeke <marijn@haverbeke.berlin> and others
 - parse-entities: Copyright (c) Titus Wormer <mailto:tituswormer@gmail.com>
 - postcss-selector-parser: Copyright (c) Ben Briggs <beneb.info@gmail.com> (http://beneb.info)
 - property-information: Copyright (c) Titus Wormer <mailto:tituswormer@gmail.com>
+- prosemirror-changeset: Copyright (C) 2017 by Marijn Haverbeke <marijn@haverbeke.berlin> and others
+- prosemirror-commands: Copyright (C) 2015-2017 by Marijn Haverbeke <marijn@haverbeke.berlin> and others
+- prosemirror-dropcursor: Copyright (C) 2015-2017 by Marijn Haverbeke <marijn@haverbeke.berlin> and others
+- prosemirror-gapcursor: Copyright (C) 2015-2017 by Marijn Haverbeke <marijn@haverbeke.berlin> and others
+- prosemirror-history: Copyright (C) 2015-2017 by Marijn Haverbeke <marijn@haverbeke.berlin> and others
+- prosemirror-inputrules: Copyright (C) 2015-2017 by Marijn Haverbeke <marijn@haverbeke.berlin> and others
+- prosemirror-keymap: Copyright (C) 2015-2017 by Marijn Haverbeke <marijn@haverbeke.berlin> and others
+- prosemirror-model: Copyright (C) 2015-2017 by Marijn Haverbeke <marijn@haverbeke.berlin> and others
+- prosemirror-schema-list: Copyright (C) 2015-2017 by Marijn Haverbeke <marijn@haverbeke.berlin> and others
+- prosemirror-state: Copyright (C) 2015-2017 by Marijn Haverbeke <marijn@haverbeke.berlin> and others
+- prosemirror-tables: Copyright (C) 2015-2016 by Marijn Haverbeke <marijnh@gmail.com> and others
+- prosemirror-transform: Copyright (C) 2015-2017 by Marijn Haverbeke <marijn@haverbeke.berlin> and others
+- prosemirror-view: Copyright (C) 2015-2017 by Marijn Haverbeke <marijn@haverbeke.berlin> and others
 - react: Copyright (c) Meta Platforms, Inc. and affiliates.
 - react-dom: Copyright (c) Meta Platforms, Inc. and affiliates.
-- react-markdown: Copyright (c) Espen Hovlandsdal
 - react-redux: Copyright (c) 2015-present Dan Abramov
 - react-remove-scroll: Copyright (c) 2017 Anton Korzunov
 - react-remove-scroll-bar: see package LICENSE
@@ -824,35 +753,21 @@ Copyright lines:
 - recharts: Copyright (c) 2015-present recharts
 - redux: Copyright (c) 2015-present Dan Abramov
 - redux-thunk: Copyright (c) 2015-present Dan Abramov
-- remark-gfm: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- remark-parse: Copyright (c) 2014 Titus Wormer <tituswormer@gmail.com>
-- remark-rehype: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- remark-stringify: Copyright (c) 2014 Titus Wormer <tituswormer@gmail.com>
+- refractor: Copyright (c) Titus Wormer <tituswormer@gmail.com>
 - reselect: Copyright (c) 2015-2018 Reselect Contributors
+- rope-sequence: Copyright (C) 2016 by Marijn Haverbeke <marijn@haverbeke.berlin>
 - scheduler: Copyright (c) Meta Platforms, Inc. and affiliates.
 - sonner: Copyright (c) 2023 Emil Kowalski
 - space-separated-tokens: Copyright (c) 2016 Titus Wormer <tituswormer@gmail.com>
-- stringify-entities: Copyright (c) 2015 Titus Wormer <mailto:tituswormer@gmail.com>
-- style-to-object: Copyright (c) 2017 Menglin "Mark" Xu <mark@remarkablemark.org>
 - tailwind-merge: Copyright (c) 2021 Dany Castillo
 - tailwindcss: Copyright (c) Tailwind Labs, Inc.
 - tiny-invariant: Copyright (c) 2019 Alexander Reardon
-- trim-lines: Copyright (c) 2015 Titus Wormer <mailto:tituswormer@gmail.com>
-- trough: Copyright (c) 2016 Titus Wormer <tituswormer@gmail.com>
-- unified: Copyright (c) 2015 Titus Wormer <tituswormer@gmail.com>
-- unist-util-is: Copyright (c) 2015 Titus Wormer <tituswormer@gmail.com>
-- unist-util-position: Copyright (c) 2015 Titus Wormer <tituswormer@gmail.com>
-- unist-util-stringify-position: Copyright (c) 2016 Titus Wormer <tituswormer@gmail.com>
-- unist-util-visit: Copyright (c) Titus Wormer <tituswormer@gmail.com>
-- unist-util-visit-parents: Copyright (c) Titus Wormer <tituswormer@gmail.com>
 - use-callback-ref: Copyright (c) 2017 Anton Korzunov
 - use-sidecar: Copyright (c) 2017 Anton Korzunov
 - use-sync-external-store: Copyright (c) Meta Platforms, Inc. and affiliates.
 - util-deprecate: Copyright (c) 2014 Nathan Rajlich <nathan@tootallnate.net>
-- vfile: Copyright (c) 2015 Titus Wormer <tituswormer@gmail.com>
-- vfile-message: Copyright (c) Titus Wormer <tituswormer@gmail.com>
+- w3c-keyname: Copyright (C) 2016 by Marijn Haverbeke <marijn@haverbeke.berlin> and others
 - zustand: Copyright (c) 2019 Paul Henschel
-- zwitch: Copyright (c) 2016 Titus Wormer <tituswormer@gmail.com>
 
 ## Development-only tools (not shipped in the app)
 
@@ -861,8 +776,10 @@ Copyright lines:
 ## Mobile app (`mobile/`)
 
 The Expo companion app reuses CyberJourney's own code (data model, sample data,
-stats and palette from the desktop app). The Markdown renderer, charts, heatmap
-and tab bar were written for this project. No third-party source code is copied.
+stats and palette from the desktop app). The charts, heatmap, tab bar and the
+note editor blocks (code, checklist, quote) were written for this project.
+Notes are shown and edited with react-native-enriched-markdown (below).
+No third-party source code is copied.
 The project was started from the `create-expo-app` default template
 (MIT, Copyright (c) 2015-present 650 Industries, Inc. (aka Expo)); the template
 screens and images were removed.
@@ -884,4 +801,18 @@ Main packages used by the mobile app:
 | [@tabler/icons-react-native](https://github.com/tabler/tabler-icons) | 3.50.0 | MIT |
 | [zustand](https://github.com/pmndrs/zustand) | 5.0.16 | MIT |
 | [date-fns](https://github.com/date-fns/date-fns) | 4.4.0 | MIT |
+| [react-native-enriched-markdown](https://github.com/software-mansion/enriched-markdown) | 1.1.1 | MIT (Copyright (c) 2025 Software Mansion) |
+| [expo-blur](https://github.com/expo/expo/tree/main/packages/expo-blur) | 58.0.x | MIT |
+| [react-native-keyboard-controller](https://github.com/kirillzyusko/react-native-keyboard-controller) | 1.22.7 | MIT (Copyright (c) 2021 Kiryl Ziusko) |
+| [expo-dev-client](https://github.com/expo/expo/tree/main/packages/expo-dev-client) (dev builds only) | 58.0.x | MIT |
 | [react-native-web](https://github.com/necolas/react-native-web) (web preview only) | 0.21.x | MIT |
+
+react-native-enriched-markdown compiles some open-source C code into the app:
+
+- md4c (Markdown parser), MIT, Copyright (c) 2016-2026 Martin Mitáš.
+- tree-sitter runtime (code highlighting), MIT, Copyright (c) 2018 Max Brunsfeld.
+  It contains Unicode data tables under the Unicode License (ICU 58 and later),
+  Copyright (c) 1991-2019 Unicode, Inc., a permissive license.
+- tree-sitter grammars for bash, python, javascript, json, html, c and go
+  (MIT, Copyright (c) 2014-2017 Max Brunsfeld) and yaml (MIT, Copyright (c) 2024
+  tree-sitter-grammars contributors, Copyright (c) 2019-2021 Ika).

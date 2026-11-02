@@ -3,7 +3,9 @@
 const fs = require('node:fs')
 const path = require('node:path')
 const root = path.join(__dirname, '..')
-const roots = ['react', 'react-dom', 'zustand', 'recharts', 'react-markdown', 'remark-gfm', 'cmdk',
+const roots = ['react', 'react-dom', 'zustand', 'recharts', 'cmdk',
+  '@tiptap/react', '@tiptap/pm', '@tiptap/core', '@tiptap/starter-kit', '@tiptap/markdown', '@tiptap/extension-list',
+  '@tiptap/extension-table', '@tiptap/extension-placeholder', '@tiptap/extensions', '@tiptap/extension-code-block', 'refractor',
   '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu', '@radix-ui/react-tooltip', '@radix-ui/react-popover',
   '@tabler/icons-react', 'clsx', 'tailwind-merge', 'date-fns', 'sonner', 'nanoid', 'tailwindcss', '@tailwindcss/typography']
 const seen = new Map()
@@ -15,6 +17,7 @@ function visit(name) {
   const license = pkg.license || (pkg.licenses || []).map((l) => l.type).join(' / ') || 'unknown'
   let repo = typeof pkg.repository === 'string' ? pkg.repository : pkg.repository?.url || pkg.homepage || ''
   repo = repo.replace(/^git\+/, '').replace(/\.git$/, '').replace(/^github:/, 'https://github.com/')
+  if (/^[\w.-]+\/[\w.-]+$/.test(repo)) repo = `https://github.com/${repo}`
   const file = fs.readdirSync(dir).find((f) => /^(licen[cs]e|copying)/i.test(f))
   seen.set(name, { version: pkg.version, license, repo, text: file ? fs.readFileSync(path.join(dir, file), 'utf8').trim() : '' })
   for (const d of Object.keys(pkg.dependencies || {})) visit(d)
@@ -49,7 +52,7 @@ app as \`LICENSE.electron.txt\` and \`LICENSES.chromium.html\` in the install fo
 
 ## Packages bundled into the app (${list.length})
 
-Almost all are MIT. A few small helpers used inside recharts, react-markdown and
+Almost all are MIT. A few small helpers used inside recharts, TipTap / ProseMirror, refractor and
 Radix use other permissive licenses (ISC, BSD-3-Clause, 0BSD); their full texts are below.
 
 | Package | Version | License |
@@ -74,5 +77,10 @@ for (const [n, i] of list) {
   const c = (i.text.match(/^.*copyright.*$/im) || [''])[0].trim()
   md += `- ${n}: ${c || 'see package LICENSE'}\n`
 }
-fs.writeFileSync(path.join(root, 'THIRD_PARTY_NOTICES.md'), md)
+// Keep the hand-written sections at the end of the file (dev tools, mobile app).
+const out = path.join(root, 'THIRD_PARTY_NOTICES.md')
+const old = fs.existsSync(out) ? fs.readFileSync(out, 'utf8') : ''
+const tail = old.indexOf('\n## Development-only tools')
+if (tail >= 0) md += old.slice(tail)
+fs.writeFileSync(out, md)
 console.log('packages:', list.length)

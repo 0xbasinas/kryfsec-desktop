@@ -1,3 +1,4 @@
+import type { Editor } from '@tiptap/react'
 import { useEffect } from 'react'
 import { Toaster } from 'sonner'
 import { TooltipProvider } from '@radix-ui/react-tooltip'
@@ -55,6 +56,18 @@ window.__cj = (script: string) => {
     if (op === 'kit') useKit.setState({ on: a === 'on' })
     if (op === 'theme') s.setSettings({ theme: a as 'dark' | 'light' })
     if (op === 'scroll') document.querySelector('main')?.scrollTo({ top: Number(a) })
+    // note editor helpers for screenshots
+    const ed = (document.querySelector('.cj-prose') as (HTMLElement & { editor?: Editor }) | null)?.editor
+    if (op === 'edmode') [...document.querySelectorAll<HTMLButtonElement>('.cj-toolbar button')].find((x) => x.textContent?.trim().toLowerCase() === a)?.click()
+    if (op === 'slash' && ed) ed.chain().insertContentAt(ed.state.doc.content.size, { type: 'paragraph', content: [{ type: 'text', text: '/' }] }).focus('end').run()
+    if (op === 'undo' && ed) ed.commands.undo()
+    if (op === 'sel' && ed) {
+      let at = -1
+      ed.state.doc.descendants((n, pos) => {
+        if (at < 0 && n.isText && n.text?.includes(a)) at = pos + n.text.indexOf(a)
+      })
+      if (at >= 0) ed.chain().focus().setTextSelection({ from: at, to: at + a.length }).run()
+    }
   }
 }
 

@@ -7,7 +7,7 @@ import { fmtDate, fmtHours, nowIso, today, uid } from '@/lib/utils'
 import { DIFF_META, PLATFORMS, platformColor } from '@/lib/platforms'
 import { Badge, Button, Card, EmptyState, Field, Input, PageHeader, SearchInput, Segmented, Select } from '@/components/ui'
 import { confirm, Sheet } from '@/components/dialog'
-import { MarkdownEditor } from '@/components/markdown'
+import { NoteEditor } from '@/components/editor'
 import { TagInput } from '@/components/tag-input'
 
 const STATUS_META: Record<WorkStatus, { label: string; tone: 'muted' | 'info' | 'accent'; dot: string }> = {
@@ -252,7 +252,7 @@ export default function Labs(): React.JSX.Element {
             </Field>
             <div className="flex flex-col gap-1.5">
               <span className="text-xs font-medium text-muted">Write-up</span>
-              <MarkdownEditor value={open.writeup} onChange={(writeup) => set({ writeup })} placeholder={'## Recon\n\n## Foothold\n\n## Privilege escalation\n\n## What I learned'} minHeight={340} defaultMode={open.writeup.trim() ? 'split' : 'write'} />
+              <NoteEditor value={open.writeup} onChange={(writeup) => set({ writeup })} placeholder="Write your steps: recon, foothold, privilege escalation and what you learned. Type / for blocks." minHeight={340} defaultMode={open.writeup.trim() ? 'read' : 'edit'} />
             </div>
           </div>
         )}

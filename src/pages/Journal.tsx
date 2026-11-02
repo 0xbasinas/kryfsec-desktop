@@ -5,7 +5,7 @@ import { useFocus, useStore } from '@/lib/store'
 import type { LogEntry } from '@/lib/types'
 import { cn, fmtHours, nowIso, today, uid } from '@/lib/utils'
 import { Button, EmptyState, Input, SearchInput, Select } from '@/components/ui'
-import { MarkdownEditor } from '@/components/markdown'
+import { NoteEditor } from '@/components/editor'
 import { TagInput } from '@/components/tag-input'
 import { confirm } from '@/components/dialog'
 
@@ -184,8 +184,8 @@ export default function Journal(): React.JSX.Element {
               </div>
             </div>
             <TagInput value={entry.tags} onChange={(tags) => set({ tags })} placeholder="Add tags like linux, nmap, tryhackme…" />
-            <MarkdownEditor value={entry.body} onChange={(body) => set({ body })} minHeight={460} placeholder={PLACEHOLDER} />
-            <p className="text-[11px] text-faint">Saved automatically. Tip: Ctrl+B bold, Ctrl+I italic, lists continue when you press Enter.</p>
+            <NoteEditor value={entry.body} onChange={(body) => set({ body })} minHeight={460} placeholder={PLACEHOLDER} defaultMode={entry.body.trim() ? 'read' : 'edit'} />
+            <p className="text-[11px] text-faint">Saved automatically. Type / for blocks. Ctrl+B bold, Ctrl+I italic, Ctrl+E code, Ctrl+K link.</p>
           </div>
         ) : (
           <EmptyState icon={<IconNotebook />} title="Start your journal" text="Write down what you learn each day. It helps you remember and shows your progress." action={<Button variant="primary" onClick={create}><IconPlus />Write first entry</Button>} />
