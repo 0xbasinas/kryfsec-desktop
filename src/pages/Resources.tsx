@@ -165,7 +165,7 @@ export default function Resources(): React.JSX.Element {
             return (
               <Card key={r.id} id={`res-${r.id}`} className={cn('group flex flex-col p-4 transition-all hover:!border-line-strong', flash === r.id && 'ring-2 ring-accent')}>
                 <div className="flex items-start gap-3">
-                  <span className="grid size-10 shrink-0 place-items-center rounded-xl" style={{ color: M.color, background: `color-mix(in srgb, ${M.color} 12%, transparent)`, boxShadow: `inset 0 0 0 1px color-mix(in srgb, ${M.color} 20%, transparent)` }}>
+                  <span className="grid size-10 shrink-0 place-items-center rounded-[12px]" style={{ color: M.color, background: `color-mix(in srgb, ${M.color} 12%, transparent)`, boxShadow: `inset 0 0 0 1px color-mix(in srgb, ${M.color} 20%, transparent)` }}>
                     <M.icon size={19} stroke={1.8} />
                   </span>
                   <div className="min-w-0 flex-1">

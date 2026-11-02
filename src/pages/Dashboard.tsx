@@ -31,7 +31,7 @@ function Stat({ icon, label, value, sub, accent, children }: { icon: React.React
   return (
     <Card className="group relative overflow-hidden p-4.5">
       <div className="flex items-center gap-2 text-xs font-medium text-muted">
-        <span className="grid size-6 place-items-center rounded-md [&_svg]:size-3.5" style={{ color: accent ?? 'var(--muted)', background: accent ? `color-mix(in srgb, ${accent} 10%, transparent)` : 'var(--card-2)' }}>
+        <span className="grid size-7 place-items-center rounded-[10px] [&_svg]:size-3.5" style={{ color: accent ?? 'var(--muted)', background: accent ? `color-mix(in srgb, ${accent} 10%, transparent)` : 'var(--card-2)' }}>
           {icon}
         </span>
         {label}
@@ -78,7 +78,7 @@ export default function Dashboard(): React.JSX.Element {
   return (
     <div className="mx-auto max-w-[1280px] px-8 pt-7 pb-12">
       {/* Hero */}
-      <div className="relative mb-6 overflow-hidden rounded-2xl border border-line bg-card px-7 py-6">
+      <div className="relative mb-6 overflow-hidden rounded-[20px] border border-line bg-card px-7 py-6">
         <div className="grid-bg pointer-events-none absolute inset-0" />
         <div className="glow pointer-events-none absolute inset-0" />
         <div className="relative flex items-center justify-between gap-6">
@@ -138,7 +138,7 @@ export default function Dashboard(): React.JSX.Element {
           <div className="flex items-end gap-[3px] pb-1">
             {['easy', 'medium', 'hard', 'insane'].map((d, i) => {
               const n = data.labs.filter((l) => l.status === 'done' && l.difficulty === d).length
-              return <span key={d} title={`${d}: ${n}`} className="w-2 rounded-sm" style={{ height: 6 + Math.min(n, 6) * 4, background: `color-mix(in srgb, var(--accent) ${[40, 60, 80, 100][i]}%, var(--card-2))`, opacity: n ? 1 : 0.35 }} />
+              return <span key={d} title={`${d}: ${n}`} className="w-2 rounded-full" style={{ height: 6 + Math.min(n, 6) * 4, background: `color-mix(in srgb, var(--accent) ${[40, 60, 80, 100][i]}%, var(--card-2))`, opacity: n ? 1 : 0.35 }} />
             })}
           </div>
         </Stat>
@@ -146,7 +146,7 @@ export default function Dashboard(): React.JSX.Element {
 
       {/* Charts */}
       <div className="mb-5 grid grid-cols-3 gap-4">
-        <Card className="col-span-2">
+        <Card className="col-span-2 rounded-[20px]">
           <CardHeader icon={<IconActivity />} title="Study time" sub={`Last 30 days · ${total30.toFixed(1)} hours in total`} />
           <div className="h-[220px] px-2 pb-3">
             <ResponsiveContainer width="100%" height="100%">
@@ -166,7 +166,7 @@ export default function Dashboard(): React.JSX.Element {
             </ResponsiveContainer>
           </div>
         </Card>
-        <Card>
+        <Card className="rounded-[20px]">
           <CardHeader icon={<IconChartRadar />} title="Skill map" sub="Progress in each area" />
           <div className="h-[220px] pb-2">
             <ResponsiveContainer width="100%" height="100%">
@@ -181,7 +181,7 @@ export default function Dashboard(): React.JSX.Element {
       </div>
 
       <div className="mb-5 grid grid-cols-3 gap-4">
-        <Card className="col-span-2">
+        <Card className="col-span-2 rounded-[20px]">
           <CardHeader icon={<IconCalendar />} title="Activity" sub="Each square is one day. Darker means more study time." />
           <div className="flex gap-3 px-5 pb-5">
             <div className="flex flex-col justify-around text-[10px] text-faint">
@@ -210,12 +210,12 @@ export default function Dashboard(): React.JSX.Element {
           <div className="flex items-center justify-end gap-1.5 px-5 pb-4 text-[10.5px] text-faint">
             Less
             {[0, 30, 55, 78, 100].map((p) => (
-              <span key={p} className="size-[11px] rounded-[3px]" style={{ background: p ? `color-mix(in srgb, var(--accent) ${p}%, var(--card-2))` : 'var(--card-2)' }} />
+              <span key={p} className="size-[11px] rounded-[4px]" style={{ background: p ? `color-mix(in srgb, var(--accent) ${p}%, var(--card-2))` : 'var(--card-2)' }} />
             ))}
             More
           </div>
         </Card>
-        <Card>
+        <Card className="rounded-[20px]">
           <CardHeader icon={<IconTarget />} title="Coming up" action={<Button variant="ghost" size="sm" onClick={() => go('goals')}>All<IconArrowRight /></Button>} />
           <div className="flex flex-col px-3 pb-3">
             {upcoming.length === 0 && <p className="px-2 py-6 text-center text-[13px] text-muted">No deadlines. Add a goal to stay on track.</p>}
@@ -239,7 +239,7 @@ export default function Dashboard(): React.JSX.Element {
       </div>
 
       <div className="grid grid-cols-3 gap-4">
-        <Card className="col-span-2">
+        <Card className="col-span-2 rounded-[20px]">
           <CardHeader icon={<IconRoute />} title="Skill areas" action={<Button variant="ghost" size="sm" onClick={() => go('roadmap')}>Roadmap<IconArrowRight /></Button>} />
           <div className="grid grid-cols-2 gap-x-6 gap-y-1 px-3 pb-4">
             {progress.map((p) => (
@@ -264,7 +264,7 @@ export default function Dashboard(): React.JSX.Element {
             </div>
           )}
         </Card>
-        <Card>
+        <Card className="rounded-[20px]">
           <CardHeader icon={<IconNotebook />} title="Recent activity" action={<Button variant="ghost" size="sm" onClick={() => go('journal')}>Journal<IconArrowRight /></Button>} />
           <div className="relative px-5 pb-4">
             {recent.length === 0 && <p className="py-6 text-center text-[13px] text-muted">Nothing yet. Write your first journal entry!</p>}

@@ -1,0 +1,317 @@
+[
+  {
+    "file": "btn-01-buttons.png",
+    "label": "Buttons: primary, secondary, outline, ghost, danger, sizes",
+    "theme": "dark"
+  },
+  {
+    "file": "btn-02-states.png",
+    "label": "Button states: rest, hover, focus ring",
+    "theme": "dark"
+  },
+  {
+    "file": "badge-01-tones.png",
+    "label": "Badges: status tones and keyboard keys",
+    "theme": "dark"
+  },
+  {
+    "file": "ctl-07-progress.png",
+    "label": "Progress bars and rings",
+    "theme": "dark"
+  },
+  {
+    "file": "ctl-01-inputs.png",
+    "label": "Text inputs: empty, filled, focused, disabled",
+    "theme": "dark"
+  },
+  {
+    "file": "nav-01-sidebar.png",
+    "label": "Sidebar with active item and weekly card",
+    "theme": "dark"
+  },
+  {
+    "file": "nav-02-titlebar.png",
+    "label": "Title bar with search",
+    "theme": "dark"
+  },
+  {
+    "file": "nav-04-tooltip.png",
+    "label": "Tooltip on an icon button",
+    "theme": "dark"
+  },
+  {
+    "file": "nav-03-command-palette.png",
+    "label": "Command palette with results",
+    "theme": "dark"
+  },
+  {
+    "file": "card-01-stat-cards.png",
+    "label": "Stat cards",
+    "theme": "dark"
+  },
+  {
+    "file": "card-02-stat-streak.png",
+    "label": "Stat card: streak",
+    "theme": "dark"
+  },
+  {
+    "file": "card-08-coming-up.png",
+    "label": "Coming up list",
+    "theme": "dark"
+  },
+  {
+    "file": "card-09-coming-up-item.png",
+    "label": "Coming up item",
+    "theme": "dark"
+  },
+  {
+    "file": "card-03-topic-area.png",
+    "label": "Skill area card (roadmap list)",
+    "theme": "dark"
+  },
+  {
+    "file": "card-04-topic-row-hover.png",
+    "label": "Topic row on hover: status switch, rename, delete",
+    "theme": "dark"
+  },
+  {
+    "file": "card-05-topic-notes.png",
+    "label": "Topic with notes open",
+    "theme": "dark"
+  },
+  {
+    "file": "ctl-02-add-topic.png",
+    "label": "Add topic input",
+    "theme": "dark"
+  },
+  {
+    "file": "dlg-02-edit-area.png",
+    "label": "Dialog: edit skill area",
+    "theme": "dark"
+  },
+  {
+    "file": "dlg-07-confirm-delete.png",
+    "label": "Dialog: confirm delete",
+    "theme": "dark"
+  },
+  {
+    "file": "card-06-lab-card.png",
+    "label": "Lab card with platform, difficulty, tags",
+    "theme": "dark"
+  },
+  {
+    "file": "badge-02-difficulty.png",
+    "label": "Difficulty pills",
+    "theme": "dark"
+  },
+  {
+    "file": "ctl-03-select.png",
+    "label": "Select (closed) and segmented control",
+    "theme": "dark"
+  },
+  {
+    "file": "dlg-03-new-lab.png",
+    "label": "Side sheet: new lab",
+    "theme": "dark"
+  },
+  {
+    "file": "ctl-04-segmented-status.png",
+    "label": "Segmented controls: status and difficulty",
+    "theme": "dark"
+  },
+  {
+    "file": "card-07-cert-card.png",
+    "label": "Certification card",
+    "theme": "dark"
+  },
+  {
+    "file": "dlg-05-new-cert.png",
+    "label": "Dialog: new certification (with slider and date)",
+    "theme": "dark"
+  },
+  {
+    "file": "ctl-05-slider.png",
+    "label": "Range slider",
+    "theme": "dark"
+  },
+  {
+    "file": "ctl-06-date.png",
+    "label": "Date input",
+    "theme": "dark"
+  },
+  {
+    "file": "card-10-goal-add.png",
+    "label": "Add goal bar: input, date, select",
+    "theme": "dark"
+  },
+  {
+    "file": "card-11-goals-checklist.png",
+    "label": "Goal list with checklist",
+    "theme": "dark"
+  },
+  {
+    "file": "card-12-resource-card.png",
+    "label": "Resource card",
+    "theme": "dark"
+  },
+  {
+    "file": "dlg-04-new-resource.png",
+    "label": "Dialog: new resource",
+    "theme": "dark"
+  },
+  {
+    "file": "nav-05-toast.png",
+    "label": "Toast message",
+    "theme": "dark"
+  },
+  {
+    "file": "ctl-08-tag-filter.png",
+    "label": "Tag filter chips",
+    "theme": "dark"
+  },
+  {
+    "file": "ctl-09-tag-input.png",
+    "label": "Tag input",
+    "theme": "dark"
+  },
+  {
+    "file": "ctl-10-date-minutes.png",
+    "label": "Date, minutes and topic fields",
+    "theme": "dark"
+  },
+  {
+    "file": "ctl-11-segmented-editor.png",
+    "label": "Segmented control: Write / Split / Preview",
+    "theme": "dark"
+  },
+  {
+    "file": "md-01-preview.png",
+    "label": "Markdown preview",
+    "theme": "dark"
+  },
+  {
+    "file": "md-02-heading-code.png",
+    "label": "Markdown: heading and code block",
+    "theme": "dark"
+  },
+  {
+    "file": "md-03-checklist.png",
+    "label": "Markdown: checklist",
+    "theme": "dark"
+  },
+  {
+    "file": "md-04-table.png",
+    "label": "Markdown: table",
+    "theme": "dark"
+  },
+  {
+    "file": "md-05-blockquote.png",
+    "label": "Markdown: blockquote and inline code",
+    "theme": "dark"
+  },
+  {
+    "file": "dlg-01-new-area.png",
+    "label": "Dialog: new skill area",
+    "theme": "dark"
+  },
+  {
+    "file": "btn-01-buttons-light.png",
+    "label": "Buttons: primary, secondary, outline, ghost, danger, sizes",
+    "theme": "light"
+  },
+  {
+    "file": "btn-02-states-light.png",
+    "label": "Button states: rest, hover, focus ring",
+    "theme": "light"
+  },
+  {
+    "file": "badge-01-tones-light.png",
+    "label": "Badges: status tones and keyboard keys",
+    "theme": "light"
+  },
+  {
+    "file": "ctl-07-progress-light.png",
+    "label": "Progress bars and rings",
+    "theme": "light"
+  },
+  {
+    "file": "ctl-01-inputs-light.png",
+    "label": "Text inputs: empty, filled, focused, disabled",
+    "theme": "light"
+  },
+  {
+    "file": "nav-01-sidebar-light.png",
+    "label": "Sidebar (light)",
+    "theme": "light"
+  },
+  {
+    "file": "card-01-stat-cards-light.png",
+    "label": "Stat cards (light)",
+    "theme": "light"
+  },
+  {
+    "file": "nav-03-command-palette-light.png",
+    "label": "Command palette (light)",
+    "theme": "light"
+  },
+  {
+    "file": "card-12-resource-card-light.png",
+    "label": "Resource card (light)",
+    "theme": "light"
+  },
+  {
+    "file": "dlg-04-new-resource-light.png",
+    "label": "Dialog: new resource (light)",
+    "theme": "light"
+  },
+  {
+    "file": "card-06-lab-card-light.png",
+    "label": "Lab card (light)",
+    "theme": "light"
+  },
+  {
+    "file": "card-11-goals-checklist-light.png",
+    "label": "Goal list (light)",
+    "theme": "light"
+  },
+  {
+    "file": "md-01-preview-light.png",
+    "label": "Markdown preview (light)",
+    "theme": "light"
+  },
+  {
+    "file": "dlg-08-confirm-reset.png",
+    "label": "Dialog: confirm delete everything",
+    "theme": "dark"
+  },
+  {
+    "file": "empty-01-journal.png",
+    "label": "Empty state: journal",
+    "theme": "dark"
+  },
+  {
+    "file": "empty-02-labs.png",
+    "label": "Empty state: labs",
+    "theme": "dark"
+  },
+  {
+    "file": "empty-03-resources.png",
+    "label": "Empty state: resources",
+    "theme": "dark"
+  },
+  {
+    "file": "empty-04-certs.png",
+    "label": "Empty state: certifications",
+    "theme": "dark"
+  },
+  {
+    "file": "empty-05-goals.png",
+    "label": "Empty state: goals",
+    "theme": "dark"
+  },
+  {
+    "file": "empty-06-dashboard.png",
+    "label": "Dashboard with no data",
+    "theme": "dark"
+  }
+]

@@ -18,7 +18,7 @@ import type { Page } from '@/lib/types'
 import { cn, fmtHours } from '@/lib/utils'
 import { weekMinutes } from '@/lib/stats'
 import { Logo } from './logo'
-import { Kbd, Progress } from './ui'
+import { Kbd, Progress, Tip } from './ui'
 
 export const NAV: { page: Page; label: string; icon: Icon; hint: string }[] = [
   { page: 'dashboard', label: 'Dashboard', icon: IconLayoutDashboard, hint: 'Overview of your progress' },
@@ -49,7 +49,7 @@ export function TitleBar(): React.JSX.Element {
       <div className="flex flex-1 justify-center">
         <button
           onClick={() => setPalette(true)}
-          className="no-drag flex h-7 w-[380px] max-w-full cursor-pointer items-center gap-2 rounded-lg border border-line bg-card-2/70 px-2.5 text-xs text-faint transition-colors hover:border-line-strong hover:text-muted"
+          className="no-drag flex h-7 w-[380px] max-w-full cursor-pointer items-center gap-2 rounded-full border border-line bg-card-2/70 px-2.5 text-xs text-faint transition-colors hover:border-line-strong hover:text-muted"
         >
           <IconSearch size={14} />
           <span className="flex-1 text-left">Search or run a command…</span>
@@ -58,13 +58,15 @@ export function TitleBar(): React.JSX.Element {
         </button>
       </div>
       <div className="flex w-[120px] justify-end">
-        <button
-          onClick={() => setSettings({ theme: theme === 'dark' ? 'light' : 'dark' })}
-          className="no-drag grid size-7 cursor-pointer place-items-center rounded-md text-muted transition-colors hover:bg-card-2 hover:text-fg"
-          title={theme === 'dark' ? 'Light theme' : 'Dark theme'}
-        >
-          {theme === 'dark' ? <IconSun size={16} /> : <IconMoon size={16} />}
-        </button>
+        <Tip label={theme === 'dark' ? 'Light theme' : 'Dark theme'} side="bottom">
+          <button
+            onClick={() => setSettings({ theme: theme === 'dark' ? 'light' : 'dark' })}
+            className="no-drag grid size-7 cursor-pointer place-items-center rounded-full text-muted transition-colors hover:bg-card-2 hover:text-fg"
+            aria-label={theme === 'dark' ? 'Light theme' : 'Dark theme'}
+          >
+            {theme === 'dark' ? <IconSun size={16} /> : <IconMoon size={16} />}
+          </button>
+        </Tip>
       </div>
     </header>
   )
@@ -93,11 +95,10 @@ export function Sidebar(): React.JSX.Element {
         key={p}
         onClick={() => go(p)}
         className={cn(
-          'group relative flex h-9 w-full cursor-pointer items-center gap-3 rounded-lg px-3 text-[13px] font-medium transition-all',
+          'group relative flex h-9 w-full cursor-pointer items-center gap-3 rounded-full px-3.5 text-[13px] font-medium transition-all',
           active ? 'bg-card-2 text-fg shadow-[inset_0_0_0_1px_var(--border)]' : 'text-muted hover:bg-card-2/60 hover:text-fg'
         )}
       >
-        {active && <span className="absolute top-2 bottom-2 left-0 w-[3px] rounded-r-full bg-accent" />}
         <I size={17} stroke={1.8} className={cn('transition-colors', active ? 'text-accent' : 'text-faint group-hover:text-muted')} />
         <span className="flex-1 text-left">{label}</span>
         {!!count && <span className="font-mono text-[11px] text-faint tabular-nums">{count}</span>}
@@ -110,7 +111,7 @@ export function Sidebar(): React.JSX.Element {
       <div className="px-3 pb-2 text-[10.5px] font-semibold tracking-[0.12em] text-faint uppercase">Menu</div>
       <nav className="flex flex-col gap-0.5">{NAV.map((n) => item(n.page, n.label, n.icon, (counts as Record<string, number>)[n.page]))}</nav>
       <div className="flex-1" />
-      <div className="mb-3 rounded-xl border border-line bg-card p-3.5">
+      <div className="mb-3 rounded-[16px] border border-line bg-card p-3.5">
         <div className="flex items-baseline justify-between">
           <span className="text-[11px] font-medium text-muted">This week</span>
           <span className="font-mono text-[11px] text-faint">goal {goal}h</span>

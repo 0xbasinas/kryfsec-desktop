@@ -1,10 +1,12 @@
 import { useEffect } from 'react'
 import { Toaster } from 'sonner'
+import { TooltipProvider } from '@radix-ui/react-tooltip'
 import { useStore } from './lib/store'
 import type { Page } from './lib/types'
 import { Sidebar, TitleBar } from './components/shell'
 import { CommandPalette } from './components/palette'
 import { ConfirmHost } from './components/dialog'
+import { Kit, useKit } from './components/kit'
 import Dashboard from './pages/Dashboard'
 import Roadmap from './pages/Roadmap'
 import Journal from './pages/Journal'
@@ -50,6 +52,7 @@ window.__cj = (script: string) => {
         }, 200)
     }
     if (op === 'close') s.setPalette(false)
+    if (op === 'kit') useKit.setState({ on: a === 'on' })
     if (op === 'theme') s.setSettings({ theme: a as 'dark' | 'light' })
     if (op === 'scroll') document.querySelector('main')?.scrollTo({ top: Number(a) })
   }
@@ -91,25 +94,28 @@ export default function App(): React.JSX.Element {
 
   const PageView = PAGES[page]
   return (
-    <div className="flex h-full flex-col">
-      <TitleBar />
-      <div className="flex min-h-0 flex-1">
-        <Sidebar />
-        <main className="relative min-w-0 flex-1 overflow-y-auto">
-          {loaded && (
-            <div key={page} className="animate-fade-up">
-              <PageView />
-            </div>
-          )}
-        </main>
+    <TooltipProvider>
+      <div className="flex h-full flex-col">
+        <TitleBar />
+        <div className="flex min-h-0 flex-1">
+          <Sidebar />
+          <main className="relative min-w-0 flex-1 overflow-y-auto">
+            {loaded && (
+              <div key={page} className="animate-fade-up">
+                <PageView />
+              </div>
+            )}
+          </main>
+        </div>
+        <CommandPalette />
+        <ConfirmHost />
+        <Kit />
+        <Toaster
+          theme={theme}
+          position="bottom-right"
+          toastOptions={{ style: { background: 'var(--card)', border: '1px solid var(--border-strong)', color: 'var(--fg)', fontSize: 13, borderRadius: 14 } }}
+        />
       </div>
-      <CommandPalette />
-      <ConfirmHost />
-      <Toaster
-        theme={theme}
-        position="bottom-right"
-        toastOptions={{ style: { background: 'var(--card)', border: '1px solid var(--border-strong)', color: 'var(--fg)', fontSize: 13 } }}
-      />
-    </div>
+    </TooltipProvider>
   )
 }

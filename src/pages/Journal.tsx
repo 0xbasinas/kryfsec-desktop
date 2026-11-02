@@ -85,7 +85,7 @@ export default function Journal(): React.JSX.Element {
           {allTags.length > 0 && (
             <div className="flex flex-wrap gap-1.5">
               {allTags.map(([t, n]) => (
-                <button key={t} onClick={() => setTag(tag === t ? null : t)} className={cn('h-6 cursor-pointer rounded-md border px-2 font-mono text-[11px] transition-colors', tag === t ? 'border-accent/40 bg-accent-soft text-accent' : 'border-line text-muted hover:border-line-strong hover:text-fg')}>
+                <button key={t} onClick={() => setTag(tag === t ? null : t)} className={cn('h-6 cursor-pointer rounded-full border px-2.5 font-mono text-[11px] transition-colors', tag === t ? 'border-accent/40 bg-accent-soft text-accent' : 'border-line text-muted hover:border-line-strong hover:text-fg')}>
                   #{t} <span className="text-faint">{n}</span>
                 </button>
               ))}
@@ -159,7 +159,7 @@ export default function Journal(): React.JSX.Element {
                 <span className="text-xs text-faint">min</span>
                 <div className="ml-auto flex gap-0.5">
                   {[30, 60, 90].map((m) => (
-                    <button key={m} onClick={() => set({ minutes: m })} className={cn('h-6 cursor-pointer rounded px-1.5 text-[10.5px] font-medium', entry.minutes === m ? 'bg-accent-soft text-accent' : 'text-faint hover:bg-card hover:text-fg')}>
+                    <button key={m} onClick={() => set({ minutes: m })} className={cn('h-6 cursor-pointer rounded-full px-2 text-[10.5px] font-medium', entry.minutes === m ? 'bg-accent-soft text-accent' : 'text-faint hover:bg-card hover:text-fg')}>
                       {m < 60 ? `${m}m` : `${m / 60}h`}
                     </button>
                   ))}

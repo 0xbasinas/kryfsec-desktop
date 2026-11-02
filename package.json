@@ -18,7 +18,8 @@
     "start": "electron-vite preview",
     "package:win": "npm run build && ELECTRON_BUILDER_WINE_TOOLSET_DIR=scripts/nsis-no-wine electron-builder --win --x64",
     "package:linux": "npm run build && electron-builder --linux AppImage",
-    "screenshots": "bash scripts/screenshots.sh"
+    "screenshots": "bash scripts/screenshots.sh",
+    "screenshots:components": "node scripts/component-shots.cjs && python3 scripts/component-sheet.py"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",
@@ -43,6 +44,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "globals": "^17.14.0",
     "nanoid": "^6.0.2",
+    "playwright-core": "^1.64.1",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-markdown": "^10.1.0",

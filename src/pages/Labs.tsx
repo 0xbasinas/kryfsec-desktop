@@ -20,7 +20,7 @@ function PlatformChip({ name }: { name: string }): React.JSX.Element {
   const c = platformColor(name)
   return (
     <span className="inline-flex items-center gap-1.5 text-[11.5px] font-medium text-muted">
-      <span className="size-2 rounded-[3px]" style={{ background: c, boxShadow: 'none' }} />
+      <span className="size-2 rounded-full" style={{ background: c, boxShadow: 'none' }} />
       {name || 'No platform'}
     </span>
   )
@@ -29,7 +29,7 @@ function PlatformChip({ name }: { name: string }): React.JSX.Element {
 function DiffPill({ d }: { d: Difficulty }): React.JSX.Element {
   const m = DIFF_META[d]
   return (
-    <span className="inline-flex h-5 items-center rounded-md px-1.5 text-[10.5px] font-semibold" style={{ color: m.color, background: `color-mix(in srgb, ${m.color} 13%, transparent)` }}>
+    <span className="inline-flex h-5 items-center rounded-full px-2 text-[10.5px] font-semibold" style={{ color: m.color, background: `color-mix(in srgb, ${m.color} 13%, transparent)` }}>
       {m.label}
     </span>
   )
@@ -37,7 +37,7 @@ function DiffPill({ d }: { d: Difficulty }): React.JSX.Element {
 
 function LabCard({ lab, onOpen }: { lab: Lab; onOpen: () => void }): React.JSX.Element {
   return (
-    <button onClick={onOpen} className="card group flex w-full cursor-pointer flex-col gap-2.5 p-3.5 text-left transition-all hover:-translate-y-0.5 hover:!border-line-strong">
+    <button onClick={onOpen} className="card group flex w-full cursor-pointer flex-col gap-2.5 rounded-[14px] p-3.5 text-left transition-all hover:-translate-y-0.5 hover:!border-line-strong">
       <div className="flex items-center justify-between gap-2">
         <PlatformChip name={lab.platform} />
         <DiffPill d={lab.difficulty} />
@@ -138,7 +138,7 @@ export default function Labs(): React.JSX.Element {
           {(['todo', 'doing', 'done'] as WorkStatus[]).map((st) => {
             const items = filtered.filter((l) => l.status === st)
             return (
-              <div key={st} className="flex flex-col rounded-2xl border border-line bg-panel/60 p-2.5">
+              <div key={st} className="flex flex-col rounded-[22px] border border-line bg-panel/60 p-2">
                 <div className="flex items-center gap-2 px-1.5 pt-1 pb-3">
                   <span className="size-2 rounded-full" style={{ background: STATUS_META[st].dot }} />
                   <span className="text-[13px] font-semibold">{STATUS_META[st].label}</span>
@@ -148,7 +148,7 @@ export default function Labs(): React.JSX.Element {
                   {items.map((l) => (
                     <LabCard key={l.id} lab={l} onOpen={() => setOpenId(l.id)} />
                   ))}
-                  {items.length === 0 && <div className="rounded-xl border border-dashed border-line py-8 text-center text-xs text-faint">Nothing here</div>}
+                  {items.length === 0 && <div className="rounded-[14px] border border-dashed border-line py-8 text-center text-xs text-faint">Nothing here</div>}
                 </div>
               </div>
             )

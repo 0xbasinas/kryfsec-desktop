@@ -43,7 +43,7 @@ export const AREA_COLORS = ['var(--c-periwinkle)', 'var(--c-sage)', 'var(--c-san
 
 export function AreaGlyph({ icon, color, size = 'md' }: { icon: AreaIcon; color: string; size?: 'sm' | 'md' | 'lg' }): React.JSX.Element {
   const I = AREA_ICONS[icon] ?? IconShield
-  const box = size === 'sm' ? 'size-6 rounded-md' : size === 'lg' ? 'size-11 rounded-xl' : 'size-8 rounded-lg'
+  const box = size === 'sm' ? 'size-6 rounded-[8px]' : size === 'lg' ? 'size-11 rounded-[14px]' : 'size-8 rounded-[10px]'
   const ic = size === 'sm' ? 14 : size === 'lg' ? 22 : 17
   return (
     <span

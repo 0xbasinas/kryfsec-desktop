@@ -4,6 +4,15 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
+  /* Corner radius scale (softer than Tailwind's defaults) */
+  --radius-xs: 4px;
+  --radius-sm: 5px;
+  --radius: 7px;
+  --radius-md: 8px;
+  --radius-lg: 11px;
+  --radius-xl: 13px;
+  --radius-2xl: 20px;
+  --radius-3xl: 24px;
   --font-sans: 'Inter', 'Segoe UI Variable Text', 'Segoe UI', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Cascadia Mono', 'Cascadia Code', Consolas, ui-monospace, monospace;
   --color-bg: var(--bg);
@@ -164,11 +173,13 @@ textarea,
   background: radial-gradient(600px circle at 0% 0%, var(--glow), transparent 60%);
 }
 
-.card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  box-shadow: var(--shadow);
+@layer components {
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+  }
 }
 
 @keyframes fade-up {
@@ -259,7 +270,7 @@ textarea,
 }
 .md pre {
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 12px;
 }
 .md input[type='checkbox'] {
   accent-color: var(--accent);

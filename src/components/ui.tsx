@@ -1,13 +1,17 @@
 import { forwardRef, type ButtonHTMLAttributes, type InputHTMLAttributes, type ReactNode, type SelectHTMLAttributes, type TextareaHTMLAttributes } from 'react'
+import * as T from '@radix-ui/react-tooltip'
 import { cn } from '@/lib/utils'
 
 type Variant = 'primary' | 'secondary' | 'ghost' | 'danger' | 'outline'
 type Size = 'sm' | 'md' | 'icon' | 'icon-sm'
 
 export const Button = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<HTMLButtonElement> & { variant?: Variant; size?: Size }>(
-  function Button({ className, variant = 'secondary', size = 'md', ...props }, ref) {
-    return (
+  function Button({ className, variant = 'secondary', size = 'md', title, ...props }, ref) {
+    const iconOnly = size === 'icon' || size === 'icon-sm'
+    const btn = (
       <button
+        title={iconOnly ? undefined : title}
+        aria-label={props['aria-label'] ?? (iconOnly ? title : undefined)}
         ref={ref}
         className={cn(
           'inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 rounded-lg text-[13px] font-medium whitespace-nowrap transition-all duration-150 select-none outline-none focus-visible:ring-2 focus-visible:ring-accent/50 disabled:pointer-events-none disabled:opacity-40 active:scale-[0.98] [&_svg]:size-4 [&_svg]:shrink-0',
@@ -25,8 +29,24 @@ export const Button = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<HTMLBut
         {...props}
       />
     )
+    if (!iconOnly || !title) return btn
+    return <Tip label={title}>{btn}</Tip>
   }
 )
+
+/** Small tooltip for icon-only buttons. */
+export function Tip({ label, children, side = 'top' }: { label: ReactNode; children: React.ReactElement; side?: 'top' | 'bottom' | 'left' | 'right' }): React.JSX.Element {
+  return (
+    <T.Root delayDuration={350}>
+      <T.Trigger asChild>{children}</T.Trigger>
+      <T.Portal>
+        <T.Content side={side} sideOffset={6} className="z-[60] rounded-[12px] border border-line-strong bg-card px-2 py-1 text-[11.5px] font-medium text-fg shadow-lg animate-fade-in">
+          {label}
+        </T.Content>
+      </T.Portal>
+    </T.Root>
+  )
+}
 
 export function Card({ className, children, ...props }: React.HTMLAttributes<HTMLDivElement>): React.JSX.Element {
   return (
@@ -98,7 +118,7 @@ const toneCls: Record<Tone, string> = {
 
 export function Badge({ tone = 'default', className, children, dot }: { tone?: Tone; className?: string; children: ReactNode; dot?: boolean }): React.JSX.Element {
   return (
-    <span className={cn('inline-flex h-5 shrink-0 items-center gap-1.5 rounded-md border px-1.5 text-[11px] font-medium whitespace-nowrap', toneCls[tone], className)}>
+    <span className={cn('inline-flex h-5 shrink-0 items-center gap-1.5 rounded-full border px-2 text-[11px] font-medium whitespace-nowrap', toneCls[tone], className)}>
       {dot && <span className="size-1.5 rounded-full bg-current" />}
       {children}
     </span>
@@ -146,13 +166,13 @@ export function Ring({ value, size = 44, stroke = 4, color, children }: { value:
 
 export function Segmented<T extends string>({ value, onChange, options, size = 'md' }: { value: T; onChange: (v: T) => void; options: { value: T; label: ReactNode; count?: number }[]; size?: 'sm' | 'md' }): React.JSX.Element {
   return (
-    <div className="inline-flex rounded-lg border border-line bg-card-2/60 p-0.5">
+    <div className="inline-flex rounded-full border border-line bg-card-2/60 p-0.5">
       {options.map((o) => (
         <button
           key={o.value}
           onClick={() => onChange(o.value)}
           className={cn(
-            'inline-flex cursor-pointer items-center gap-1.5 rounded-md font-medium transition-all [&_svg]:size-3.5',
+            'inline-flex cursor-pointer items-center gap-1.5 rounded-full font-medium transition-all [&_svg]:size-3.5',
             size === 'md' ? 'h-7 px-3 text-xs' : 'h-6 px-2 text-[11px]',
             value === o.value ? 'bg-card text-fg shadow-sm ring-1 ring-line-strong' : 'text-muted hover:text-fg'
           )}
@@ -180,14 +200,14 @@ export function EmptyState({ icon, title, text, action }: { icon: ReactNode; tit
 }
 
 export function Kbd({ children }: { children: ReactNode }): React.JSX.Element {
-  return <kbd className="inline-flex h-5 min-w-5 items-center justify-center rounded border border-line-strong bg-card-2 px-1 font-mono text-[10px] text-muted">{children}</kbd>
+  return <kbd className="inline-flex h-5 min-w-5 items-center justify-center rounded-md border border-line-strong bg-card-2 px-1 font-mono text-[10px] text-muted">{children}</kbd>
 }
 
 export function PageHeader({ title, sub, actions, icon }: { title: string; sub?: string; actions?: ReactNode; icon?: ReactNode }): React.JSX.Element {
   return (
     <div className="flex items-end justify-between gap-4 pb-6">
       <div className="flex items-center gap-3">
-        {icon && <div className="grid size-10 place-items-center rounded-xl border border-line bg-card text-accent shadow-sm [&_svg]:size-5">{icon}</div>}
+        {icon && <div className="grid size-10 place-items-center rounded-[12px] border border-line bg-card text-accent shadow-sm [&_svg]:size-5">{icon}</div>}
         <div>
           <h1 className="text-[22px] font-semibold tracking-tight">{title}</h1>
           {sub && <p className="mt-0.5 text-[13px] text-muted">{sub}</p>}

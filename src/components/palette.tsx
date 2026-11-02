@@ -12,7 +12,7 @@ function Item({ value, onSelect, icon, children, meta }: { value: string; onSele
     <Command.Item
       value={value}
       onSelect={onSelect}
-      className="flex h-10 cursor-pointer items-center gap-3 rounded-lg px-3 text-[13px] text-muted data-[selected=true]:bg-card-2 data-[selected=true]:text-fg [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-faint data-[selected=true]:[&_svg]:text-accent"
+      className="flex h-10 cursor-pointer items-center gap-3 rounded-[10px] px-3 text-[13px] text-muted data-[selected=true]:bg-card-2 data-[selected=true]:text-fg [&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-faint data-[selected=true]:[&_svg]:text-accent"
     >
       {icon}
       <span className="min-w-0 flex-1 truncate">{children}</span>
@@ -40,7 +40,7 @@ export function CommandPalette(): React.JSX.Element {
         <D.Overlay className="fixed inset-0 z-40 bg-black/50 backdrop-blur-[2px] animate-fade-in" />
         <D.Content aria-describedby={undefined} className="fixed top-[14%] left-1/2 z-50 w-[620px] max-w-[92vw] -translate-x-1/2 outline-none animate-fade-up">
           <D.Title className="sr-only">Command palette</D.Title>
-          <Command loop className="card overflow-hidden !rounded-2xl !shadow-2xl">
+          <Command loop className="card overflow-hidden !rounded-[16px] !shadow-2xl">
             <div className="flex items-center gap-3 border-b border-line px-4">
               <svg className="size-4 text-faint" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <circle cx="11" cy="11" r="7" />

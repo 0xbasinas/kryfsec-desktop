@@ -11,9 +11,9 @@ export function TagInput({ value, onChange, placeholder }: { value: string[]; on
   return (
     <div className="flex min-h-9 flex-wrap items-center gap-1.5 rounded-lg border border-line bg-card-2 px-2 py-1.5 focus-within:border-accent/60 focus-within:ring-3 focus-within:ring-accent/15">
       {value.map((t) => (
-        <span key={t} className="inline-flex h-6 items-center gap-1 rounded-md bg-accent-soft pr-1 pl-2 font-mono text-[11px] text-accent">
+        <span key={t} className="inline-flex h-6 items-center gap-1 rounded-full bg-accent-soft pr-1 pl-2.5 font-mono text-[11px] text-accent">
           #{t}
-          <button className="cursor-pointer rounded p-0.5 hover:bg-accent/20" onClick={() => onChange(value.filter((x) => x !== t))} aria-label={`Remove ${t}`}>
+          <button className="cursor-pointer rounded-full p-0.5 hover:bg-accent/20" onClick={() => onChange(value.filter((x) => x !== t))} aria-label={`Remove ${t}`}>
             <IconX size={11} />
           </button>
         </span>

@@ -110,7 +110,7 @@ export function MarkdownEditor({ value, onChange, placeholder, minHeight = 320, 
   ]
 
   return (
-    <div className="flex flex-col overflow-hidden rounded-xl border border-line bg-card-2/40 focus-within:border-accent/40">
+    <div className="flex flex-col overflow-hidden rounded-[16px] border border-line bg-card-2/40 focus-within:border-accent/40">
       <div className="flex items-center gap-0.5 border-b border-line px-2 py-1.5">
         {tools.map((t) => (
           <button

@@ -853,3 +853,7 @@ Copyright lines:
 - vfile-message: Copyright (c) Titus Wormer <tituswormer@gmail.com>
 - zustand: Copyright (c) 2019 Paul Henschel
 - zwitch: Copyright (c) 2016 Titus Wormer <tituswormer@gmail.com>
+
+## Development-only tools (not shipped in the app)
+
+- playwright-core 1.64.1 — Apache-2.0 — Copyright Microsoft Corporation. Used only by `scripts/component-shots.cjs` to take component screenshots. https://github.com/microsoft/playwright
