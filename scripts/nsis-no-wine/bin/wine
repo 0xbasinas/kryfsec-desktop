@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+// Tiny "wine" stand-in for building the NSIS installer on Linux without Wine.
+// electron-builder runs the intermediate installer under Wine only to get the
+// uninstaller out of it. Its own UninstallerReader (the path it uses on macOS)
+// can extract the uninstaller directly, so we call that instead.
+const path = require('node:path')
+const installer = process.argv[2]
+const out = path.join(path.dirname(installer), `${path.basename(installer, 'exe')}__uninstaller.exe`)
+const lib = require.resolve('app-builder-lib/out/targets/nsis/nsisUtil.js', { paths: [process.cwd()] })
+require(lib)
+  .UninstallerReader.exec(installer, out)
+  .then(() => console.log('uninstaller extracted:', out))
+  .catch((e) => { console.error(e); process.exit(1) })

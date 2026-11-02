@@ -1,0 +1,34 @@
+appId: io.github.0xbasinas.cyberjourney
+productName: CyberJourney
+copyright: Copyright © 2026 0xbasinas
+directories:
+  output: release
+  buildResources: build
+files:
+  - out/**/*
+  - resources/**/*
+  - package.json
+asar: true
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+    - target: zip
+      arch: [x64]
+  icon: build/icon.ico
+  artifactName: ${productName}-${version}-win-${arch}.${ext}
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: CyberJourney
+  artifactName: ${productName}-Setup-${version}-x64.${ext}
+linux:
+  target: [AppImage]
+  category: Education
+  icon: build/icon.png
+  artifactName: ${productName}-${version}-${arch}.${ext}
+mac:
+  target: [dmg]
