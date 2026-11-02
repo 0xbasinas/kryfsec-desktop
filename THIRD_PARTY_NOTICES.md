@@ -857,3 +857,31 @@ Copyright lines:
 ## Development-only tools (not shipped in the app)
 
 - playwright-core 1.64.1 — Apache-2.0 — Copyright Microsoft Corporation. Used only by `scripts/component-shots.cjs` to take component screenshots. https://github.com/microsoft/playwright
+
+## Mobile app (`mobile/`)
+
+The Expo companion app reuses CyberJourney's own code (data model, sample data,
+stats and palette from the desktop app). The Markdown renderer, charts, heatmap
+and tab bar were written for this project. No third-party source code is copied.
+The project was started from the `create-expo-app` default template
+(MIT, Copyright (c) 2015-present 650 Industries, Inc. (aka Expo)); the template
+screens and images were removed.
+
+Main packages used by the mobile app:
+
+| Package | Version | License |
+|---|---|---|
+| [expo](https://github.com/expo/expo) (SDK 58) and expo-* modules | 58.x | MIT |
+| [expo-router](https://github.com/expo/expo/tree/main/packages/expo-router) | 58.x | MIT |
+| [react-native](https://github.com/facebook/react-native) | 0.88.1 | MIT |
+| [react](https://github.com/facebook/react) | 19.3.0 | MIT |
+| [react-native-svg](https://github.com/software-mansion/react-native-svg) | 15.16.0 | MIT |
+| [react-native-safe-area-context](https://github.com/AppAndFlow/react-native-safe-area-context) | 5.x | MIT |
+| [react-native-screens](https://github.com/software-mansion/react-native-screens) | 4.x | MIT |
+| [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated) / react-native-worklets | 4.x / 0.13 | MIT |
+| [react-native-gesture-handler](https://github.com/software-mansion/react-native-gesture-handler) | 3.x | MIT |
+| [@react-native-async-storage/async-storage](https://github.com/react-native-async-storage/async-storage) | 2.2.0 | MIT |
+| [@tabler/icons-react-native](https://github.com/tabler/tabler-icons) | 3.50.0 | MIT |
+| [zustand](https://github.com/pmndrs/zustand) | 5.0.16 | MIT |
+| [date-fns](https://github.com/date-fns/date-fns) | 4.4.0 | MIT |
+| [react-native-web](https://github.com/necolas/react-native-web) (web preview only) | 0.21.x | MIT |
