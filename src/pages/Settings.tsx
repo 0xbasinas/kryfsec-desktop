@@ -79,12 +79,12 @@ export default function Settings(): React.JSX.Element {
           <div className="grid grid-cols-2 gap-4 px-5 pb-4">
             {(['dark', 'light'] as const).map((t) => (
               <button key={t} onClick={() => s.setSettings({ theme: t })} className={cn('cursor-pointer overflow-hidden rounded-xl border-2 text-left transition-all', s.settings.theme === t ? 'border-accent' : 'border-line hover:border-line-strong')}>
-                <div className={cn('flex h-24 gap-2 p-3', t === 'dark' ? 'bg-[#0a0e13]' : 'bg-[#f5f6f8]')}>
-                  <div className={cn('w-12 rounded-md', t === 'dark' ? 'bg-[#0d1218] ring-1 ring-white/5' : 'bg-white ring-1 ring-black/5')} />
+                <div className={cn('flex h-24 gap-2 p-3', t === 'dark' ? 'bg-[#111113]' : 'bg-[#f9f9fb]')}>
+                  <div className={cn('w-12 rounded-md', t === 'dark' ? 'bg-[#18191b] ring-1 ring-white/5' : 'bg-white ring-1 ring-black/5')} />
                   <div className="flex flex-1 flex-col gap-2">
-                    <div className={cn('h-8 rounded-md', t === 'dark' ? 'bg-[#111820] ring-1 ring-white/5' : 'bg-white ring-1 ring-black/5')} />
+                    <div className={cn('h-8 rounded-md', t === 'dark' ? 'bg-[#18191b] ring-1 ring-white/5' : 'bg-white ring-1 ring-black/5')} />
                     <div className="flex gap-2">
-                      <div className={cn('h-8 flex-1 rounded-md', t === 'dark' ? 'bg-[#111820] ring-1 ring-white/5' : 'bg-white ring-1 ring-black/5')} />
+                      <div className={cn('h-8 flex-1 rounded-md', t === 'dark' ? 'bg-[#18191b] ring-1 ring-white/5' : 'bg-white ring-1 ring-black/5')} />
                       <div className="h-8 w-8 rounded-md bg-accent/70" />
                     </div>
                   </div>
@@ -100,9 +100,9 @@ export default function Settings(): React.JSX.Element {
             <span className="text-xs font-medium text-muted">Accent color</span>
             {(
               [
-                ['emerald', '#34d399'],
-                ['cyan', '#22d3ee'],
-                ['violet', '#a78bfa']
+                ['jade', 'var(--c-jade)'],
+                ['cyan', 'var(--c-cyan)'],
+                ['iris', 'var(--c-iris)']
               ] as const
             ).map(([a, c]) => (
               <button key={a} onClick={() => s.setSettings({ accent: a })} title={a} className={cn('size-7 cursor-pointer rounded-full ring-offset-2 ring-offset-card transition-all', s.settings.accent === a && 'ring-2')} style={{ background: c, ['--tw-ring-color' as string]: c }} />

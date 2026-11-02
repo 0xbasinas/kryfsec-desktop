@@ -29,6 +29,15 @@ software below. No third-party fonts, images or icon files are bundled: the app
 icon and logo were drawn for this project, and the UI uses fonts already
 installed on your computer (Inter / Segoe UI, JetBrains Mono / Cascadia Mono / Consolas).
 
+## Color palette
+
+The UI colors are taken from [Radix Colors](https://github.com/radix-ui/colors) v3
+(MIT, Copyright (c) 2021-2022 Modulz, Copyright (c) 2022-Present WorkOS): the Slate
+gray scale for surfaces and text, and Jade, Cyan, Iris, Blue, Grass, Amber, Red,
+Orange, Pink, Violet, Teal, Sky and Plum for accents, status and charts. A few
+light-theme text steps were darkened slightly to reach WCAG AA (4.5:1). The
+values are copied into \`src/index.css\`; the package itself is not bundled.
+
 ## Runtime
 
 | Package | Version | License |

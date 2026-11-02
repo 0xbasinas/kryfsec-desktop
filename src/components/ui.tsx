@@ -11,7 +11,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<HTMLBut
         ref={ref}
         className={cn(
           'inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 rounded-lg text-[13px] font-medium whitespace-nowrap transition-all duration-150 select-none outline-none focus-visible:ring-2 focus-visible:ring-accent/50 disabled:pointer-events-none disabled:opacity-40 active:scale-[0.98] [&_svg]:size-4 [&_svg]:shrink-0',
-          variant === 'primary' && 'bg-accent text-accent-fg shadow-[0_0_0_1px_color-mix(in_srgb,var(--accent)_60%,transparent),0_6px_20px_-6px_var(--accent)] hover:brightness-110',
+          variant === 'primary' && 'bg-accent text-accent-fg shadow-[0_0_0_1px_color-mix(in_srgb,var(--accent)_60%,transparent),0_4px_14px_-6px_color-mix(in_srgb,var(--accent)_55%,transparent)] hover:brightness-110',
           variant === 'secondary' && 'border border-line bg-card-2 text-fg hover:border-line-strong hover:bg-[color-mix(in_srgb,var(--card-2)_80%,var(--fg)_6%)]',
           variant === 'outline' && 'border border-line-strong bg-transparent text-fg hover:bg-card-2',
           variant === 'ghost' && 'text-muted hover:bg-card-2 hover:text-fg',
@@ -88,11 +88,11 @@ type Tone = 'default' | 'accent' | 'success' | 'warn' | 'danger' | 'info' | 'mut
 const toneCls: Record<Tone, string> = {
   default: 'border-line-strong bg-card-2 text-fg',
   accent: 'border-accent/25 bg-accent-soft text-accent',
-  success: 'border-emerald-500/25 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400',
-  warn: 'border-amber-500/25 bg-amber-500/10 text-amber-600 dark:text-amber-400',
-  danger: 'border-red-500/25 bg-red-500/10 text-red-600 dark:text-red-400',
-  info: 'border-sky-500/25 bg-sky-500/10 text-sky-600 dark:text-sky-400',
-  violet: 'border-violet-500/25 bg-violet-500/10 text-violet-600 dark:text-violet-400',
+  success: 'border-success/25 bg-success/10 text-success',
+  warn: 'border-warn/25 bg-warn/10 text-warn',
+  danger: 'border-danger/25 bg-danger/10 text-danger',
+  info: 'border-info/25 bg-info/10 text-info',
+  violet: 'border-[color-mix(in_srgb,var(--c-violet)_25%,transparent)] bg-[color-mix(in_srgb,var(--c-violet)_10%,transparent)] text-[var(--c-violet)]',
   muted: 'border-line bg-transparent text-muted'
 }
 

@@ -62,10 +62,18 @@ export function normalize(raw: unknown): AppData | null {
   const r = raw as Partial<AppData>
   const arr = <T,>(v: unknown): T[] => (Array.isArray(v) ? (v as T[]) : [])
   if (!Array.isArray(r.areas) && !Array.isArray(r.logs)) return null
+  const settings = { ...DEFAULT_SETTINGS, ...(r.settings ?? {}) }
+  // v0.1 used Tailwind accents/hex colors; map them onto the Radix palette.
+  const oldAccent = settings.accent as string
+  if (oldAccent === 'emerald') settings.accent = 'jade'
+  if (oldAccent === 'violet') settings.accent = 'iris'
+  if (!['jade', 'cyan', 'iris'].includes(settings.accent)) settings.accent = 'jade'
+  const OLD: Record<string, string> = { '#22d3ee': 'cyan', '#34d399': 'teal', '#facc15': 'amber', '#fb923c': 'orange', '#f87171': 'red', '#f472b6': 'pink', '#a78bfa': 'violet', '#60a5fa': 'blue' }
+  const areas = arr<AppData['areas'][number]>(r.areas).map((a) => (OLD[a.color?.toLowerCase()] ? { ...a, color: `var(--c-${OLD[a.color.toLowerCase()]})` } : a))
   return {
     version: 1,
-    settings: { ...DEFAULT_SETTINGS, ...(r.settings ?? {}) },
-    areas: arr(r.areas),
+    settings,
+    areas,
     topics: arr(r.topics),
     logs: arr(r.logs),
     resources: arr(r.resources),

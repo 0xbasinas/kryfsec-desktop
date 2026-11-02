@@ -101,7 +101,7 @@ export interface Settings {
   theme: 'dark' | 'light'
   name: string
   weeklyGoalHours: number
-  accent: 'emerald' | 'cyan' | 'violet'
+  accent: 'jade' | 'cyan' | 'iris'
 }
 
 export interface AppData {

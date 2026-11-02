@@ -31,15 +31,15 @@ export const AREA_ICONS: Record<AreaIcon, Icon> = {
 }
 
 export const KIND_META: Record<ResourceKind, { label: string; icon: Icon; color: string }> = {
-  course: { label: 'Course', icon: IconSchool, color: '#34d399' },
-  book: { label: 'Book', icon: IconBook, color: '#facc15' },
-  video: { label: 'Video', icon: IconVideo, color: '#f87171' },
-  platform: { label: 'Platform', icon: IconDeviceGamepad2, color: '#22d3ee' },
-  article: { label: 'Article', icon: IconArticle, color: '#a78bfa' },
-  tool: { label: 'Tool', icon: IconTool, color: '#fb923c' }
+  course: { label: 'Course', icon: IconSchool, color: 'var(--c-jade)' },
+  book: { label: 'Book', icon: IconBook, color: 'var(--c-amber)' },
+  video: { label: 'Video', icon: IconVideo, color: 'var(--c-red)' },
+  platform: { label: 'Platform', icon: IconDeviceGamepad2, color: 'var(--c-cyan)' },
+  article: { label: 'Article', icon: IconArticle, color: 'var(--c-violet)' },
+  tool: { label: 'Tool', icon: IconTool, color: 'var(--c-orange)' }
 }
 
-export const AREA_COLORS = ['#22d3ee', '#34d399', '#facc15', '#fb923c', '#f87171', '#f472b6', '#a78bfa', '#60a5fa']
+export const AREA_COLORS = ['var(--c-teal)', 'var(--c-plum)', 'var(--c-cyan)', 'var(--c-jade)', 'var(--c-amber)', 'var(--c-orange)', 'var(--c-red)', 'var(--c-pink)', 'var(--c-violet)', 'var(--c-blue)', 'var(--c-grass)', 'var(--c-iris)']
 
 export function AreaGlyph({ icon, color, size = 'md' }: { icon: AreaIcon; color: string; size?: 'sm' | 'md' | 'lg' }): React.JSX.Element {
   const I = AREA_ICONS[icon] ?? IconShield

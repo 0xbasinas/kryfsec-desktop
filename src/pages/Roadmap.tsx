@@ -11,7 +11,7 @@ import { confirm, Modal } from '@/components/dialog'
 
 const STATUS: Record<TopicStatus, { label: string; icon: typeof IconCircleDashed; cls: string }> = {
   todo: { label: 'Not started', icon: IconCircleDashed, cls: 'text-faint' },
-  learning: { label: 'Learning', icon: IconCircleHalf2, cls: 'text-sky-500 dark:text-sky-400' },
+  learning: { label: 'Learning', icon: IconCircleHalf2, cls: 'text-info' },
   done: { label: 'Done', icon: IconCircleCheckFilled, cls: 'text-accent' }
 }
 const NEXT: Record<TopicStatus, TopicStatus> = { todo: 'learning', learning: 'done', done: 'todo' }

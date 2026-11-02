@@ -16,7 +16,7 @@ Everything stays on your computer.
 - **Goals** – goals with deadlines and checklists.
 - **Search everywhere** – press `Ctrl+K` for the command palette. `Ctrl+J` starts a new journal entry.
 - **Your data** – export / import JSON backups, export everything as Markdown, remove the sample data in one click.
-- Dark and light theme, three accent colours.
+- Dark and light theme, three accent colours (Jade, Cyan, Iris). Colors come from [Radix Colors](https://www.radix-ui.com/colors) and all text passes WCAG AA contrast.
 
 ## Install
 

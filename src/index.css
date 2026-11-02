@@ -19,80 +19,94 @@
   --color-accent-2: var(--accent-2);
   --color-accent-fg: var(--accent-fg);
   --color-accent-soft: var(--accent-soft);
+  --color-success: var(--success);
   --color-danger: var(--danger);
   --color-warn: var(--warn);
   --color-info: var(--info);
 }
 
 :root {
-  --bg: #f5f6f8;
-  --panel: #fbfbfc;
+  /* Palette: Radix Colors (MIT) - Slate neutrals + Jade accent.
+     Text-safe steps (11 in light, 10/11 in dark), nudged so every one
+     reaches WCAG AA 4.5:1 on all card surfaces. See THIRD_PARTY_NOTICES.md. */
+  --c-jade: #1d7960;
+  --c-cyan: #0f758f;
+  --c-blue: #0c6dc2;
+  --c-iris: #5753c6;
+  --c-violet: #6550b9;
+  --c-pink: #c2298a;
+  --c-red: #cc2c31;
+  --c-orange: #ba4700;
+  --c-amber: #9c5b00;
+  --c-grass: #297a39;
+  --c-teal: #007868;
+  --c-sky: #00749e;
+  --c-plum: #953ea3;
+  --bg: #f9f9fb;
+  --panel: #fcfcfd;
   --card: #ffffff;
-  --card-2: #f1f3f6;
-  --border: rgba(15, 23, 42, 0.08);
-  --border-strong: rgba(15, 23, 42, 0.14);
-  --fg: #0f172a;
-  --muted: #5b6576;
-  --faint: #98a2b3;
-  --accent: #059669;
-  --accent-2: #0891b2;
+  --card-2: #f0f0f3;
+  --border: #e8e8ec;
+  --border-strong: #d9d9e0;
+  --fg: #1c2024;
+  --muted: #60646c;
+  --faint: #696c74;
+  --accent: var(--c-jade);
+  --accent-2: var(--c-blue);
   --accent-fg: #ffffff;
-  --accent-soft: rgba(5, 150, 105, 0.1);
-  --danger: #dc2626;
-  --warn: #d97706;
-  --info: #2563eb;
-  --glow: rgba(5, 150, 105, 0.08);
-  --shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 16px rgba(15, 23, 42, 0.04);
+  --accent-soft: color-mix(in srgb, var(--accent) 10%, transparent);
+  --success: var(--c-grass);
+  --danger: var(--c-red);
+  --warn: var(--c-amber);
+  --info: var(--c-blue);
+  --glow: color-mix(in srgb, var(--accent) 7%, transparent);
+  --ring: color-mix(in srgb, var(--accent) 55%, transparent);
+  --shadow: 0 1px 2px rgba(28, 32, 36, 0.04), 0 4px 16px rgba(28, 32, 36, 0.05);
   color-scheme: light;
 }
 
 .dark {
-  --bg: #0a0e13;
-  --panel: #0d1218;
-  --card: #111820;
-  --card-2: #172029;
-  --border: rgba(255, 255, 255, 0.065);
-  --border-strong: rgba(255, 255, 255, 0.12);
-  --fg: #e6edf3;
-  --muted: #8b96a5;
-  --faint: #566070;
-  --accent: #34d399;
-  --accent-2: #22d3ee;
-  --accent-fg: #03140d;
-  --accent-soft: rgba(52, 211, 153, 0.1);
-  --danger: #f87171;
-  --warn: #fbbf24;
-  --info: #60a5fa;
-  --glow: rgba(52, 211, 153, 0.07);
-  --shadow: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 8px 24px rgba(0, 0, 0, 0.25);
+  --c-jade: #27b08b;
+  --c-cyan: #23afd0;
+  --c-blue: #3b9eff;
+  --c-iris: #8f89f0;
+  --c-violet: #9e8cfc;
+  --c-pink: #df57ab;
+  --c-red: #ec5d5e;
+  --c-orange: #ff801f;
+  --c-amber: #ffc53d;
+  --c-grass: #53b365;
+  --c-teal: #0eb39e;
+  --c-sky: #75c7f0;
+  --c-plum: #e796f3;
+  --bg: #111113;
+  --panel: #131416;
+  --card: #18191b;
+  --card-2: #212225;
+  --border: #272a2d;
+  --border-strong: #363a3f;
+  --fg: #edeef0;
+  --muted: #b0b4ba;
+  --faint: #878b94;
+  --accent-fg: #0d1512;
+  --glow: color-mix(in srgb, var(--accent) 6%, transparent);
+  --shadow: 0 1px 0 rgba(255, 255, 255, 0.025) inset, 0 8px 24px rgba(0, 0, 0, 0.3);
   color-scheme: dark;
 }
 
 [data-accent='cyan'] {
-  --accent: #0891b2;
-  --accent-2: #2563eb;
-  --accent-soft: rgba(8, 145, 178, 0.1);
-  --glow: rgba(8, 145, 178, 0.08);
+  --accent: var(--c-cyan);
+  --accent-2: var(--c-iris);
 }
 .dark[data-accent='cyan'] {
-  --accent: #22d3ee;
-  --accent-2: #60a5fa;
-  --accent-fg: #021418;
-  --accent-soft: rgba(34, 211, 238, 0.1);
-  --glow: rgba(34, 211, 238, 0.07);
+  --accent-fg: #0b161a;
 }
-[data-accent='violet'] {
-  --accent: #7c3aed;
-  --accent-2: #db2777;
-  --accent-soft: rgba(124, 58, 237, 0.1);
-  --glow: rgba(124, 58, 237, 0.08);
+[data-accent='iris'] {
+  --accent: var(--c-iris);
+  --accent-2: var(--c-pink);
 }
-.dark[data-accent='violet'] {
-  --accent: #a78bfa;
-  --accent-2: #f472b6;
-  --accent-fg: #12062b;
-  --accent-soft: rgba(167, 139, 250, 0.12);
-  --glow: rgba(167, 139, 250, 0.08);
+.dark[data-accent='iris'] {
+  --accent-fg: #13131e;
 }
 
 html,

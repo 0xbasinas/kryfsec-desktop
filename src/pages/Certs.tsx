@@ -155,7 +155,7 @@ export default function Certs(): React.JSX.Element {
             const passed = c.status === 'passed'
             const stepIdx = STEPS.findIndex((s) => s.value === c.status)
             const days = c.targetDate ? daysUntil(c.targetDate) : null
-            const color = passed ? '#facc15' : 'var(--accent)'
+            const color = passed ? 'var(--c-amber)' : 'var(--accent)'
             return (
               <Card key={c.id} className="group relative flex flex-col overflow-hidden">
                 <div className="pointer-events-none absolute -top-16 -right-16 size-44 rounded-full opacity-15 blur-3xl" style={{ background: color }} />
@@ -176,7 +176,7 @@ export default function Certs(): React.JSX.Element {
                     </div>
                   </div>
                   <Ring value={passed ? 100 : c.progress} size={64} stroke={5} color={color}>
-                    {passed ? <IconTrophy size={22} className="text-[#facc15]" /> : <span className="text-sm">{c.progress}%</span>}
+                    {passed ? <IconTrophy size={22} className="text-[var(--c-amber)]" /> : <span className="text-sm">{c.progress}%</span>}
                   </Ring>
                 </div>
                 <div className="relative px-5">

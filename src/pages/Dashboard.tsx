@@ -118,10 +118,10 @@ export default function Dashboard(): React.JSX.Element {
 
       {/* Stats */}
       <div className="stagger mb-5 grid grid-cols-4 gap-4">
-        <Stat icon={<IconFlame />} label="Streak" value={<>{st.current}<span className="ml-1 text-sm font-medium text-muted">days</span></>} sub={`Best: ${st.best} days`} accent="#fb923c">
+        <Stat icon={<IconFlame />} label="Streak" value={<>{st.current}<span className="ml-1 text-sm font-medium text-muted">days</span></>} sub={`Best: ${st.best} days`} accent="var(--c-orange)">
           <div className="flex gap-1 pb-1">
             {last7.map((on, i) => (
-              <span key={i} title={on ? 'Studied' : 'No study'} className={cn('h-6 w-1.5 rounded-full', on ? 'bg-[#fb923c] shadow-[0_0_8px_#fb923c80]' : 'bg-card-2')} />
+              <span key={i} title={on ? 'Studied' : 'No study'} className={cn('h-6 w-1.5 rounded-full', on ? 'bg-[var(--c-orange)]' : 'bg-card-2')} />
             ))}
           </div>
         </Stat>
@@ -135,11 +135,11 @@ export default function Dashboard(): React.JSX.Element {
             {data.topics.length ? Math.round((topicsDone / data.topics.length) * 100) : 0}%
           </Ring>
         </Stat>
-        <Stat icon={<IconTrophy />} label="Labs solved" value={labsDone} sub={`${labsMonth} this month · ${data.labs.filter((l) => l.status === 'doing').length} in progress`} accent="#a78bfa">
+        <Stat icon={<IconTrophy />} label="Labs solved" value={labsDone} sub={`${labsMonth} this month · ${data.labs.filter((l) => l.status === 'doing').length} in progress`} accent="var(--c-violet)">
           <div className="flex items-end gap-[3px] pb-1">
             {['easy', 'medium', 'hard', 'insane'].map((d, i) => {
               const n = data.labs.filter((l) => l.status === 'done' && l.difficulty === d).length
-              return <span key={d} title={`${d}: ${n}`} className="w-2 rounded-sm" style={{ height: 6 + Math.min(n, 6) * 4, background: ['#34d399', '#facc15', '#fb923c', '#f87171'][i], opacity: n ? 1 : 0.2 }} />
+              return <span key={d} title={`${d}: ${n}`} className="w-2 rounded-sm" style={{ height: 6 + Math.min(n, 6) * 4, background: ['var(--c-grass)', 'var(--c-amber)', 'var(--c-orange)', 'var(--c-red)'][i], opacity: n ? 1 : 0.2 }} />
             })}
           </div>
         </Stat>
@@ -200,7 +200,7 @@ export default function Dashboard(): React.JSX.Element {
                         key={c.date}
                         title={`${fmtDate(c.date)} · ${c.minutes} min`}
                         className={cn('aspect-square w-full rounded-[4px] transition-transform hover:scale-125', c.future && 'opacity-0')}
-                        style={{ background: lvl === 0 ? 'var(--card-2)' : `color-mix(in srgb, var(--accent) ${[0, 30, 55, 78, 100][lvl]}%, var(--card-2))`, boxShadow: lvl === 4 ? '0 0 10px color-mix(in srgb, var(--accent) 45%, transparent)' : undefined }}
+                        style={{ background: lvl === 0 ? 'var(--card-2)' : `color-mix(in srgb, var(--accent) ${[0, 30, 55, 78, 100][lvl]}%, var(--card-2))`, boxShadow: lvl === 4 ? 'inset 0 0 0 1px color-mix(in srgb, var(--fg) 12%, transparent)' : undefined }}
                       />
                     )
                   })}
@@ -224,7 +224,7 @@ export default function Dashboard(): React.JSX.Element {
               const due = dueLabel(u.date)
               return (
                 <button key={u.id} onClick={() => go(u.kind === 'goal' ? 'goals' : 'certs', u.id)} className="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2.5 text-left transition-colors hover:bg-card-2">
-                  <span className={cn('grid size-8 shrink-0 place-items-center rounded-lg [&_svg]:size-4', u.kind === 'goal' ? 'bg-accent-soft text-accent' : 'bg-violet-500/10 text-violet-500 dark:text-violet-400')}>
+                  <span className={cn('grid size-8 shrink-0 place-items-center rounded-lg [&_svg]:size-4', u.kind === 'goal' ? 'bg-accent-soft text-accent' : 'bg-[color-mix(in_srgb,var(--c-violet)_12%,transparent)] text-[var(--c-violet)]')}>
                     {u.kind === 'goal' ? <IconTarget /> : <IconCertificate />}
                   </span>
                   <div className="min-w-0 flex-1">
@@ -272,7 +272,7 @@ export default function Dashboard(): React.JSX.Element {
             <div className="absolute top-2 bottom-6 left-[29px] w-px bg-line" />
             {recent.map((r) => (
               <button key={r.id + r.kind} onClick={() => go(r.kind === 'log' ? 'journal' : r.kind === 'lab' ? 'labs' : 'goals', r.id)} className="relative flex w-full cursor-pointer items-start gap-3 rounded-lg py-2 text-left hover:opacity-80">
-                <span className={cn('relative z-10 mt-0.5 grid size-[18px] shrink-0 place-items-center rounded-full border-2 border-card [&_svg]:size-2.5', r.kind === 'log' ? 'bg-accent text-accent-fg' : r.kind === 'lab' ? 'bg-violet-400 text-white' : 'bg-amber-400 text-black')}>
+                <span className={cn('relative z-10 mt-0.5 grid size-[18px] shrink-0 place-items-center rounded-full border-2 border-card [&_svg]:size-2.5', r.kind === 'log' ? 'bg-accent text-accent-fg' : r.kind === 'lab' ? 'bg-[var(--c-violet)] text-card' : 'bg-[var(--c-amber)] text-card')}>
                   {r.kind === 'log' ? <IconNotebook /> : r.kind === 'lab' ? <IconFlag3 /> : <IconCircleCheck />}
                 </span>
                 <div className="min-w-0 flex-1">

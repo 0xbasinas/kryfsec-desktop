@@ -12,7 +12,7 @@ import { TagInput } from '@/components/tag-input'
 
 const STATUS_META: Record<WorkStatus, { label: string; tone: 'muted' | 'info' | 'accent'; dot: string }> = {
   todo: { label: 'To do', tone: 'muted', dot: 'var(--faint)' },
-  doing: { label: 'In progress', tone: 'info', dot: '#38bdf8' },
+  doing: { label: 'In progress', tone: 'info', dot: 'var(--c-sky)' },
   done: { label: 'Solved', tone: 'accent', dot: 'var(--accent)' }
 }
 
@@ -20,7 +20,7 @@ function PlatformChip({ name }: { name: string }): React.JSX.Element {
   const c = platformColor(name)
   return (
     <span className="inline-flex items-center gap-1.5 text-[11.5px] font-medium text-muted">
-      <span className="size-2 rounded-[3px]" style={{ background: c, boxShadow: `0 0 8px ${c}80` }} />
+      <span className="size-2 rounded-[3px]" style={{ background: c, boxShadow: `0 0 0 2px color-mix(in srgb, ${c} 20%, transparent)` }} />
       {name || 'No platform'}
     </span>
   )

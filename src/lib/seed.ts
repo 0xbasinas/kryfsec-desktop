@@ -6,12 +6,12 @@ export const DEFAULT_SETTINGS: AppData['settings'] = {
   theme: 'dark',
   name: '',
   weeklyGoalHours: 8,
-  accent: 'emerald'
+  accent: 'jade'
 }
 
 const ROADMAP: { area: Omit<Area, 'id'>; topics: [string, TopicStatus][] }[] = [
   {
-    area: { name: 'Networking', icon: 'network', color: '#22d3ee', description: 'How computers talk to each other.' },
+    area: { name: 'Networking', icon: 'network', color: 'var(--c-cyan)', description: 'How computers talk to each other.' },
     topics: [
       ['OSI and TCP/IP models', 'done'],
       ['IP addresses and subnets', 'done'],
@@ -22,7 +22,7 @@ const ROADMAP: { area: Omit<Area, 'id'>; topics: [string, TopicStatus][] }[] = [
     ]
   },
   {
-    area: { name: 'Linux', icon: 'linux', color: '#facc15', description: 'The command line and the OS most servers run.' },
+    area: { name: 'Linux', icon: 'linux', color: 'var(--c-amber)', description: 'The command line and the OS most servers run.' },
     topics: [
       ['Files, folders and navigation', 'done'],
       ['Users, groups and permissions', 'done'],
@@ -33,7 +33,7 @@ const ROADMAP: { area: Omit<Area, 'id'>; topics: [string, TopicStatus][] }[] = [
     ]
   },
   {
-    area: { name: 'Web security', icon: 'web', color: '#f472b6', description: 'Find and fix bugs in websites and APIs.' },
+    area: { name: 'Web security', icon: 'web', color: 'var(--c-pink)', description: 'Find and fix bugs in websites and APIs.' },
     topics: [
       ['HTTP requests and cookies', 'done'],
       ['OWASP Top 10', 'learning'],
@@ -44,7 +44,7 @@ const ROADMAP: { area: Omit<Area, 'id'>; topics: [string, TopicStatus][] }[] = [
     ]
   },
   {
-    area: { name: 'Cryptography', icon: 'crypto', color: '#a78bfa', description: 'Keep data secret and prove who you are.' },
+    area: { name: 'Cryptography', icon: 'crypto', color: 'var(--c-violet)', description: 'Keep data secret and prove who you are.' },
     topics: [
       ['Encoding vs hashing vs encryption', 'done'],
       ['Symmetric encryption (AES)', 'todo'],
@@ -54,7 +54,7 @@ const ROADMAP: { area: Omit<Area, 'id'>; topics: [string, TopicStatus][] }[] = [
     ]
   },
   {
-    area: { name: 'Pentesting', icon: 'pentest', color: '#f87171', description: 'Attack systems (with permission) to find weak spots.' },
+    area: { name: 'Pentesting', icon: 'pentest', color: 'var(--c-red)', description: 'Attack systems (with permission) to find weak spots.' },
     topics: [
       ['Methodology and scope', 'learning'],
       ['Recon and Nmap', 'done'],
@@ -66,7 +66,7 @@ const ROADMAP: { area: Omit<Area, 'id'>; topics: [string, TopicStatus][] }[] = [
     ]
   },
   {
-    area: { name: 'Blue team / SOC', icon: 'blue', color: '#60a5fa', description: 'Detect, investigate and respond to attacks.' },
+    area: { name: 'Blue team / SOC', icon: 'blue', color: 'var(--c-blue)', description: 'Detect, investigate and respond to attacks.' },
     topics: [
       ['Security monitoring basics', 'todo'],
       ['SIEM (Splunk / Elastic)', 'todo'],
@@ -76,7 +76,7 @@ const ROADMAP: { area: Omit<Area, 'id'>; topics: [string, TopicStatus][] }[] = [
     ]
   },
   {
-    area: { name: 'Cloud security', icon: 'cloud', color: '#34d399', description: 'Secure AWS, Azure and other cloud platforms.' },
+    area: { name: 'Cloud security', icon: 'cloud', color: 'var(--c-teal)', description: 'Secure AWS, Azure and other cloud platforms.' },
     topics: [
       ['Cloud basics and shared responsibility', 'todo'],
       ['IAM: users, roles, policies', 'todo'],
@@ -85,7 +85,7 @@ const ROADMAP: { area: Omit<Area, 'id'>; topics: [string, TopicStatus][] }[] = [
     ]
   },
   {
-    area: { name: 'Scripting', icon: 'code', color: '#fb923c', description: 'Python and Bash to automate your work.' },
+    area: { name: 'Scripting', icon: 'code', color: 'var(--c-orange)', description: 'Python and Bash to automate your work.' },
     topics: [
       ['Bash basics and pipes', 'done'],
       ['Python basics', 'learning'],
