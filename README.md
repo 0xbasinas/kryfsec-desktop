@@ -24,7 +24,7 @@ There is also a phone app: [kryfsec-mobile](https://github.com/0xbasinas/kryfsec
 ## Install
 
 - **Windows:** run `kryfsec-Setup-<version>-x64.exe`. The installer is not signed, so Windows SmartScreen may say "Windows protected your PC" → click **More info → Run anyway**. A portable `.zip` is also built.
-- **Linux:** `chmod +x CyberJourney-<version>-x86_64.AppImage` and run it.
+- **Linux:** `chmod +x kryfsec-<version>-x86_64.AppImage` and run it.
 
 Your data is one file: `kryfsec.json` in the app data folder
 (Windows: `%APPDATA%\kryfsec`). Settings → *Your data* shows the exact path. A `.bak` copy is kept next to it.
