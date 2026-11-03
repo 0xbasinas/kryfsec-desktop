@@ -1,0 +1,78 @@
+name: Dev release (Desktop)
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "**.md"
+      - "screenshots/**"
+  workflow_dispatch:
+
+concurrency:
+  group: dev-release
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            args: --win --x64
+          - os: ubuntu-latest
+            args: --linux AppImage
+          - os: macos-latest
+            args: --mac dmg
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    env:
+      CSC_IDENTITY_AUTO_DISCOVERY: "false"
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+
+      - run: npx electron-builder ${{ matrix.args }} --publish never
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: kryfsec-${{ matrix.os }}
+          if-no-files-found: error
+          path: |
+            release/*.exe
+            release/*.zip
+            release/*.AppImage
+            release/*.dmg
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          path: dist
+          merge-multiple: true
+
+      - name: Publish rolling "dev" pre-release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          short="${GITHUB_SHA::7}"
+          gh release delete dev --cleanup-tag --yes || true
+          gh release create dev dist/* \
+            --target "$GITHUB_SHA" \
+            --prerelease \
+            --title "Dev build ($short)" \
+            --notes "Automated desktop dev build from \`${GITHUB_SHA}\`. Unsigned; not for production."
