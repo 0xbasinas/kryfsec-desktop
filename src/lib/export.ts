@@ -7,7 +7,7 @@ export function toMarkdown(d: AppData): string {
   const topic = (id?: string): string => d.topics.find((t) => t.id === id)?.title ?? ''
   const mark = { todo: '[ ]', learning: '[~]', done: '[x]' } as const
 
-  out.push(`# My cybersecurity journey`, '', `_Exported from CyberJourney on ${fmtDate(new Date().toISOString())}_`, '')
+  out.push(`# My cybersecurity journey`, '', `_Exported from kryfsec on ${fmtDate(new Date().toISOString())}_`, '')
   out.push(`- Journal entries: ${d.logs.length} (${fmtHours(d.logs.reduce((a, l) => a + l.minutes, 0))} total)`)
   out.push(`- Labs solved: ${d.labs.filter((l) => l.status === 'done').length} of ${d.labs.length}`)
   out.push(`- Topics done: ${d.topics.filter((t) => t.status === 'done').length} of ${d.topics.length}`, '')

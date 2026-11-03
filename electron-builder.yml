@@ -1,5 +1,5 @@
-appId: io.github.0xbasinas.cyberjourney
-productName: CyberJourney
+appId: com.kryfsec.desktop
+productName: kryfsec
 copyright: Copyright © 2026 0xbasinas
 directories:
   output: release
@@ -23,7 +23,7 @@ nsis:
   allowToChangeInstallationDirectory: true
   createDesktopShortcut: true
   createStartMenuShortcut: true
-  shortcutName: CyberJourney
+  shortcutName: kryfsec
   artifactName: ${productName}-Setup-${version}-x64.${ext}
 linux:
   target: [AppImage]

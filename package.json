@@ -1,6 +1,6 @@
 {
   "name": "kryfsec-desktop",
-  "productName": "CyberJourney",
+  "productName": "kryfsec",
   "version": "0.1.0",
   "description": "kryfsec - track and write down your cyber security learning",
   "main": "out/main/main.js",
@@ -75,5 +75,5 @@
     "vite": "^7.3.7",
     "zustand": "^5.0.16"
   },
-  "desktopName": "cyberjourney.desktop"
+  "desktopName": "kryfsec.desktop"
 }

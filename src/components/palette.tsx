@@ -124,7 +124,7 @@ export function CommandPalette(): React.JSX.Element {
             <div className="flex items-center gap-4 border-t border-line px-4 py-2 text-[11px] text-faint">
               <span className="flex items-center gap-1.5"><Kbd>↑</Kbd><Kbd>↓</Kbd> move</span>
               <span className="flex items-center gap-1.5"><Kbd>Enter</Kbd> open</span>
-              <span className="ml-auto">CyberJourney</span>
+              <span className="ml-auto">kryfsec</span>
             </div>
           </Command>
         </D.Content>

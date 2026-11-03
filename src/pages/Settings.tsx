@@ -32,11 +32,11 @@ export default function Settings(): React.JSX.Element {
   const sampleCount = [s.logs, s.labs, s.resources, s.certs, s.goals].reduce((a, l) => a + l.filter((x) => x.sample).length, 0)
 
   const exportJson = async (): Promise<void> => {
-    const p = await window.api.saveFile(`cyberjourney-backup-${stamp}.json`, JSON.stringify(pickData(s), null, 2), [{ name: 'JSON backup', extensions: ['json'] }])
+    const p = await window.api.saveFile(`kryfsec-backup-${stamp}.json`, JSON.stringify(pickData(s), null, 2), [{ name: 'JSON backup', extensions: ['json'] }])
     if (p) toast.success('Backup saved', { description: p })
   }
   const exportMd = async (): Promise<void> => {
-    const p = await window.api.saveFile(`cyberjourney-${stamp}.md`, toMarkdown(pickData(s)), [{ name: 'Markdown', extensions: ['md'] }])
+    const p = await window.api.saveFile(`kryfsec-${stamp}.md`, toMarkdown(pickData(s)), [{ name: 'Markdown', extensions: ['md'] }])
     if (p) toast.success('Markdown exported', { description: p })
   }
   const importJson = async (): Promise<void> => {
@@ -49,7 +49,7 @@ export default function Settings(): React.JSX.Element {
       data = null
     }
     if (!data) {
-      toast.error('This file is not a CyberJourney backup')
+      toast.error('This file is not a kryfsec backup')
       return
     }
     if (await confirm('Replace your data?', `The backup has ${data.logs.length} journal entries and ${data.labs.length} labs. Your current data will be replaced. Tip: export a backup first.`, 'Replace')) {
@@ -200,7 +200,7 @@ export default function Settings(): React.JSX.Element {
             ))}
           </div>
         </Card>
-        <p className="text-center text-[11px] text-faint">CyberJourney {version} · made for your learning journey</p>
+        <p className="text-center text-[11px] text-faint">kryfsec {version} · made for your learning journey</p>
       </div>
     </div>
   )

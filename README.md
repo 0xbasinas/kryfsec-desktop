@@ -23,13 +23,12 @@ There is also a phone app: [kryfsec-mobile](https://github.com/0xbasinas/kryfsec
 
 ## Install
 
-The app and its files still use the old name *CyberJourney* for now.
-
-- **Windows:** run `CyberJourney-Setup-<version>-x64.exe`. The installer is not signed, so Windows SmartScreen may say "Windows protected your PC" → click **More info → Run anyway**. A portable `.zip` is also built.
+- **Windows:** run `kryfsec-Setup-<version>-x64.exe`. The installer is not signed, so Windows SmartScreen may say "Windows protected your PC" → click **More info → Run anyway**. A portable `.zip` is also built.
 - **Linux:** `chmod +x CyberJourney-<version>-x86_64.AppImage` and run it.
 
-Your data is one file: `cyberjourney.json` in the app data folder
-(Windows: `%APPDATA%\CyberJourney`). Settings → *Your data* shows the exact path. A `.bak` copy is kept next to it.
+Your data is one file: `kryfsec.json` in the app data folder
+(Windows: `%APPDATA%\kryfsec`). Settings → *Your data* shows the exact path. A `.bak` copy is kept next to it.
+If you used the app under its old name, your data is copied over the first time kryfsec starts (the old file is kept).
 
 ## Develop
 

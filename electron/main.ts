@@ -1,9 +1,31 @@
 import { app, BrowserWindow, dialog, ipcMain, nativeTheme, shell } from 'electron'
-import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
+import { copyFileSync, existsSync, mkdirSync, writeFileSync } from 'node:fs'
 import { readFile, rename, writeFile, copyFile } from 'node:fs/promises'
 import { join } from 'node:path'
 
-const DATA_FILE = (): string => join(app.getPath('userData'), 'cyberjourney.json')
+const DATA_FILE = (): string => join(app.getPath('userData'), 'kryfsec.json')
+
+// One-time move from the old app name. Older versions saved their data in
+// <appData>/<old name>/<old name>.json. If the new file is not there yet,
+// copy the old file (and its .bak) over. The old files are left in place.
+const OLD_DIR_NAMES = ['Cyber' + 'Journey', 'cyber' + 'journey']
+const OLD_FILE_NAME = 'cyber' + 'journey.json'
+function migrateOldData(): void {
+  try {
+    const file = DATA_FILE()
+    if (existsSync(file) || existsSync(file + '.bak')) return
+    for (const dirName of OLD_DIR_NAMES) {
+      const oldFile = join(app.getPath('appData'), dirName, OLD_FILE_NAME)
+      if (!existsSync(oldFile) && !existsSync(oldFile + '.bak')) continue
+      mkdirSync(app.getPath('userData'), { recursive: true })
+      if (existsSync(oldFile)) copyFileSync(oldFile, file)
+      if (existsSync(oldFile + '.bak')) copyFileSync(oldFile + '.bak', file + '.bak')
+      return
+    }
+  } catch (err) {
+    console.error('Could not copy data from the old app folder', err)
+  }
+}
 
 let win: BrowserWindow | null = null
 let lastMaxChange = 0
@@ -22,7 +44,7 @@ function createWindow(): void {
     resizable: true,
     maximizable: true,
     minimizable: true,
-    title: 'CyberJourney',
+    title: 'kryfsec',
     icon: join(__dirname, '../../resources/icon.png'),
     webPreferences: {
       preload: join(__dirname, '../preload/preload.js'),
@@ -68,6 +90,7 @@ function createWindow(): void {
 
 // --- Data persistence: one JSON file in userData, atomic write + backup ---
 ipcMain.handle('data:load', async () => {
+  migrateOldData()
   const file = DATA_FILE()
   for (const f of [file, file + '.bak']) {
     try {
@@ -162,7 +185,7 @@ async function runScreenshots(w: BrowserWindow, dir: string): Promise<void> {
   app.quit()
 }
 
-if (process.platform === 'win32') app.setAppUserModelId('io.github.0xbasinas.cyberjourney')
+if (process.platform === 'win32') app.setAppUserModelId('com.kryfsec.desktop')
 
 if (!process.env['CJ_SCREENSHOT_DIR'] && !app.requestSingleInstanceLock()) app.quit()
 app.on('second-instance', () => {
