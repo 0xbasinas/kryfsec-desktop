@@ -1,9 +1,9 @@
-# CyberJourney
+# kryfsec desktop (CyberJourney)
 
 A desktop app to plan, track and write down your cyber security learning.
 Everything stays on your computer.
 
-There is also a phone app: [cyberjourney-mobile](https://github.com/0xbasinas/cyberjourney-mobile).
+There is also a phone app: [kryfsec-mobile](https://github.com/0xbasinas/kryfsec-mobile).
 
 ![Dashboard](screenshots/01-dashboard.png)
 

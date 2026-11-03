@@ -775,4 +775,4 @@ Copyright lines:
 
 ## Mobile app
 
-The phone app lives in its own repo, [cyberjourney-mobile](https://github.com/0xbasinas/cyberjourney-mobile), with its own notices.
+The phone app lives in its own repo, [kryfsec-mobile](https://github.com/0xbasinas/kryfsec-mobile), with its own notices.
