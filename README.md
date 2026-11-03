@@ -3,6 +3,8 @@
 A desktop app to plan, track and write down your cyber security learning.
 Everything stays on your computer.
 
+There is also a phone app: [cyberjourney-mobile](https://github.com/0xbasinas/cyberjourney-mobile).
+
 ![Dashboard](screenshots/01-dashboard.png)
 
 ## What you can do
