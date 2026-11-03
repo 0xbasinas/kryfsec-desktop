@@ -23,6 +23,20 @@ All text colors reach WCAG AA (4.5:1).
 Electron includes Chromium and Node.js. Their licenses are shipped with the
 app as `LICENSE.electron.txt` and `LICENSES.chromium.html` in the install folder.
 
+## Packages bundled for sync
+
+Used by the sync feature (code in `src/sync-core/`, copied from
+[kryfsec-sync](https://github.com/0xbasinas/kryfsec-sync), MIT, (c) 2026 0xbasinas).
+
+| Package | Version | License | Copyright |
+|---|---|---|---|
+| [@noble/ciphers](https://github.com/paulmillr/noble-ciphers) | 2.4.0 | MIT | (c) 2022 Paul Miller |
+| [@noble/hashes](https://github.com/paulmillr/noble-hashes) | 2.4.0 | MIT | (c) 2022 Paul Miller |
+| [fflate](https://github.com/101arrowz/fflate) | 0.8.3 | MIT | (c) Arjun Barrett |
+| [node-diff3](https://github.com/bhousel/node-diff3) | 3.2.1 | MIT | (c) 2006, 2008 Tony Garnock-Jones, LShift Ltd.; (c) 2019-2026 Bryan Housel |
+| [qrcode](https://github.com/soldair/node-qrcode) | 1.5.4 | MIT | (c) 2012 Ryan Day |
+| [dijkstrajs](https://github.com/tcort/dijkstrajs) | 1.0.3 | MIT | (c) 2008 Wyatt Baldwin (Dijkstar), Thomas Cort |
+
 ## Packages bundled into the app (163)
 
 Almost all are MIT. A few small helpers used inside recharts, TipTap / ProseMirror, refractor and

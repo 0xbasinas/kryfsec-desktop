@@ -27,6 +27,10 @@ SHOTS+=",18-note-editor-slash-dark=slash"
 SHOTS+=",19-note-viewer-light=undo;edmode:read;theme:light"
 SHOTS+=",20-note-editor-light=edmode:edit;sel:UNION"
 SHOTS+=",21-note-editor-slash-light=slash"
+# 22/23 turn sync on against the live server; the test vault is deleted at the end.
+SHOTS+=",22-sync-dark=undo;theme:dark;page:settings;sync:on;scroll:430"
+SHOTS+=",23-sync-light=theme:light"
+AFTER="sync:off"
 # ONLY="16,17" takes just those shots
 if [ -n "${ONLY:-}" ]; then
   KEEP=""; IFS=',' read -ra ALL <<< "$SHOTS"
@@ -34,6 +38,6 @@ if [ -n "${ONLY:-}" ]; then
   SHOTS="$KEEP"
 fi
 if [ -n "$DISP" ]; then RUN=(env DISPLAY="$DISP"); EXTRA=(); else RUN=(env -u DISPLAY); EXTRA=(--ozone-platform=headless); fi
-"${RUN[@]}" CJ_SCREENSHOT_DIR="$PWD/screenshots" CJ_SHOTS="$SHOTS" \
+"${RUN[@]}" CJ_SCREENSHOT_DIR="$PWD/screenshots" CJ_SHOTS="$SHOTS" CJ_SHOTS_AFTER="$AFTER" \
   ./node_modules/electron/dist/electron --no-sandbox "${EXTRA[@]}" --user-data-dir="$UD" out/main/main.js
 rm -rf "$UD"

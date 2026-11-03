@@ -7,6 +7,8 @@ import { toMarkdown } from '@/lib/export'
 import { cn } from '@/lib/utils'
 import { Button, Card, CardHeader, Field, Input, Kbd, PageHeader } from '@/components/ui'
 import { confirm } from '@/components/dialog'
+import { SyncCard } from '@/components/sync-card'
+import { useSync } from '@/lib/sync'
 
 function Row({ title, text, children }: { title: string; text: string; children: React.ReactNode }): React.JSX.Element {
   return (
@@ -22,6 +24,7 @@ function Row({ title, text, children }: { title: string; text: string; children:
 
 export default function Settings(): React.JSX.Element {
   const s = useStore()
+  const paired = useSync((x) => x.paired)
   const [path, setPath] = useState('')
   const [version, setVersion] = useState('')
   useEffect(() => {
@@ -110,8 +113,10 @@ export default function Settings(): React.JSX.Element {
           </div>
         </Card>
 
+        <SyncCard />
+
         <Card>
-          <CardHeader icon={<IconDatabase />} title="Your data" sub="Everything is saved on this computer only. Nothing is sent online." />
+          <CardHeader icon={<IconDatabase />} title="Your data" sub={paired ? 'Saved on this computer. Sync sends an encrypted copy that only your devices can open.' : 'Everything is saved on this computer only. Nothing is sent online.'} />
           <Row title="Export backup" text="Save all your data as one JSON file. Keep it safe, e.g. in Google Drive.">
             <Button onClick={exportJson}>
               <IconDownload />

@@ -1,7 +1,7 @@
 # kryfsec desktop
 
 kryfsec is a desktop app to plan, track and write down your cyber security learning.
-Everything stays on your computer.
+Everything stays on your computer, unless you turn on encrypted sync with the phone app.
 Website: [kryfsec.com](https://kryfsec.com)
 
 There is also a phone app: [kryfsec-mobile](https://github.com/0xbasinas/kryfsec-mobile).
@@ -19,6 +19,7 @@ There is also a phone app: [kryfsec-mobile](https://github.com/0xbasinas/kryfsec
 - **Goals** – goals with deadlines and checklists.
 - **Search everywhere** – press `Ctrl+K` for the command palette. `Ctrl+J` starts a new journal entry.
 - **Your data** – export / import JSON backups, export everything as Markdown, remove the sample data in one click.
+- **Sync** – keep the desktop and phone app in sync. End-to-end encrypted, no account: pair with a QR code. Changes are merged field by field and note text line by line, so edits on two devices are both kept. See below.
 - Dark and light theme, a calm, mostly gray palette with one soft accent (Periwinkle, Sage or Rose). Inspired by Linear and Vercel Geist. All text passes WCAG AA contrast.
 
 ## Install
@@ -29,6 +30,28 @@ There is also a phone app: [kryfsec-mobile](https://github.com/0xbasinas/kryfsec
 Your data is one file: `kryfsec.json` in the app data folder
 (Windows: `%APPDATA%\kryfsec`). Settings → *Your data* shows the exact path. A `.bak` copy is kept next to it.
 If you used the app under its old name, your data is copied over the first time kryfsec starts (the old file is kept).
+
+## Sync
+
+Settings → **Sync** → *Turn on sync* makes a sync key and shows it as a QR code.
+In the phone app open Settings → Sync and scan it (or paste the key).
+Another computer can join with *I have a key*.
+
+- The key never leaves your devices. Data is encrypted (AES-256-GCM) before it is sent,
+  so the server at `sync.kryfsec.com` only stores locked data.
+- The key is kept with the OS key store (Electron `safeStorage`, DPAPI on Windows).
+- **If you lose the key, the synced copy cannot be recovered.** Your data on each device stays.
+- Syncs when the app opens, a few seconds after a change, when the window gets focus, every 5 minutes,
+  and with *Sync now*. Works offline: changes are kept and sent later.
+- Two devices changing different things: both kept. The same note changed in different
+  places: merged line by line. The same lines changed on both: the newer one stays and the
+  other is saved as "(conflict copy)". Details: [how merging works](https://github.com/0xbasinas/kryfsec-sync/blob/main/docs/merging.md).
+
+Server, shared sync code and self-hosting: [kryfsec-sync](https://github.com/0xbasinas/kryfsec-sync).
+The shared code is copied into `src/sync-core/` (do not edit it there).
+
+![Sync settings, dark](screenshots/22-sync-dark.png)
+![Sync settings, light](screenshots/23-sync-light.png)
 
 ## Develop
 
@@ -52,6 +75,7 @@ pull the uninstaller out of the installer with its own built-in reader.
 
 Electron 38, electron-vite, React 19, TypeScript, Tailwind CSS 4, zustand,
 recharts, react-markdown + remark-gfm, cmdk, Radix UI, Tabler icons, date-fns, sonner.
+Sync: @noble/ciphers, @noble/hashes, fflate, node-diff3, qrcode.
 
 ## Licenses
 

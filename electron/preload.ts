@@ -1,6 +1,8 @@
 import { contextBridge, ipcRenderer } from 'electron'
 
 type Filter = { name: string; extensions: string[] }
+type SyncRequest = { method: 'GET' | 'PUT' | 'DELETE'; url: string; headers: Record<string, string>; body?: Uint8Array }
+type SyncResponse = { status: number; headers: Record<string, string>; body: Uint8Array } | { network: true; message: string }
 
 const api = {
   platform: process.platform,
@@ -14,6 +16,13 @@ const api = {
   openLink: (url: string): Promise<void> => ipcRenderer.invoke('link:open', url),
   setTheme: (theme: 'dark' | 'light'): void => ipcRenderer.send('theme:set', theme),
   version: (): Promise<string> => ipcRenderer.invoke('app:version'),
+  sync: {
+    http: (req: SyncRequest): Promise<SyncResponse> => ipcRenderer.invoke('sync:http', req),
+    getKey: (): Promise<string | null> => ipcRenderer.invoke('sync:key:get'),
+    setKey: (key: string | null): Promise<boolean> => ipcRenderer.invoke('sync:key:set', key),
+    loadState: (): Promise<unknown> => ipcRenderer.invoke('sync:state:load'),
+    saveState: (state: unknown): Promise<boolean> => ipcRenderer.invoke('sync:state:save', state)
+  },
   win: {
     minimize: (): void => ipcRenderer.send('win:minimize'),
     toggleMaximize: (source?: 'button' | 'dblclick'): void => ipcRenderer.send('win:toggle-maximize', source),

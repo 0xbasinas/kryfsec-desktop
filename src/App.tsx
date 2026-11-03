@@ -54,6 +54,8 @@ window.__cj = (script: string) => {
     }
     if (op === 'close') s.setPalette(false)
     if (op === 'kit') useKit.setState({ on: a === 'on' })
+    // sync:on makes a real (empty-key) vault; sync:off deletes it again.
+    if (op === 'sync') void import('./lib/sync').then(({ sync }) => (a === 'on' ? void sync.create() : void sync.unpair({ deleteServerCopy: true })))
     if (op === 'theme') s.setSettings({ theme: a as 'dark' | 'light' })
     if (op === 'scroll') document.querySelector('main')?.scrollTo({ top: Number(a) })
     // note editor helpers for screenshots

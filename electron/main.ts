@@ -1,6 +1,6 @@
-import { app, BrowserWindow, dialog, ipcMain, nativeTheme, shell } from 'electron'
+import { app, BrowserWindow, dialog, ipcMain, nativeTheme, net, safeStorage, shell } from 'electron'
 import { copyFileSync, existsSync, mkdirSync, writeFileSync } from 'node:fs'
-import { readFile, rename, writeFile, copyFile } from 'node:fs/promises'
+import { readFile, rename, writeFile, copyFile, unlink } from 'node:fs/promises'
 import { join } from 'node:path'
 
 const DATA_FILE = (): string => join(app.getPath('userData'), 'kryfsec.json')
@@ -150,6 +150,80 @@ ipcMain.on('theme:set', (_e, theme: 'dark' | 'light') => {
 
 // --- Custom window controls (frameless window) ---
 const fromOurWindow = (e: Electron.IpcMainInvokeEvent | Electron.IpcMainEvent): boolean => !!win && e.sender === win.webContents
+
+// --- Sync (https://github.com/0xbasinas/kryfsec-sync) ---
+// The renderer encrypts and merges; the main process only moves bytes to the
+// one sync server, and keeps the sync key encrypted with the OS (safeStorage).
+const SYNC_ORIGIN = 'https://sync.kryfsec.com'
+const SYNC_KEY_FILE = (): string => join(app.getPath('userData'), 'sync-key.json')
+const SYNC_STATE_FILE = (): string => join(app.getPath('userData'), 'sync-state.json')
+
+async function writeAtomic(file: string, text: string): Promise<void> {
+  mkdirSync(app.getPath('userData'), { recursive: true })
+  await writeFile(file + '.tmp', text, 'utf8')
+  await rename(file + '.tmp', file)
+}
+
+ipcMain.handle('sync:http', async (e, req: { method: string; url: string; headers: Record<string, string>; body?: Uint8Array }) => {
+  if (!fromOurWindow(e)) throw new Error('not allowed')
+  const url = new URL(req.url)
+  if (url.origin !== SYNC_ORIGIN || !url.pathname.startsWith('/v1/vault/')) throw new Error('Only the kryfsec sync server is allowed')
+  if (!['GET', 'PUT', 'DELETE'].includes(req.method)) throw new Error('Bad method')
+  try {
+    const res = await net.fetch(url.toString(), {
+      method: req.method,
+      headers: req.headers,
+      body: req.body ? Buffer.from(req.body) : undefined,
+      signal: AbortSignal.timeout(20_000)
+    })
+    const headers: Record<string, string> = {}
+    res.headers.forEach((v, k) => (headers[k.toLowerCase()] = v))
+    return { status: res.status, headers, body: new Uint8Array(await res.arrayBuffer()) }
+  } catch (err) {
+    return { network: true, message: err instanceof Error ? err.message : String(err) }
+  }
+})
+
+ipcMain.handle('sync:key:get', async (e) => {
+  if (!fromOurWindow(e)) return null
+  try {
+    const saved = JSON.parse(await readFile(SYNC_KEY_FILE(), 'utf8')) as { enc: boolean; data: string }
+    const buf = Buffer.from(saved.data, 'base64')
+    return saved.enc ? safeStorage.decryptString(buf) : buf.toString('utf8')
+  } catch {
+    return null
+  }
+})
+
+ipcMain.handle('sync:key:set', async (e, key: string | null) => {
+  if (!fromOurWindow(e)) return false
+  if (key === null) {
+    await unlink(SYNC_KEY_FILE()).catch(() => undefined)
+    return true
+  }
+  const enc = safeStorage.isEncryptionAvailable()
+  const data = (enc ? safeStorage.encryptString(key) : Buffer.from(key, 'utf8')).toString('base64')
+  await writeAtomic(SYNC_KEY_FILE(), JSON.stringify({ enc, data }))
+  return true
+})
+
+ipcMain.handle('sync:state:load', async (e) => {
+  if (!fromOurWindow(e)) return null
+  try {
+    return JSON.parse(await readFile(SYNC_STATE_FILE(), 'utf8'))
+  } catch {
+    return null
+  }
+})
+
+let syncStateWrite = Promise.resolve()
+ipcMain.handle('sync:state:save', (e, state: unknown) => {
+  if (!fromOurWindow(e)) return false
+  syncStateWrite = syncStateWrite
+    .then(() => (state === null ? unlink(SYNC_STATE_FILE()).catch(() => undefined) : writeAtomic(SYNC_STATE_FILE(), JSON.stringify(state))))
+    .catch((err) => console.error('Could not save sync state', err))
+  return syncStateWrite.then(() => true)
+})
 ipcMain.on('win:minimize', (e) => {
   if (fromOurWindow(e)) win?.minimize()
 })
@@ -181,6 +255,11 @@ async function runScreenshots(w: BrowserWindow, dir: string): Promise<void> {
     await wait(1400)
     const img = await w.webContents.capturePage()
     writeFileSync(join(dir, `${name}.png`), img.toPNG())
+  }
+  const after = process.env['CJ_SHOTS_AFTER']
+  if (after) {
+    await w.webContents.executeJavaScript(`window.__cj && window.__cj(${JSON.stringify(after)})`)
+    await wait(3000)
   }
   app.quit()
 }

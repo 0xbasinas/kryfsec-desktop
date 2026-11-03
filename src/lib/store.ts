@@ -94,6 +94,8 @@ export const useStore = create<Store>((set, get) => ({
     const raw = await window.api.loadData().catch(() => null)
     const data = normalize(raw) ?? createSampleData()
     set({ ...data, loaded: true })
+    // Sync starts after the data is in memory (loaded lazily to keep startup fast).
+    void import('./sync').then((m) => m.startSync())
   },
   go: (page, focusId) => set({ page, focus: focusId ? { page, id: focusId } : null, paletteOpen: false }),
   clearFocus: () => set({ focus: null }),
