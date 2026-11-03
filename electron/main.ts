@@ -167,14 +167,15 @@ async function writeAtomic(file: string, text: string): Promise<void> {
 ipcMain.handle('sync:http', async (e, req: { method: string; url: string; headers: Record<string, string>; body?: Uint8Array }) => {
   if (!fromOurWindow(e)) throw new Error('not allowed')
   const url = new URL(req.url)
-  if (url.origin !== SYNC_ORIGIN || !url.pathname.startsWith('/v1/vault/')) throw new Error('Only the kryfsec sync server is allowed')
-  if (!['GET', 'PUT', 'DELETE'].includes(req.method)) throw new Error('Bad method')
+  if (url.origin !== SYNC_ORIGIN || !url.pathname.startsWith('/v2/vault/')) throw new Error('Only the kryfsec sync server is allowed')
+  if (!['GET', 'PUT', 'POST', 'DELETE'].includes(req.method)) throw new Error('Bad method')
   try {
     const res = await net.fetch(url.toString(), {
       method: req.method,
       headers: req.headers,
       body: req.body ? Buffer.from(req.body) : undefined,
-      signal: AbortSignal.timeout(20_000)
+      // Uploads go in batches of up to 4 MB, so allow time on a slow line.
+      signal: AbortSignal.timeout(60_000)
     })
     const headers: Record<string, string> = {}
     res.headers.forEach((v, k) => (headers[k.toLowerCase()] = v))

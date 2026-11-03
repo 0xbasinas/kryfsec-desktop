@@ -46,12 +46,25 @@ Another computer can join with *I have a key*.
 - Two devices changing different things: both kept. The same note changed in different
   places: merged line by line. The same lines changed on both: the newer one stays and the
   other is saved as "(conflict copy)". Details: [how merging works](https://github.com/0xbasinas/kryfsec-sync/blob/main/docs/merging.md).
+- Data is sent in small encrypted pieces, and a sync only sends the pieces that changed.
+  Details: [how chunking works](https://github.com/0xbasinas/kryfsec-sync/blob/main/docs/chunking.md).
 
 Server, shared sync code and self-hosting: [kryfsec-sync](https://github.com/0xbasinas/kryfsec-sync).
 The shared code is copied into `src/sync-core/` (do not edit it there).
 
 ![Sync settings, dark](screenshots/22-sync-dark.png)
 ![Sync settings, light](screenshots/23-sync-light.png)
+
+### Known limits
+
+- Synced data can be up to 64 MB (after compression and encryption). A journal
+  with thousands of notes is usually under 1 MB.
+- This version upgrades your synced data to the new chunked format on its first sync.
+  Older versions of the app (desktop or phone) then show "Please update this app" and
+  stop syncing until they are updated. Their local data stays.
+- The server is on Cloudflare's free plan: 120 syncs a minute per vault, and the
+  whole server has a daily request budget, so very busy use may be slowed.
+- The order of items in a list is not synced. New items go to the top.
 
 ## Develop
 

@@ -1,7 +1,7 @@
 import { contextBridge, ipcRenderer } from 'electron'
 
 type Filter = { name: string; extensions: string[] }
-type SyncRequest = { method: 'GET' | 'PUT' | 'DELETE'; url: string; headers: Record<string, string>; body?: Uint8Array }
+type SyncRequest = { method: 'GET' | 'PUT' | 'POST' | 'DELETE'; url: string; headers: Record<string, string>; body?: Uint8Array }
 type SyncResponse = { status: number; headers: Record<string, string>; body: Uint8Array } | { network: true; message: string }
 
 const api = {
