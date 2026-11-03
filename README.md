@@ -11,14 +11,14 @@ There is also a phone app: [kryfsec-mobile](https://github.com/0xbasinas/kryfsec
 ## What you can do
 
 - **Dashboard** – study streak, hours this week, 30-day chart, skill radar, activity map, next goals and exams.
-- **Roadmap** – 8 skill areas (Networking, Linux, Web, Crypto, Pentesting, Blue team, Cloud, Scripting) with topics. Click a topic to mark it *To do → Learning → Done*. Add your own areas and topics.
+- **Roadmap** – your own skill areas and topics, or start from a ready-made one with 8 areas (Networking, Linux, Web, Crypto, Pentesting, Blue team, Cloud, Scripting). Click a topic to mark it *To do → Learning → Done*.
 - **Journal** – daily notes in Markdown with live preview, tags, study time and a linked topic.
 - **Labs & CTFs** – board or list of boxes and challenges (TryHackMe, HTB, PortSwigger, picoCTF…), with flags and a write-up for each.
 - **Resources** – courses, books, videos, tools and links, with status and rating.
 - **Certifications** – Security+, eJPT, OSCP or any other: steps, progress and exam date timeline.
 - **Goals** – goals with deadlines and checklists.
 - **Search everywhere** – press `Ctrl+K` for the command palette. `Ctrl+J` starts a new journal entry.
-- **Your data** – export / import JSON backups, export everything as Markdown, remove the sample data in one click.
+- **Your data** – export / import JSON backups, export everything as Markdown, start fresh or load example data in one click. The app starts empty.
 - **Sync** – keep the desktop and phone app in sync. End-to-end encrypted, no account: pair with a QR code. Changes are merged field by field and note text line by line, so edits on two devices are both kept. See below.
 - Dark and light theme, a calm, mostly gray palette with one soft accent (Periwinkle, Sage or Rose). Inspired by Linear and Vercel Geist. All text passes WCAG AA contrast.
 

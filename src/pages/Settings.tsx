@@ -144,7 +144,7 @@ export default function Settings(): React.JSX.Element {
         </Card>
 
         <Card>
-          <CardHeader icon={<IconSparkles />} title="Sample data" sub="The app starts with example entries so you can see how it works." />
+          <CardHeader icon={<IconSparkles />} title="Sample data" sub="The app starts empty. Load example entries to see how it works." />
           <Row title="Remove sample data" text={sampleCount ? `Deletes ${sampleCount} example entries (journal, labs, resources, certifications, goals) and resets the starter roadmap to "not started". Your own entries stay.` : 'No sample data left. 👍'}>
             <Button
               variant="danger"
@@ -160,11 +160,11 @@ export default function Settings(): React.JSX.Element {
               Remove
             </Button>
           </Row>
-          <Row title="Start fresh" text="Delete everything and keep only an empty starter roadmap.">
+          <Row title="Start fresh" text="Delete everything, including the roadmap, and start with a clean slate.">
             <Button
               variant="danger"
               onClick={async () => {
-                if (await confirm('Delete everything?', 'All your journal entries, labs, resources, certifications and goals will be deleted. Export a backup first if you are not sure.', 'Delete all')) {
+                if (await confirm('Delete everything?', 'Your roadmap, journal entries, labs, resources, certifications and goals will be deleted. Export a backup first if you are not sure.', 'Delete all')) {
                   s.resetEmpty()
                   toast.success('Started fresh')
                 }

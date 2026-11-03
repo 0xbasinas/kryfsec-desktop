@@ -24,6 +24,7 @@ interface Actions {
   setSettings: (patch: Partial<Settings>) => void
   replaceAll: (data: AppData) => void
   clearSample: () => void
+  addStarterRoadmap: () => void
   resetEmpty: () => void
   resetSample: () => void
 }
@@ -92,7 +93,8 @@ export const useStore = create<Store>((set, get) => ({
 
   load: async () => {
     const raw = await window.api.loadData().catch(() => null)
-    const data = normalize(raw) ?? createSampleData()
+    // A first start begins with a clean slate: no roadmap, no entries.
+    const data = normalize(raw) ?? { ...EMPTY, settings: { ...DEFAULT_SETTINGS } }
     set({ ...data, loaded: true })
     // Sync starts after the data is in memory (loaded lazily to keep startup fast).
     void import('./sync').then((m) => m.startSync())
@@ -124,7 +126,16 @@ export const useStore = create<Store>((set, get) => ({
       goals: s.goals.filter((x) => !x.sample),
       topics: s.topics.map((t) => (t.sample ? { ...t, status: 'todo' as const } : t))
     })),
-  resetEmpty: () => set({ ...EMPTY, settings: get().settings, ...createRoadmap(false) }),
+  // Picked on purpose, so not marked `sample` (sync would drop it on join).
+  addStarterRoadmap: () =>
+    set((s) => {
+      const r = createRoadmap(false)
+      return {
+        areas: [...s.areas, ...r.areas.map((a) => ({ ...a, sample: false }))],
+        topics: [...s.topics, ...r.topics.map((t) => ({ ...t, sample: false }))]
+      }
+    }),
+  resetEmpty: () => set({ ...EMPTY, settings: get().settings }),
   resetSample: () => set({ ...createSampleData(), settings: get().settings })
 }))
 

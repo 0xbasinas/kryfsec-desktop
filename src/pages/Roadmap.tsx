@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { IconCircleCheckFilled, IconCircleDashed, IconCircleHalf2, IconNote, IconPencil, IconPlus, IconRoute, IconTrash } from '@tabler/icons-react'
+import { IconCircleCheckFilled, IconCircleDashed, IconCircleHalf2, IconNote, IconPencil, IconPlus, IconRoute, IconSparkles, IconTrash } from '@tabler/icons-react'
 import { toast } from 'sonner'
 import { useFocus, useStore } from '@/lib/store'
 import type { Area, AreaIcon, Topic, TopicStatus } from '@/lib/types'
@@ -161,6 +161,7 @@ export default function Roadmap(): React.JSX.Element {
   const topics = useStore((s) => s.topics)
   const upsert = useStore((s) => s.upsert)
   const remove = useStore((s) => s.remove)
+  const addStarterRoadmap = useStore((s) => s.addStarterRoadmap)
   const progress = useMemo(() => areaProgress(areas, topics), [areas, topics])
   const [sel, setSel] = useState<string | undefined>(areas[0]?.id)
   const [filter, setFilter] = useState<'all' | TopicStatus>('all')
@@ -195,7 +196,28 @@ export default function Roadmap(): React.JSX.Element {
       />
       {areas.length === 0 ? (
         <Card>
-          <EmptyState icon={<IconRoute />} title="No skill areas yet" text="Add areas like Networking or Linux, then add topics to learn in each one." action={<Button variant="primary" onClick={() => setDialog({ open: true })}><IconPlus />New area</Button>} />
+          <EmptyState
+            icon={<IconRoute />}
+            title="No skill areas yet"
+            text="Add areas like Networking or Linux, then add topics to learn in each one. Or start from a ready-made roadmap and change it as you go."
+            action={
+              <div className="flex gap-2">
+                <Button variant="primary" onClick={() => setDialog({ open: true })}>
+                  <IconPlus />
+                  New area
+                </Button>
+                <Button
+                  onClick={() => {
+                    addStarterRoadmap()
+                    toast.success('Starter roadmap added')
+                  }}
+                >
+                  <IconSparkles />
+                  Use starter roadmap
+                </Button>
+              </div>
+            }
+          />
         </Card>
       ) : (
         <div className="grid grid-cols-[340px_1fr] gap-5">
