@@ -27,14 +27,14 @@ const electron = JSON.parse(fs.readFileSync(path.join(root, 'node_modules/electr
 const list = [...seen].sort(([a], [b]) => a.localeCompare(b))
 let md = `# Third-party notices
 
-CyberJourney is MIT licensed (see LICENSE). It is built with the open-source
+kryfsec is MIT licensed (see LICENSE). It is built with the open-source
 software below. No third-party fonts, images or icon files are bundled: the app
 icon and logo were drawn for this project, and the UI uses fonts already
 installed on your computer (Inter / Segoe UI, JetBrains Mono / Cascadia Mono / Consolas).
 
 ## Color palette
 
-The UI palette is original to CyberJourney (no color files are copied). It is
+The UI palette is original to kryfsec (no color files are copied). It is
 inspired by the calm, mostly monochrome dark themes of Linear
 (https://linear.app/now/how-we-redesigned-the-linear-ui) and Vercel Geist
 (https://vercel.com/geist/colors): warm neutral grays, one muted accent

@@ -1,11 +1,12 @@
-# kryfsec desktop (CyberJourney)
+# kryfsec desktop
 
-A desktop app to plan, track and write down your cyber security learning.
+kryfsec is a desktop app to plan, track and write down your cyber security learning.
 Everything stays on your computer.
+Website: [kryfsec.com](https://kryfsec.com)
 
 There is also a phone app: [kryfsec-mobile](https://github.com/0xbasinas/kryfsec-mobile).
 
-![Dashboard](screenshots/01-dashboard.png)
+![kryfsec dashboard](screenshots/01-dashboard.png)
 
 ## What you can do
 
@@ -21,6 +22,8 @@ There is also a phone app: [kryfsec-mobile](https://github.com/0xbasinas/kryfsec
 - Dark and light theme, a calm, mostly gray palette with one soft accent (Periwinkle, Sage or Rose). Inspired by Linear and Vercel Geist. All text passes WCAG AA contrast.
 
 ## Install
+
+The app and its files still use the old name *CyberJourney* for now.
 
 - **Windows:** run `CyberJourney-Setup-<version>-x64.exe`. The installer is not signed, so Windows SmartScreen may say "Windows protected your PC" → click **More info → Run anyway**. A portable `.zip` is also built.
 - **Linux:** `chmod +x CyberJourney-<version>-x86_64.AppImage` and run it.

@@ -36,7 +36,7 @@ def build(theme, out):
     H = max(heights) + GAP
     sheet = Image.new('RGB', (W, H), bg)
     d = ImageDraw.Draw(sheet)
-    d.text((GAP, 50), f"CyberJourney · UI components ({theme} theme)", font=ft, fill=fg)
+    d.text((GAP, 50), f"kryfsec · UI components ({theme} theme)", font=ft, fill=fg)
     for (s, im), (c, y) in zip(tiles, pos):
         x = GAP + c * (cw + GAP)
         d.text((x, y), s['label'], font=f, fill=sub)

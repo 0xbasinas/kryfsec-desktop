@@ -1,12 +1,20 @@
 {
-  "name": "cyberjourney",
+  "name": "kryfsec-desktop",
   "productName": "CyberJourney",
   "version": "0.1.0",
-  "description": "CyberJourney - track and document your cybersecurity learning journey",
+  "description": "kryfsec - track and write down your cyber security learning",
   "main": "out/main/main.js",
   "author": {
     "name": "0xbasinas",
     "email": "241305723+0xbasinas@users.noreply.github.com"
+  },
+  "homepage": "https://kryfsec.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0xbasinas/kryfsec-desktop.git"
+  },
+  "bugs": {
+    "url": "https://github.com/0xbasinas/kryfsec-desktop/issues"
   },
   "license": "MIT",
   "private": true,
